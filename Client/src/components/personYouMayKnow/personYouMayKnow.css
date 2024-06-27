@@ -1,0 +1,108 @@
+.person-container {
+    background-color: var(--color-card);
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+}
+
+.person-swiper {
+    background-color: var(--color-bg);
+    padding: .5rem;
+    position: relative;
+}
+.person-swiper::after{
+    content: '>';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-card);
+    font-family: Tahoma ;
+    font-weight: bolder;
+    font-size: 2rem;
+    position: absolute;
+    cursor: pointer;
+    height: 3rem;
+    width: 3rem;
+    bottom: 80px;
+    right: -20px;
+    background-color: var(--color-primary);
+    z-index: 5;
+    border-radius: 50px;
+}
+
+.person-chald {
+    /* position: relative; */
+    /* bottom: 2px; */
+    width: 105px;
+    height: 208px;
+}
+
+.person {
+    width: 100%;
+    height: 100%s;
+    overflow: hidden;
+    position: relative;
+    user-select: none;
+    border-radius: 1.5rem;
+    border: 1px solid var(--color-card);
+}
+
+.person::after {
+    content: "";
+    position: absolute;
+    height: 90%;
+    width: 100%;
+    bottom: 0;
+    opacity: .7;
+    background: linear-gradient(transparent, transparent, var(--color-primary));
+}
+
+.person img {
+    width: 100%;
+    aspect-ratio: 1/1.5;
+}
+
+.person h5 {
+    color: white;
+    position: relative;
+    bottom: 80px;
+    text-align: left;
+    z-index: 1;
+    margin-left: 5px;
+}
+
+.person small {
+    color: white;
+    position: relative;
+    bottom: 80px;
+    text-align: left;
+    z-index: 1;
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+.person-action {
+    position: relative;
+    bottom: 80px;
+}
+
+.person-action {  
+    width: 100%;
+}
+.btn-red{
+    padding: .6rem 1.6rem;
+    display: inline-block;
+    width: fit-content;
+    cursor: pointer;
+    border-radius: .5rem;
+    font-size: .9rem;
+    font-weight: 500;
+    transition: .3s ease;
+    border: none;
+    position: absolute;
+    z-index:9;
+
+}
+.btn-red:hover{
+    background-image: var(--buttonBg);
+    box-shadow: 0 10px 34px var(--color-primary);
+}

@@ -1,0 +1,29 @@
+.rightBar{
+    height: calc(100vh - 3.6rem);
+    /* background: var(--color-card); */
+    position: sticky;
+    top: 3.6rem;
+    overflow: auto;
+    margin-right: 60px;
+}
+
+.rightBar::-webkit-scrollbar{
+    display: none;
+}
+.rightBar-container{
+    width: 80%;
+}
+
+
+/*............Start Media scrin..............*/
+@media (max-width:1150px) {
+    .rightBar{
+        margin-right: 10px;
+    }
+  }
+
+@media (max-width:991px) {
+    .rightBar{
+        display: none;
+    }
+}

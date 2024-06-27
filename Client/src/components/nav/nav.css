@@ -1,0 +1,94 @@
+nav{
+    height: 3.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-primary);
+    position: sticky;
+    background: var(--color-card);
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+    background: rgba(48, 47, 47, 0.5); 
+}
+.nav-container{
+    width: 96%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.nav-container a {
+    color: var(--color-primary);
+    font-size: 1.1rem;
+}
+.nav-left{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.logo{
+    color: var(--color-primary);
+    font-size: 1.9rem;
+    font-weight: 900;
+}
+.Nav-Serchbar{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 2rem;
+    padding: 10px 10px;
+    background: var(--color-bg);
+}
+.Nav-Serchbar input{
+    background: transparent;
+    color: var(--color-primary);
+}
+.nav-right{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.notification-nav-contener{
+    position: relative;
+}
+.notification-nav{
+    position: absolute;
+    font-size: 12px;
+    bottom: 10px;
+    right: -10px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    color: white;
+    background: red;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*............Media scrin start...............*/
+@media (max-width:868px) {
+    nav .user{
+        display: none;
+    }
+    .nav-container a{
+        font-size: 1rem;
+    }
+    .nav-container .logo{
+        font-size: 1.3rem;
+    }
+    .Nav-Serchbar{
+        border: none;
+    }
+    .Nav-Serchbar input{
+        display: none;
+    }
+    .nav-left, .nav-right{
+        gap: 20px;
+    }
+
+}

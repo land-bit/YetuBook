@@ -1,0 +1,74 @@
+.clock{
+	width: 100px;
+	height: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: url(../../assets/icon/horlogesansaiguillescool.jpg);
+	background-size: cover;
+	border: 5px solid var(--color-border);
+	border-radius: 50%;
+	box-shadow: 0 -15px 15px rgba(255, 255, 255, 0.1),
+			inset 0 -15px 15px rgba(255, 255, 255, 0.09),
+			0 15px 15px rgba(0,0,0,0.03),
+			inset 0 -15px 15px rgba(0,0,0,0.03);
+}
+.clock:before{
+	content: '';
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	background: var(--text-color);
+	border-radius: 50%;
+	z-index: 10000;
+}
+.clock .hour,
+.clock .min,
+.clock .sec{
+	position: absolute;
+}
+.clock .hour, .hr{
+	width:80px;
+	height: 60px;
+}
+.clock .min, .mn{
+	width: 100px;
+	height: 80px;
+}
+.clock .sec, .sc{
+	width: 70px;
+	height: 85px;
+}
+.hr, .mn, .sc{
+	display: flex;
+	justify-content: center;
+	position: absolute;
+	border-radius: 50%;
+}
+.hr:before{
+	content: '';
+	position: absolute;
+	width: 6px;
+	height: 35px;
+	background: var(--color-primary);
+	z-index: 10;
+	border-radius: 6px 6px 0 0;
+}
+.mn:before{
+	content: '';
+	position: absolute;
+	width: 3px;
+	height: 50px;
+	background: #6dee0a;
+	z-index: 11;
+	border-radius: 6px 6px 0 0;
+}
+.sc:before{
+	content: '';
+	position: absolute;
+	width: 1.5px;
+	height: 60px;
+	background: red;
+	z-index: 12;
+	border-radius: 6px 6px 0 0;
+}

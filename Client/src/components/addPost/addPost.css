@@ -1,0 +1,50 @@
+.postForm{
+    background: var(--color-card);
+    padding: 0 20px;
+    border-radius: 1.5rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.postForm .form-top{
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+    border-bottom: 1px solid var(--color-border);
+}
+.form-top img {
+    width: 3rem;
+}
+.postForm .form-top input{
+    background: transparent;
+    width: 100%;
+    padding: .7rem;
+    color: var(--color-primary);
+    background: var(--color-bg);
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.post-categories{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+    padding: 1rem;
+}
+.post-categories input{
+    display: none;
+}
+.post-categories span{
+    transition: .3s ease; 
+    color: var(--color-primary);
+    font-size: 1.5rem;
+}
+
+@media (max-width:991px) {
+    .postForm{
+        border-radius: inherit;
+    }
+  }

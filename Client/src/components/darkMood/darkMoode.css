@@ -1,0 +1,7 @@
+.dark-moode-icon{
+    transition: .3s ease;
+}
+.dark-moode-icon:hover{
+    transform: scale(1.2);
+}
+

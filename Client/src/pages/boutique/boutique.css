@@ -1,0 +1,1009 @@
+
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;1,200;1,300;1,500&display=swap'); */
+
+
+
+/*La barre de navigation
+=========================*/
+
+.boutHeader {
+    display: flex;
+    height: 3.5rem;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+    border-bottom: var(--color-border) dashed 1px;
+
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+.boutnav {
+    width: 50%;
+}
+
+.boutnav .boutnavlinks {
+    display: flex;
+    text-decoration: none;
+    font-style: none;
+    list-style: none;
+    justify-content: space-between;
+    font-size: 1rem;
+}
+
+.boutnav .boutnavlinks .active a {
+    color: var(--color-primary);
+}
+
+.boutnavlinks a {
+    transition: .2s;
+}
+
+.boutnavlinks a:hover {
+    color: var(--color-primary);
+}
+
+a {
+    color: var(--color-soft);
+    text-decoration: none;
+    font-weight: 900px;
+    font-size: medium;
+    font-weight: 600;
+}
+
+.logo {
+    width: 13%;
+}
+
+
+
+
+
+
+/* Section Home 
+=================*/
+
+.home {
+    position: relative;
+    top: 20px;
+    margin-bottom: 40px;
+    border-bottom: var(--color-border) dashed 1px;
+    padding-bottom: 4%;
+}
+
+.conteneur {
+    display: grid;
+    width: 98vw;
+    height: 80vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "image0 image0 image1 image2"
+        "image0 image0 image3 image4";
+    grid-gap: 0.9rem;
+    padding: 10px;
+    color: var(--color-soft);
+}
+
+.conteneur h1 {
+    font-size: 2.5rem;
+    font-weight: 900px;
+    color: var(--calor-bg);
+}
+
+.conteneur h3 {
+    color: var(--calor-bg);
+    font-size: 1.7rem;
+    font-weight: 900px;
+}
+
+.btnboutique {
+    display: inline-flex;
+    font-size: 0.5rem;
+    width: 95px;
+    justify-content: center;
+    align-items: center;
+    top: 20px;
+}
+
+.btnboutique a {
+    color: var(--color-primary);
+    position: relative;
+    z-index: 100;
+    padding: 15px;
+    border: #fff solid 1px;
+}
+
+.btnboutique a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: var(--color-bg);
+    transition: .5s;
+    z-index: -100;
+}
+
+.btnboutique a:hover::before {
+    width: 100%;
+}
+
+.p {
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--color-primary);
+}
+
+.image0 {
+    grid-area: image0;
+    background-image: url(../../assets/imagesboutique/left-banner-image.jpg);
+    background-size: cover;
+    align-items: left;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+    padding-left: 60px;
+}
+
+.image1 {
+    grid-area: image1;
+    background-image: url(../../assets/imagesboutique/baner-right-image-01.jpg);
+    background-size: cover;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+}
+
+.image2 {
+    grid-area: image2;
+    background-image: url(../../assets/imagesboutique/baner-right-image-02.jpg);
+    background-size: cover;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+}
+
+.image3 {
+    grid-area: image3;
+    background-image: url(../../assets/imagesboutique/baner-right-image-03.jpg);
+    background-size: cover;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+}
+
+.image4 {
+    grid-area: image4;
+    background-image: url(../../assets/imagesboutique/baner-right-image-04.jpg);
+    background-size: cover;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+}
+
+
+
+
+
+/* Section Men, Women, Kid */
+
+.categories{
+    align-items: center;
+    padding: 5rem 10rem;
+    margin-bottom: 30px;
+}
+
+.mentitre{
+}
+.products{
+    position: relative;
+    user-select: none;
+    /* border-radius: 1.5rem; */
+    padding: 1rem;
+    border: 1px solid var(--color-card);
+    background-color: var(--color-border);
+}
+.fivestar{
+    width: 25%;
+}
+.nomProduct{
+    display: flex;
+    justify-content: space-between;
+}
+.prev {
+    border: solid #8f8989 1px;
+    padding: 2%;
+    position: relative;
+    left: 60%;
+}
+
+.next {
+    border: solid #8f8989 1px;
+    padding: 2%;
+    position: relative;
+    left: 5%;
+}
+
+/* Explore
+============= */
+
+.explore {
+    position: relative;
+    top: 20px;
+    margin-bottom: 40px;
+    border-bottom: #cec3c3 dashed 1px;
+    padding-bottom: 4%;
+}
+
+.conteneur2 {
+    display: grid;
+    position: relative;
+    left: 12%;
+    width: 72.5vw;
+    height: 70vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "explore1 explore1 explore2 explore3"
+        "explore1 explore1 explore4 explore5";
+    grid-gap: 0.9rem;
+    padding: 10px;
+    color: #fff;
+}
+
+.conteneur2 h1 {
+    font-size: 1.2rem;
+    font-weight: 900px;
+}
+
+.btnboutique2 {
+    display: inline-flex;
+    font-size: 0.5rem;
+
+    width: 90px;
+    justify-content: center;
+    align-items: center;
+    top: 20px;
+}
+
+.btnboutique2 a {
+    color: rgb(1, 1, 1);
+    position: relative;
+    z-index: 100;
+    padding: 15px;
+    border: #070707 solid 1px;
+}
+
+.btnboutique2 a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #cec3c3;
+    transition: .5s;
+    z-index: -1;
+}
+
+.btnboutique2 a:hover::before {
+    width: 100%;
+}
+
+
+.conteneur2 .explore1 p {
+    height: 60%;
+    width: 95%;
+    font-style: inherit;
+    color: #cec3c3;
+
+    line-height: 0.8rem;
+    font-size: 0.7rem;
+}
+
+.explore1 {
+    grid-area: explore1;
+    background-size: cover;
+    align-items: left;
+    flex-direction: column;
+    display: flex;
+    line-height: 5px;
+    color: #2b2b2b;
+}
+
+.explore2 {
+    grid-area: explore2;
+    background-size: cover;
+    background-color: #f3efef9c;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+    line-height: 3px;
+    color: #2b2b2b;
+}
+
+.explore3 {
+    grid-area: explore3;
+    background-image: url(./images/explore-image-01.jpg);
+    background-size: cover;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+    line-height: 3px;
+}
+
+.explore4 {
+    grid-area: explore4;
+    background-image: url(./images/explore-image-02.jpg);
+    background-size: cover;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+    line-height: 3px;
+}
+
+.explore5 {
+    grid-area: explore5;
+    background-size: cover;
+    background-color: #f3efef9c;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+    line-height: 3px;
+    color: #2b2b2b;
+}
+
+.guillement {
+    width: 8%;
+    height: 8%;
+    margin-right: 2%;
+    margin-top: 1%;
+}
+
+/* Social Media
+================ */
+
+.social {
+    width: 100vw;
+    height: 40vh;
+    border-bottom: #cec3c3 dashed 1px;
+    padding-bottom: 5%;
+    display: flex;
+    justify-content: left;
+    padding-left: 13%;
+}
+
+.socialtitre {
+    line-height: 5px;
+}
+
+.social .instagram {
+    width: 80vh;
+    height: 60%;
+    display: flex;
+    margin-top: 5%;
+}
+
+.socialtitre h3 {
+    font-weight: 900px;
+    font-size: 1.3rem;
+}
+
+.socialtitre>p {
+    font-weight: 100;
+    font-style: italic;
+    font-size: 0.6rem;
+    color: #8f8989;
+}
+
+/* Inscription */
+
+.suscrib {
+    display: grid;
+    width: 72.5vw;
+    height: 35vh;
+    grid-template-columns: 3fr 1fr 1fr;
+    grid-template-rows: 0.5fr 0.5fr 0.5fr;
+    grid-template-areas:
+        "suscribtitle Adress1 Adress2"
+        "suscribtitle Adress3 Adress4"
+        "suscribtitle Adress5 Adress6";
+    grid-gap: 0.1rem 4rem;
+    position: relative;
+    margin-left: 15%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+.suscribtitle {
+    grid-area: suscribtitle;
+    font-size: 0.7rem;
+}
+
+.suscribtitle p {
+    font-style: italic;
+    color: #c8c5c5;
+    font-size: 0.5rem;
+}
+
+.name {
+    border: solid 1px #cec3c3;
+    width: 100%;
+    padding: 7%;
+}
+
+.email {
+    border: solid 1px #cec3c3;
+    width: 100%;
+    padding: 7%;
+}
+
+.Adress1 {
+    grid-area: Adress1;
+    color: #cec3c3;
+    font-size: 0.6rem;
+}
+
+.Adress2 {
+    grid-area: Adress2;
+    color: #cec3c3;
+    font-size: 0.6rem;
+}
+
+.Adress3 {
+    grid-area: Adress3;
+    color: #cec3c3;
+    font-size: 0.6rem;
+}
+
+.Adress4 {
+    grid-area: Adress4;
+    color: #cec3c3;
+    font-size: 0.6rem;
+}
+
+.Adress5 {
+    grid-area: Adress5;
+    color: #cec3c3;
+    font-size: 0.6rem;
+}
+
+.Adress6 {
+    grid-area: Adress6;
+    color: #cec3c3;
+    font-size: 0.6rem;
+}
+
+/* =============Promesse============== */
+form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.name2 {
+    border: solid 1px #cec3c3;
+    width: 38%;
+    padding: 2%;
+    font-style: italic;
+    font-size: 10px;
+
+}
+
+.email2 {
+    border: solid 1px #cec3c3;
+    width: 38%;
+    padding: 2%;
+    font-style: italic;
+    font-size: 10px;
+}
+
+.envoyer {
+    border-style: inherit;
+    background-size: cover;
+    background-image: url(./images/envoie.jpg);
+    width: 8%;
+}
+
+
+/* Footer
+==========*/
+
+footer {
+    width: 100vw;
+    height: 60vh;
+    background-color: #2b2b2b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 2%;
+}
+
+.info {
+    width: 100vW;
+    font-size: 0.6rem;
+    display: grid;
+    grid-template-columns: 0.5fr 1.5fr 1fr 1fr 1fr 0.5fr;
+    grid-template-areas:
+        ". info1 info2 info3 info4 .";
+    grid-gap: 1rem;
+    color: #fff;
+    line-height: 30px;
+}
+
+.info a {
+    color: inherit;
+}
+
+.info h3 {
+    font-weight: 400px;
+}
+
+.info p {
+    font-weight: 100;
+}
+
+.info1 {
+    grid-area: info1;
+}
+
+.info1 img {
+    width: 45%;
+}
+
+.info2 {
+    grid-area: info2;
+}
+
+.info3 {
+    grid-area: info3;
+}
+
+.info4 {
+    grid-area: info4;
+}
+
+.copyright {
+    width: 80vw;
+    justify-content: center;
+    align-items: center;
+    border-top: #5a5959 solid 1px;
+    line-height: 1px;
+}
+
+.copyright p {
+    display: flex;
+    font-size: 0.5rem;
+    color: #fff;
+    font-weight: 100;
+    justify-content: center;
+    margin: 3%;
+}
+
+.copyright a {
+    color: azure;
+}
+
+.media-icons {
+    width: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.media-icons a {
+    font-size: 1rem;
+    color: aquamarine;
+}
+
+
+
+
+
+
+
+
+
+
+/* ==============Vue Tablet landscope ================*/
+@media (max-width:1024px) {
+
+    /* home */
+    .conteneur {
+        width: 100%;
+        height: 100vh;
+    }
+
+    /* men women kid */
+    .men {
+        gap: 0.2rem 0.4rem;
+    }
+
+    .mentitre {
+        line-height: 5px;
+    }
+
+    .mentitre h3 {
+        font-weight: 900px;
+        font-size: 1rem;
+    }
+
+    .mentitre>p {
+        font-weight: 100;
+        font-style: italic;
+        font-size: 0.6rem;
+    }
+
+    .menprix1 h4 {
+        font-size: 0.6rem;
+
+    }
+
+    .menprix2 h4 {
+        font-size: 0.6rem;
+    }
+
+    .menprix3 h4 {
+        font-size: 0.6rem;
+    }
+
+    .menprix1>p {
+        font-size: 0.6rem;
+    }
+
+    .menprix2 {
+        grid-area: menprix2;
+    }
+
+    .menprix2>p {
+        font-size: 0.6rem;
+    }
+
+    .menprix3 {
+        grid-area: menprix3;
+    }
+
+    .menprix3>p {
+        font-size: 0.6rem;
+    }
+
+    /* Explore */
+    .conteneur2 {
+        height: 60vh;
+    }
+
+    .conteneur2 .explore1 .paragraphe {
+        font-size: 8px;
+    }
+
+    .btnboutique2 {
+        margin-top: 25px;
+    }
+
+    /* Medias sociaux */
+
+    .social {
+        width: 100vw;
+        height: 28vh;
+    }
+
+    .socialtitre {
+        width: 75%;
+    }
+
+    .social .instagram {
+        margin-left: 13%;
+    }
+
+    /* Inscription */
+    .suscrib {
+        grid-gap: 0.1rem 1rem;
+    }
+
+    .suscribtitle {
+        font-size: 0.5rem;
+    }
+
+    .Adress1 {
+        font-size: 0.4rem;
+    }
+
+    .Adress2 {
+        font-size: 0.4rem;
+    }
+
+    .Adress3 {
+        font-size: 0.4rem;
+    }
+
+    .Adress4 {
+        font-size: 0.4rem;
+    }
+
+    .Adress5 {
+        font-size: 0.4rem;
+    }
+
+    .Adress6 {
+        font-size: 0.4rem;
+    }
+
+}
+
+
+
+
+/* ===========Vue Tablet ============ */
+@media (max-width:768px) {
+    .conteneur {
+        display: grid;
+        width: 98vw;
+        height: 40vh;
+        grid-gap: 0.6rem;
+    }
+
+    .conteneur h1 {
+        font-size: 1.4rem;
+    }
+
+    .conteneur p {
+        font-size: 0.5rem;
+    }
+
+    .image1 {
+        padding-left: 20px;
+    }
+
+    .nav-btque {
+        width: 100%;
+    }
+
+    .nav-btque .navlinks {
+        font-size: 0.5rem;
+    }
+
+    a {
+        font-weight: 200px;
+    }
+}
+
+
+
+/* =============Vue mobile================ */
+@media (max-width:480px) {
+    header {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    /* ============Home============ */
+    .conteneur {
+        width: 96vw;
+        height: 100%;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+            "image1"
+            "image2 "
+            "image3"
+            "image4"
+            "image5";
+        grid-gap: 0.9rem;
+    }
+
+    .image1 {
+        height: 300px;
+    }
+
+    /* ===========Men Women Kid============= */
+
+
+    .mentitre {
+        line-height: 5px;
+    }
+
+    .mentitre h3 {
+        font-weight: 900px;
+        font-size: 1rem;
+    }
+
+    .mentitre>p {
+        font-weight: 100;
+        font-style: italic;
+        font-size: 0.5rem;
+    }
+
+    .menprix1 h4 {
+        font-size: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        height: 25px;
+    }
+
+    .menprix2 h4 {
+        font-size: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        height: 25px;
+    }
+
+    .menprix3 h4 {
+        font-size: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        height: 25px;
+    }
+
+    .menprix1>p {
+        font-size: 0.5rem;
+    }
+
+    .menprix2 {
+        font-size: 0.5rem;
+    }
+
+    .menprix2>p {
+        font-size: 0.5rem;
+    }
+
+    .menprix3>p {
+        font-size: 0.5rem;
+    }
+
+    /* Media sociaux */
+
+    .social {
+        height: 500px;
+        width: 500px;
+        border-bottom: #cec3c3 dashed 1px;
+        padding-bottom: 5%;
+    }
+
+    .social .instagram {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: left;
+        margin-bottom: 10%;
+    }
+
+    .social .instagram img {
+        width: 16.66%;
+    }
+
+    /* Inscription */
+
+    .suscrib {
+        display: grid;
+        width: 72.5vw;
+        height: 60vh;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 3fr 0.5fr 0.5fr;
+        grid-template-areas:
+            "suscribtitle suscribtitle suscribtitle "
+            "Adress1 Adress2 Adress3"
+            "Adress4 Adress5 Adress6";
+        grid-gap: 0.1rem 4rem;
+        position: relative;
+        margin-left: 15%;
+        margin-top: 3%;
+        margin-bottom: 3%;
+    }
+
+    .suscribtitle {
+        grid-area: suscribtitle;
+        font-size: 0.7rem;
+    }
+
+    .suscribtitle p {
+        font-style: italic;
+        color: #c8c5c5;
+        font-size: 0.5rem;
+    }
+
+    .name {
+        border: solid 1px #cec3c3;
+        width: 100%;
+        padding: 7%;
+    }
+
+    .email {
+        border: solid 1px #cec3c3;
+        width: 100%;
+        padding: 7%;
+    }
+
+    .Adress1 {
+        grid-area: Adress1;
+    }
+
+    .Adress2 {
+        grid-area: Adress2;
+    }
+
+    .Adress3 {
+        grid-area: Adress3;
+    }
+
+    .Adress4 {
+        grid-area: Adress4;
+    }
+
+    .Adress5 {
+        grid-area: Adress5;
+    }
+
+    .Adress6 {
+        grid-area: Adress6;
+    }
+
+    /* footer */
+
+    .info {
+        width: 100vW;
+        font-size: 0.6rem;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+            "info1"
+            "info2"
+            "info3"
+            "info4";
+        grid-gap: 0.2rem;
+        color: #fff;
+        line-height: 30px;
+    }
+
+
+    footer {
+        height: 100%;
+        justify-content: center;
+    }
+
+    .info a {
+        color: inherit;
+    }
+
+    .info h3 {
+        font-weight: 400px;
+    }
+
+    .info p {
+        font-weight: 100;
+    }
+
+    .info1 {
+        grid-area: info1;
+    }
+
+    .info1 img {
+        width: 45%;
+    }
+
+    .info2 {
+        grid-area: info2;
+    }
+
+    .info3 {
+        grid-area: info3;
+    }
+
+    .info4 {
+        grid-area: info4;
+    }
+
+}

@@ -1,0 +1,21 @@
+.request{
+    background: var(--color-card);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 20px;
+    border-radius: 1.5rem;
+    display: flex;
+    gap: .5rem;
+    flex-direction: column;
+}
+.request h5{
+    font-size: .9rem;
+}
+.info-name p{
+    font-size: .9rem;
+    margin-top: .5rem;
+}
+.request .action{
+    display: flex;
+    gap: 5px;
+}

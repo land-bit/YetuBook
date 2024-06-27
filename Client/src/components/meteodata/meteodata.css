@@ -1,0 +1,338 @@
+.meteo-contenair {
+    background-color: var(--color-card);
+    width: 100%;
+    padding: 1rem;
+    margin-top: 10px;
+    margin-bottom: 1rem;
+    border-radius: 1.5rem;
+    /* background-image: url(../../assets/icon/atmo5.jpg); */
+    background-size: cover;
+}
+
+.meteo-entete-date {
+    display: flex;
+    padding-bottom: 0;
+    width: 100%;
+}
+
+.meteo-entete {
+    width: 50%;
+    text-align: end;
+}
+
+
+.meteo-date {
+    width: 50%;
+}
+
+.meteo-titre {
+    font-size: 1rem;
+    color: var(--color-soft);
+}
+
+.meteo-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.fleche {
+    color: var(--text-color);
+    text-align: center;
+    animation: move-up-down 2s infinite;
+}
+
+.meteo-info strong {
+    color: var(--color-soft);
+}
+
+.temperature {
+    font-size: 5rem;
+    color: #f95f35;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+@keyframes clignotement {
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.2;
+    }
+
+    10% {
+        opacity: 1;
+    }
+}
+
+.fleche {
+    font-size: 1.5rem;
+    animation: clignotement 2s infinite;
+}
+
+.precipitation {
+    color: cadetblue;
+}
+
+.temperature-description {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.observatoire {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.skelleton-meteo {
+    background-color: var(--color-card);
+    gap: 1rem;
+    width: 100%;
+    height: 35rem;
+    padding: 1rem;
+    margin-top: 10px;
+    margin-bottom: 1rem;
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background-image: url(../../assets/icon/2452.jpg); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.chargement-message {
+    color: var(--color-bg);
+}
+
+.loading-spinner {
+    /* border: 4px solid rgba(0, 0, 0, 0.1);
+    border-top: 4px solid #888;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite; */
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    box-shadow: 0 -10px 10px rgba(255, 255, 255, 0.1),
+        inset 0 -0px 0px rgba(255, 255, 255, 0.09),
+        0 15px 15px rgba(0, 0, 0, 0.03),
+        inset 0 -15px 15px rgba(0, 0, 0, 0.03);
+}
+.loading-spinner::before,
+.loading-spinner::after {
+    content: "";
+    position: absolute;
+    border-radius: inherit;
+}
+.loading-spinner::before{
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+        0deg, #FAA12F 0%,
+        #F77280 100%);
+    animation: spin .5s infinite linear;
+}
+.loading-spinner:after{
+    width: 85%;
+    height: 85%;
+    background-color: var(--color-card);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+    /* 0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    } */
+}
+
+.temp-humid-contener {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid var(--color-border2);
+    border-radius: 1.5rem;
+    box-shadow: 0 -10px 10px rgba(255, 255, 255, 0.1),
+        inset 0 -0px 0px rgba(255, 255, 255, 0.09),
+        0 15px 15px rgba(0, 0, 0, 0.03),
+        inset 0 -15px 15px rgba(0, 0, 0, 0.03);
+
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+.speedo-boussole-pression-contener {
+    border: 1px solid var(--color-border2);
+    border-radius: 1.5rem;
+    display: flex;
+    box-shadow: 0 -10px 10px rgba(255, 255, 255, 0.1),
+        inset 0 -0px 0px rgba(255, 255, 255, 0.09),
+        0 15px 15px rgba(0, 0, 0, 0.03),
+        inset 0 -15px 15px rgba(0, 0, 0, 0.03);
+
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+.speedo-boussole-pression-text {
+    font-size: smaller;
+    border: 1px solid var(--color-border2);
+    border-radius: 20px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.carte-interactive {
+    border: 1px solid var(--color-border2);
+    box-shadow: 0 -10px 10px rgba(255, 255, 255, 0.1),
+        inset 0 -0px 0px rgba(255, 255, 255, 0.09),
+        0 15px 15px rgba(0, 0, 0, 0.03),
+        inset 0 -15px 15px rgba(0, 0, 0, 0.03);
+}
+
+.air-quality {
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 -10px 10px rgba(255, 255, 255, 0.1),
+        inset 0 -0px 0px rgba(255, 255, 255, 0.09),
+        0 15px 15px rgba(0, 0, 0, 0.03),
+        inset 0 -15px 15px rgba(0, 0, 0, 0.03);
+
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+
+.graph-air-pollution {
+    text-align: center;
+    width: 200px;
+    height: 150px;
+    position: relative;
+    overflow: hidden;
+}
+
+.air-pollution-gauge {
+    width: 185px;
+    height: 150px;
+    position: relative;
+    overflow: hidden;
+}
+
+.air-pollution-gauge>.AirPollutionGauge {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.air-pollution-gauge {
+    text-align: center;
+}
+
+
+.vent-container {
+    display: flex;
+    gap: 1rem;
+    margin: auto;
+    justify-content: center;
+}
+
+.vitesse {
+    padding: 0rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.vitesse small {
+    width: 7rem;
+}
+
+.direction {
+    padding: 0rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.boussole {
+    background-image: url(../../assets/icon/boussolenew.jpg);
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 -15px 15px rgba(255, 255, 255, 0.1),
+        inset 0 -15px 15px rgba(255, 255, 255, 0.09),
+        0 15px 15px rgba(0, 0, 0, 0.03),
+        inset 0 -15px 15px rgba(0, 0, 0, 0.03);
+}
+
+.humidity-progresbar {
+    width: 3.5rem;
+    color: rgb(243, 99, 99);
+}
+
+.gauge-humitiy {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    margin: 5px;
+}
+
+.gauge-temperature {
+    width: 180px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.speedometre-vent {
+    width: 250px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.pression-atmospherique {
+    width: 170px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* .pression-atmospherique>.PressionAtmospherique {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+} */
