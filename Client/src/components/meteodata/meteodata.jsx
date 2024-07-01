@@ -111,10 +111,10 @@ const Meteodata = () => {
 
   return (
     <div className='meteo-contenair'>
-       <div className='meteo-entete-date'>
+      <div className='meteo-entete-date'>
 
         <div className='meteo-date'>
-          <div className='obervatoire'>MétéoWatch</div>
+          <h3 className='obervatoire'>MétéoWatch</h3>
           <HorlogeNumerique />
         </div>
         <div className='meteo-entete'>
@@ -126,8 +126,8 @@ const Meteodata = () => {
         <div className='temperature-description'>
           <div>
             <div className='temperature'>{Math.floor(currentWeather.main.temp)}°C <small className='fleche'>{temperatureTrend}</small></div>
-            <div className='precipitation'>{currentWeather.rain?.['1h'] || 0} mm</div>
-            <p>{currentWeather.main.pressure} hPa</p>
+            <p>Précipitation: {currentWeather.rain?.['1h'] || 0} mm</p>
+            <p>Pression atm: {currentWeather.main.pressure} hPa</p>
           </div>
           <div className='horloge-analogique'>
             {/* <Horloge /> */}
@@ -146,12 +146,13 @@ const Meteodata = () => {
       <div className='discuter-avec-meteo btn-red' onClick={showChat}>Discuter avec la météo...</div>
       <br />
 
+      <p><strong>Capteur de température et d'humidité :</strong></p>
+      <br />
       <div className='temp-humid-contener'>
+
         <div className='gauge-temperature'>
           <Temperature temperature={currentWeather.main.temp} />
         </div>
-
-        <small>Humidité ☛</small>
 
         <div className='gauge-humitiy'>
           <HumidityGauge humidity={currentWeather.main.humidity} />
@@ -160,23 +161,34 @@ const Meteodata = () => {
       </div>
 
       <br />
+      <p><strong>Vitesse du vent et son orientation:</strong></p>
+      <br />
+      <div className='speedometre-vent'>
 
-      <div className="speedo-boussole-pression-contener">
-        <div className='speedometre-vent'>
+        <div style={{ width: '250px' }}>
           <Speedometre vitesse={currentWeather.wind.speed * 3600 / 1000} />
-          {/* <div className="speedo-boussole-pression-text">
-            <small>la vitesse du vent</small>
-          </div> */}
+        </div>
+        <div className='boussole-contener'>
           <Boussole direction={currentWeather.wind.deg} />
         </div>
-        <div className='pression-atmospherique'>
+      </div>
+      <br />
+      <p><strong>Pression atmospherique :</strong></p>
+      <br />
+
+      <div className='pression-atmospherique'>
+        <div className='pression-gauge'>
           <PressionAtmospherique pression={currentWeather.main.pressure} />
-          <div className="speedo-boussole-pression-text">
-            <small>(m/s) : la vitesse du vent, <br />(°) : la direction du vent, <br />(%) : La pression atmospherique. (min:870hPa, max:1050hPa)</small>
-          </div>
         </div>
+
+        <div className="speedo-boussole-pression-text">
+          <small>(%) : Ici la pression atmospherique est expriée en pourcentage. La valeur minimale: 870hPa et la valeur maximale: 1050hPa</small>
+        </div>
+
       </div>
 
+      <br />
+      <p><strong>Qualité de l'air et concentration de <a href="#">polluants dans dans l'air: </a></strong></p>
       <br />
 
       {/* <div>
@@ -184,17 +196,20 @@ const Meteodata = () => {
       </div> */}
 
       <div className="air-quality">
-        <div className='graph-air-pollution'>
-          <GraphAirPollution data={airpollutionData} />
-          <small>Les polluants de l'air</small>
-        </div>
-
-        <br />
 
         <div className='air-pollution-gauge'>
           <AirPollutionGauge airQualityIndice={55} />
           <small>Indice de Qualité de l'Air</small>
         </div>
+
+        <br />
+
+        <div className='graph-air-pollution'>
+          <GraphAirPollution data={airpollutionData} />
+          <small>Les polluants de l'air</small>
+        </div>
+
+
       </div>
       <br />
 
@@ -203,7 +218,7 @@ const Meteodata = () => {
       </div>
       <br />
 
-      <div className="buletin-meteo">
+      {/* <div className="buletin-meteo">
         <h3>PLEUVRA-T-IL AUJOURD'HUI À GOMA ?</h3>
         <p>84% de chances de pluie ce matin <br />
           100% de chances de pluie cet après-midi<br />
@@ -229,7 +244,7 @@ const Meteodata = () => {
           Le soir, l'humidité grimpe à 60%, ce qui confirme un risque de pluie persistant.
           La nuit, l'humidité atteint 65%, ce qui est encore plus élevé et explique le fort risque de pluie nocturne.
           Donc les données d'humidité viennent compléter les informations sur les probabilités de pluie et confirment qu'il y a de fortes chances de précipitations tout au long de la journée à Goma. L'humidité élevée, au-dessus de 50%, est un bon indicateur du risque de pluie.</p>
-      </div>
+      </div> */}
       <br />
       <br />
 

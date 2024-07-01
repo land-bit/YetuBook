@@ -12,6 +12,7 @@
     z-index: 10;
     padding: 0rem;
 }
+
 .child-meteo-details {
     position: relative;
     height: 100%;
@@ -25,26 +26,32 @@
     scrollbar-width: 0px;
     scroll-behavior: smooth;
 }
+
 @media (max-width:868px) {
     .meteo-details {
         padding: 0;
         border-radius: 0px;
     }
-    .child-meteo-details{
+
+    .child-meteo-details {
         border-radius: 0px;
     }
-    .body-popup{
+
+    .body-popup {
         flex-direction: column;
     }
-    .closeBtn-popup{
-        margin:0 1rem;
+
+    .closeBtn-popup {
+        margin: 0 1rem;
     }
 }
+
 .show-meteo-details .meteo-details {
     transform: scale(1);
     opacity: 1;
     pointer-events: auto;
 }
+
 .show-meteo-details .header-popup {
     width: 96%;
     display: flex;
@@ -55,12 +62,23 @@
     padding-left: 2rem;
     z-index: 15;
 }
+
 .body-popup {
     display: flex;
-    padding-top: 3rem;
+    width: 100%;
+    margin: auto;
     /* flex-wrap: wrap; */
     gap: 2rem;
 }
+
+@media (max-width: 991px) {
+    .body-popup {
+        margin: 0px;
+        width: 100%;
+        padding: 3.5rem 0 0 0;
+    }
+}
+
 .show-meteo-details .closeBtn-popup {
     font-size: 2rem;
     color: var(--text-color);
@@ -74,6 +92,7 @@
     cursor: pointer;
     background: var(--color-card);
 }
+
 .closeBtn-popup:hover {
     width: 3rem;
     height: 3rem;

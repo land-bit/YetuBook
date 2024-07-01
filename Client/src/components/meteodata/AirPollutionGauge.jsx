@@ -7,7 +7,7 @@ export default function AirPollutionGauge({ airQualityIndice }) {
         arc={{
           width: 0.5,
           padding: 0.005,
-          cornerRadius: 13,
+          cornerRadius: 1,
           // gradient: true,
           subArcs: [
             {

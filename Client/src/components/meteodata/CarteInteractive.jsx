@@ -4,7 +4,7 @@ export default function CartInteractive({latitude, longitude}) {
     return (
         <div>
             {latitude && longitude && (
-                <MapContainer center={[latitude, longitude]} zoom={10} style={{ height: '100px', width: '100%' }}>
+                <MapContainer center={[latitude, longitude]} zoom={10} style={{ height: '200px', width: '100%' }}>
                     <TileLayer
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />

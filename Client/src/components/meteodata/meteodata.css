@@ -18,24 +18,20 @@
         background-color: transparent;
     }
 }
-@media (min-width:868px){
-    .meteo-contenair{
-        border:5px solid var(--color-red);
+
+@media (min-width:868px) {
+    .meteo-contenair {
+        border: 5px solid var(--color-red);
         margin: 0 15rem;
     }
+
     .gauge-temperature {
-        width: 280px;
+        width: 200px;
         height: 200px;
         position: relative;
-        overflow: hidden;
+        /* overflow: hidden; */
     }
-    .speedometre-vent{
-        
-    }
-    .pression-atmospherique{
-        flex-direction: row;
-    }
-   
+
 
 }
 
@@ -70,7 +66,8 @@
     text-align: center;
     animation: move-up-down 2s infinite;
 }
-.discuter-avec-meteo{
+
+.discuter-avec-meteo {
     /* height: 2rem; */
     width: 15rem;
     margin: auto;
@@ -110,9 +107,6 @@
     animation: clignotement 2s infinite;
 }
 
-.precipitation {
-    color: cadetblue;
-}
 
 .temperature-description {
     display: flex;
@@ -193,14 +187,6 @@
     to {
         transform: rotate(360deg);
     }
-
-    /* 0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    } */
 }
 
 .temp-humid-contener {
@@ -219,28 +205,6 @@
     backdrop-filter: blur(5px);
 }
 
-.speedo-boussole-pression-contener {
-    border: 1px solid var(--color-border2);
-    border-radius: 1.5rem;
-    display: flex;
-    box-shadow: 0 -10px 10px rgba(255, 255, 255, 0.1),
-        inset 0 -0px 0px rgba(255, 255, 255, 0.09),
-        0 15px 15px rgba(0, 0, 0, 0.03),
-        inset 0 -15px 15px rgba(0, 0, 0, 0.03);
-
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
-}
-
-.speedo-boussole-pression-text {
-    font-size: smaller;
-    border: 1px solid var(--color-border2);
-    border-radius: 20px;
-    padding: 5px;
-    margin: 5px;
-}
-
 .carte-interactive {
     border: 1px solid var(--color-border2);
     box-shadow: 0 -10px 10px rgba(255, 255, 255, 0.1),
@@ -250,7 +214,7 @@
 }
 
 .air-quality {
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid var(--color-border2);
     border-radius: 1.5rem;
     display: flex;
     justify-content: space-between;
@@ -274,10 +238,11 @@
 }
 
 .air-pollution-gauge {
-    width: 185px;
+    width: 200px;
     height: 150px;
     position: relative;
     overflow: hidden;
+    padding: 0 0 0 .5rem;
 }
 
 .air-pollution-gauge>.AirPollutionGauge {
@@ -335,9 +300,8 @@
         inset 0 -15px 15px rgba(0, 0, 0, 0.03);
 }
 
-.humidity-progresbar {
-    width: 3.5rem;
-    color: rgb(243, 99, 99);
+.boussole-contener {
+    padding: .5rem 0;
 }
 
 .gauge-humitiy {
@@ -345,30 +309,74 @@
     height: 100px;
     position: relative;
     overflow: hidden;
-    margin: 5px;
+    margin: 1rem;
 }
 
 .gauge-temperature {
-    width: 180px;
+    width: 200px;
     height: 100px;
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
+    padding: 0 1rem;
 }
 
 
 .speedometre-vent {
-    width: 250px;
+    width: 100%;
     position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0rem 1rem 0rem 0rem;
+
+    border: 1px solid var(--color-border2);
+    border-radius: 1.5rem;
+    box-shadow: 0 -10px 10px rgba(255, 255, 255, 0.1),
+        inset 0 -0px 0px rgba(255, 255, 255, 0.09),
+        0 15px 15px rgba(0, 0, 0, 0.03),
+        inset 0 -15px 15px rgba(0, 0, 0, 0.03);
+
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
 }
 
 
 .pression-atmospherique {
-    width: 170px;
+    width: 100%;
     position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border: 1px solid var(--color-border2);
+    border-radius: 1.5rem;
+    box-shadow: 0 -10px 10px rgba(255, 255, 255, 0.1),
+        inset 0 -0px 0px rgba(255, 255, 255, 0.09),
+        0 15px 15px rgba(0, 0, 0, 0.03),
+        inset 0 -15px 15px rgba(0, 0, 0, 0.03);
+
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
 }
 
+.pression-gauge {
+    width: 200px;
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+    padding: 0 0 .5rem 0;
+}
+
+@media (max-width:991px) {
+    .pression-gauge {
+        height: 190px;
+        padding: .7rem 0 .5rem 0;
+    }
+}
 
 /* .pression-atmospherique>.PressionAtmospherique {
     width: 100%;

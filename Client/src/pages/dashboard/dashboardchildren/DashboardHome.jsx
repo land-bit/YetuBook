@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar, faClock, faLocation } from "@fortawesome/free-solid-svg-icons";
 
 import dataPrevisons from "../previsiondataexemple.js"
-import Previsions from "./Previsions.jsx";
+import Previsions, { PrevisionText } from "./Previsions.jsx";
 export default function DashboardHome() {
     return (
         <>
@@ -73,6 +73,7 @@ export default function DashboardHome() {
                                 <br />
                             </div>
                         </div>
+
 
                         <div className="visualisation-prevision-chance-rain">
                             {

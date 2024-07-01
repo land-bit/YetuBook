@@ -1,16 +1,28 @@
-
-
 import React from 'react';
+import dataPrevisions from '../previsiondataexemple';
 
-function Previsions({ weatherData }) {
+function Previsions({ weatherData = dataPrevisions }) {
+
+  const data = dataPrevisions.list;
+  const firstTenItems = data.slice(0, 10);
+  // Map each item object to a string representation and join them together
+  const itemsData = firstTenItems.map(item => {
+    return `Prévision pour ${item.dt_txt}: Conditions météorologiques: feels like ${item.main.feels_like}, grnd level ${item.main.grnd_level}, humidité${item.main.humidity}%, pression${item.main.pressure} hPa, sea level ${item.main.sea_level}, température ${item.main.temp}°C, température maximal${item.main.temp_max}, température minimal${item.main.temp_min}. Descrpition: ${item.weather[0].description}, Vent : ${item.wind}, Probabilité de pluie${item.pop}% de chance de pluie`;
+  });
+  console.log(firstTenItems)
+  // Combine the prompt with the data to generate a new text response
+  const prompt = `${promptInput} voici les données des prévisions pour ma région à traiter: ${itemsData.join('\n')}`;
+
+
   const getTimeFromTimestamp = (timestamp) => {
     const date = new Date(timestamp * 1000);
     const hours = date.getHours();
     const minutes = date.getMinutes().toString().padStart(2, '0');
 
     // Adjust for AM/PM based on hours
-    const time = hours >= 12 ? `${hours - 12}:${minutes} PM` : `${hours}:${minutes} AM`;
-    return time;
+    // const time = hours >= 12 ? `${hours - 12}:${minutes} PM` : `${hours}:${minutes} AM`;
+    // return time;
+    return hours + "H" + minutes
   };
 
   const getWeatherDescription = (weather) => {
@@ -33,10 +45,29 @@ function Previsions({ weatherData }) {
     } else if (hours >= 6 && hours < 12) {
       return 'Matin';
     } else if (hours >= 12 && hours < 18) {
-      return 'Après-midi';
+      return 'Journée';
     } else {
       return 'Soir';
     }
+  };
+
+  function Previsions(weatherData) {
+    // Où weatherData est le tableau d'objet contenant chaque heure
+    const data = weatherData;
+    const firstTenItems = data;
+    // Map each item object to a string representation and join them together
+    const itemsData = firstTenItems.map(item => {
+      return `Prévision pour ${item.dt_txt}: Conditions météorologiques: feels like ${item.main.feels_like}, grnd level ${item.main.grnd_level}, humidité ${item.main.humidity}%, pression atmo: ${item.main.pressure} hPa, sea level ${item.main.sea_level}, température ${item.main.temp}°C, température maximal${item.main.temp_max}, température minimal${item.main.temp_min}. Descrpition: ${item.weather[0].description}, Vitesse du Vent : ${item.wind.speed} m/s, l'ortientation du vent ${item.wind.deg}, Probabilité de pluie ${item.pop}% de chance de pluie`;
+    });
+    console.log(itemsData.join('\n'))
+    // Combine the prompt with the data to generate a new text response
+    // const prompt = `${promptInput} voici les données des prévisions pour ma région à traiter: ${itemsData.join('\n')}`;
+  }
+  
+  const getDayOfWeek = (timestamp) => {
+    const daysOfWeek = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+    const dayIndex = new Date(timestamp * 1000).getDay();
+    return daysOfWeek[dayIndex];
   };
 
   const getAverage = (data, property) => {
@@ -73,4 +104,3 @@ function Previsions({ weatherData }) {
   );
 }
 
-export default Previsions;

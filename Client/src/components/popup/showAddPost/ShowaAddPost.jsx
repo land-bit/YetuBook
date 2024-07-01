@@ -20,7 +20,7 @@ export default function ShowAddPost() {
                     <div className="header-popup-post">
 
                         <DarkMoode />
-                        <h1>Ongeza Puplication</h1>
+                        <h3>Ongeza Puplication</h3>
                         <span className="closeBtn-popup-post" onClick={CloseAddPost}><FontAwesomeIcon icon={faClose} /></span>
 
                     </div>
@@ -30,14 +30,16 @@ export default function ShowAddPost() {
                             <img src={CurrentUserData[0].ProfieImage} alt='' />
                             <div>
                                 <h3>{CurrentUserData[0].name}</h3>
-                                <p className="public-option"><FontAwesomeIcon icon={faEarth}/>Public<FontAwesomeIcon icon={faChevronDown}/></p>
+                                <p className="public-option"><FontAwesomeIcon icon={faEarth} />Public<FontAwesomeIcon icon={faChevronDown} /></p>
                             </div>
                         </div>
 
-                        <div>
-                            <input type='text' placeholder={`Nini mpya ${CurrentUserData[0].name} ?`} />
-                            <button type='submit' className='btn btn-primary'>Posti</button>
-                        </div>
+
+                        <textarea type='text' placeholder={`Nini mpya ${CurrentUserData[0].name} ?`}></textarea>
+
+                    </div>
+
+                    <div className="fotter-add-post-pop">
 
                         <div className="post-categories-popup">
                             <label htmlFor='file'>
@@ -59,6 +61,7 @@ export default function ShowAddPost() {
                                 <strong>Hisia</strong>
                             </div>
                         </div>
+                        <button type='submit' className='btn btn-primary-addpost-pop'>Posti</button>
 
                     </div>
                 </div>
