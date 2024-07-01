@@ -53,7 +53,7 @@
     width: 100%;
     bottom: 0;
     opacity: .7;
-    background: linear-gradient(transparent, transparent, var(--color-primary));
+    background: linear-gradient(transparent, var(--color-primary));
 }
 
 .person img {
@@ -88,7 +88,7 @@
 .person-action {  
     width: 100%;
 }
-.btn-red{
+.btn-red-person{
     padding: .6rem 1.6rem;
     display: inline-block;
     width: fit-content;
@@ -100,9 +100,10 @@
     border: none;
     position: absolute;
     z-index:9;
-
+    background: var(--color-soft);
 }
-.btn-red:hover{
+.btn-red-person:hover{
     background-image: var(--buttonBg);
+    transform: scale(1.2);
     box-shadow: 0 10px 34px var(--color-primary);
 }

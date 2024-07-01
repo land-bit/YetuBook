@@ -7,6 +7,7 @@ import closeChat from "./closeChat";
 import getGPT from "../../pages/chatGPT/getAiResponse";
 import Markdown from "react-markdown";
 import meteochat from "../../assets/icon/goutedeau.png"
+import getGemini from "../../FackApis/ai/getGemini";
 
 
 export default function ChatBoxMessages() {
@@ -30,7 +31,8 @@ export default function ChatBoxMessages() {
             ]);
 
             try {
-                let resp = await getGPT(input);
+                // let resp = await getGPT(input);
+                let resp = await getGemini(input)
                 console.log(resp)
                 if (resp == undefined) {
                     resp = 'Bonjour, nous n\'arrivons pas à accéder au modèle GPT suit à une erreur inattendue. Vérifier votre connection internet puis réessayer. Si le problème persiste contacter le service client.'

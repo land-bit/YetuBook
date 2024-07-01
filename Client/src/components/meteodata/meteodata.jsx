@@ -15,6 +15,8 @@ import GraphAirPollution from './GraphAirPollution';
 import AirPollutionGauge from './AirPollutionGauge';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMessage, faPager, faPaperPlane, faSeedling } from '@fortawesome/free-solid-svg-icons';
+import MeteodataHome from './Meteodatahome';
+import showChat from '../popup/showChat';
 
 const Meteodata = () => {
   const [climateData, setClimateData] = useState([]);
@@ -41,6 +43,7 @@ const Meteodata = () => {
             const response = await getCurrentWeather(position.coords.longitude, position.coords.latitude);
             const airpollution = await getAirPollution(position.coords.longitude, position.coords.latitude)
             const previsionMeteo = await getPrevisionMeteo(position.coords.longitude, position.coords.latitude)
+            console.log(response.data.main)
             console.log(airpollution.data.list[0].components)
             console.log(previsionMeteo.data.list)
 
@@ -119,7 +122,6 @@ const Meteodata = () => {
           <small>Dernière mise à jour: {timestamp}</small>
         </div>
       </div>
-
       <div className='meteo-info'>
         <div className='temperature-description'>
           <div>
@@ -140,7 +142,8 @@ const Meteodata = () => {
       <br />
       <p><strong>Pleuvra-t-il aujourd'hui à <strong>{currentWeather.name}</strong> ? <FontAwesomeIcon icon={faPaperPlane} /></strong></p>
       <p><strong>Quel sera le temps à <strong>{currentWeather.name}</strong> demain ? <FontAwesomeIcon icon={faPaperPlane} /></strong></p>
-      <p><strong>Discuter avec la météo... <FontAwesomeIcon icon={faPaperPlane} /></strong></p>
+      <br />
+      <div className='discuter-avec-meteo btn-red' onClick={showChat}>Discuter avec la météo...</div>
       <br />
 
       <div className='temp-humid-contener'>
@@ -172,7 +175,6 @@ const Meteodata = () => {
             <small>(m/s) : la vitesse du vent, <br />(°) : la direction du vent, <br />(%) : La pression atmospherique. (min:870hPa, max:1050hPa)</small>
           </div>
         </div>
-
       </div>
 
       <br />
@@ -227,30 +229,15 @@ const Meteodata = () => {
           Le soir, l'humidité grimpe à 60%, ce qui confirme un risque de pluie persistant.
           La nuit, l'humidité atteint 65%, ce qui est encore plus élevé et explique le fort risque de pluie nocturne.
           Donc les données d'humidité viennent compléter les informations sur les probabilités de pluie et confirment qu'il y a de fortes chances de précipitations tout au long de la journée à Goma. L'humidité élevée, au-dessus de 50%, est un bon indicateur du risque de pluie.</p>
-        <small>Continuer dans le chat</small>
       </div>
-
-      <div className='see-more'>Ona mengi</div>
+      <br />
+      <br />
 
     </div>
   );
 };
 
 export default Meteodata;
-
-
-// const ProgressBar = ({ humidity }) => {
-//   return (
-//     <div className='humidity-progresbar'>
-//       <p>{`Humidité: ${humidity}%`}</p>
-//       <div style={{ backgroundColor: '#f0f0f0', height: '5px', width: '100%', margin: '10px 0' }}>
-//         <div style={{ backgroundColor: '#3498db', height: '100%', width: `${humidity}%` }}></div>
-//       </div>
-
-//     </div>
-//   );
-// }
-
 
 
 

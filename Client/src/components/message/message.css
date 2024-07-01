@@ -81,4 +81,9 @@
 .message-body{
     padding: .2rem;
 }
+@media (max-width:1280px){
+    .para{
+        width: 9rem;
+    }
+}
 

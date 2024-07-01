@@ -26,7 +26,8 @@ export default function HorlogeNumerique() {
     return (
         <div className="horloge-numerique">
             <div><FontAwesomeIcon icon={faCalendar} /><span> {date} </span></div>
-            <div><FontAwesomeIcon icon={faClock} /><span> {heure}:{millisecondes}</span></div>
+            <div><FontAwesomeIcon icon={faClock} /><span> {heure}</span></div> 
+            {/* {millisecondes} */}
         </div>
     )
 }

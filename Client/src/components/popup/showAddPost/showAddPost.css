@@ -1,4 +1,4 @@
-.meteo-details {
+.add-post-pop {
     position: fixed;
     bottom: 0rem;
     right: 0rem;
@@ -11,57 +11,71 @@
     transition: all .4s ease;
     z-index: 10;
     padding: 0rem;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
 }
-.child-meteo-details {
+
+.child-add-post-pop {
     position: relative;
-    height: 100%;
-    width: 100%;
+    height: 50%;
+    width: 35%;
     margin: auto;
     padding: 1rem;
-    box-shadow: 0 30px 15px rgba(0, 0, 0, .50);
     background-color: var(--color-bg);
-    box-shadow: 0 10px 34px var(--color-bg);
     overflow: scroll;
     scrollbar-width: 0px;
     scroll-behavior: smooth;
+    border-radius: 10px;
+    justify-content: center;
 }
+
+
 @media (max-width:868px) {
-    .meteo-details {
+    .add-post-pop {
         padding: 0;
         border-radius: 0px;
+        display: inherit;
     }
-    .child-meteo-details{
+
+    .child-add-post-pop {
         border-radius: 0px;
+        height: 100%;
+        width: 100%;
     }
-    .body-popup{
+
+    .body-popup-post {
         flex-direction: column;
     }
-    .closeBtn-popup{
-        margin:0 1rem;
-    }
 }
-.show-meteo-details .meteo-details {
+
+.show-add-post .add-post-pop {
     transform: scale(1);
     opacity: 1;
     pointer-events: auto;
 }
-.show-meteo-details .header-popup {
-    width: 96%;
+
+.show-add-post .header-popup-post {
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    position: fixed;
     align-items: center;
     border-radius: 50px;
     padding-left: 2rem;
     z-index: 15;
+    border-bottom: 1px solid var(--color-border);
 }
-.body-popup {
+
+.body-popup-post {
     display: flex;
     padding-top: 3rem;
+    flex-direction: column;
+    margin: auto;
+    padding: 0 2rem;
     /* flex-wrap: wrap; */
     gap: 2rem;
 }
-.show-meteo-details .closeBtn-popup {
+
+.show-add-post .closeBtn-popup-post {
     font-size: 2rem;
     color: var(--text-color);
     width: 3rem;
@@ -74,10 +88,22 @@
     cursor: pointer;
     background: var(--color-card);
 }
-.closeBtn-popup:hover {
+
+.closeBtn-popup-post:hover {
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
     background: var(--color-primary);
     transition: .3s;
+}
+.form-top-popup-user{
+    padding: 1rem 0;
+}
+.public-option{
+    background-color: aqua;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 5px;
+    border-radius: 10px;
 }

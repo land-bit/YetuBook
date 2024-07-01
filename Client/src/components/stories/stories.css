@@ -1,10 +1,11 @@
-.stories{
+.stories {
     display: flex;
     align-items: center;
     margin-top: 10px;
     margin-bottom: 10px;
 }
-.story{
+
+.story {
     height: 250px;
     flex: 1;
     overflow: hidden;
@@ -13,7 +14,8 @@
     border-radius: 1.5rem;
     border: 1px solid var(--color-card);
 }
-.story::after{
+
+.story::after {
     content: "";
     position: absolute;
     height: 100%;
@@ -22,18 +24,21 @@
     opacity: .7;
     background: linear-gradient(transparent, transparent, var(--color-primary));
 }
-.story .user{
+
+.story .user {
     position: absolute;
     margin-top: 15px;
     margin-left: 15px;
     border: 2.5px solid var(--color-primary);
     border-radius: 50%;
 }
-.story img{
+
+.story img {
     height: 100%;
     aspect-ratio: 1/1;
 }
-.story h5{
+
+.story h5 {
     color: white;
     position: relative;
     bottom: 30px;
@@ -44,7 +49,7 @@
 
 /* User stories */
 
-.userStory{
+.userStory {
     margin-right: 10px;
     height: 250px;
     width: 50px;
@@ -59,7 +64,8 @@
     justify-content: center;
     flex-direction: column;
 }
-.addStory label{
+
+.addStory label {
     position: absolute;
     color: white;
     z-index: 2;
@@ -74,10 +80,12 @@
     align-items: center;
     justify-content: center;
 }
+
 .userStory label input {
     display: none;
 }
-.addStory{
+
+.addStory {
     width: 100%;
     height: 40vh;
     bottom: 0;
@@ -92,44 +100,89 @@
 
 
 @media (max-width:795px) {
-    .story{
+    .story {
         height: 200px;
         width: 140px;
     }
-    .userStory{
+
+    .userStory {
         height: 200px;
         width: 100px;
     }
-    
-  }
+
+}
 
 @media (max-width:700px) {
-    .story{
+    .story {
         height: 180px;
         width: 120px;
     }
-    .userStory{
+
+    .userStory {
         height: 180px;
         /* width: 120px; */
     }
 }
+
 @media (max-width:600px) {
-    .story{
+    .story {
         height: 135px;
         width: 75px;
     }
-    .userStory{
+
+    .userStory {
         height: 135px;
         width: 75px;
     }
-    .story h5{
+
+    .story h5 {
         font-size: smaller;
         margin-left: 8px;
         bottom: 35px;
     }
-    .userStory h5{
+
+    .userStory h5 {
         font-size: smaller;
         text-align: center;
         bottom: 35px;
     }
 }
+
+@media (max-width:991px) {
+    .stories {
+        padding: 0 .5rem;
+    }
+
+    .story .user {
+        margin-top: 5px;
+        margin-left: 5px;
+    }
+
+    .user img {
+        width: 25px;
+    }
+}
+
+/* @media (max-width:1280px){
+    .story {
+        height: 190px;
+        width: 110px;
+    }
+
+    .userStory {
+        height: 190px;
+        width: 110px;
+    }
+
+    .story h5 {
+        font-size: smaller;
+        margin-left: 8px;
+        bottom: 35px;
+    }
+
+    .userStory h5 {
+        font-size: smaller;
+        text-align: center;
+        bottom: 30px;
+    }
+} */

@@ -6,7 +6,7 @@ import Comments from '../comments/Comments';
 
 //FontAwesome Icon.............
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faComment, faHeart, faListDots, faShare } from '@fortawesome/free-solid-svg-icons';
+import { faComment, faEllipsis, faHeart, faListDots, faShare } from '@fortawesome/free-solid-svg-icons';
 
 // States...............
 import React, {useState} from 'react'
@@ -33,7 +33,9 @@ export default function Feed ({fed}){
                         </div>
                     </div>
                 </Link>
-                <span><FontAwesomeIcon icon={faListDots} /> </span>
+                {/* <span><FontAwesomeIcon icon={faListDots} /> </span> */}
+                <span><FontAwesomeIcon icon={faEllipsis} /> </span>
+
             </div>
             <div className="mid-content">
                 <p>{fed.desc}</p>

@@ -16,22 +16,17 @@ export default function ShowMeteoDetails() {
             <div className="meteo-details" >
                 <div className="child-meteo-details" >
                     <div className="header-popup">
-                        <div>
+                        {/* <div>
                             <h1>MetoWatch</h1>
-                        </div>
+                        </div> */}
                         <DarkMoode />
                         <span className="closeBtn-popup" onClick={CloseMeteoDetails}><FontAwesomeIcon icon={faClose} /></span>
 
                     </div>
 
                     <div className="body-popup">
-                        <MeteodataHome />
                         <Meteodata />
                     </div>
-
-
-
-
 
                 </div>
             </div>

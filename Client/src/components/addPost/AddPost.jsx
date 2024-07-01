@@ -7,7 +7,7 @@ import CurrentUserData from '../../FackApis/CurrentUserData'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faImage, faSmile, faTags, faVideo } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import showAddPost from '../popup/showAddPost/showAddPost';
 
 
 export default function AddPost() {
@@ -18,7 +18,7 @@ export default function AddPost() {
                 <Link to="/profile/id">
                     <img src={CurrentUserData[0].ProfieImage} alt='' />
                 </Link>
-                <input type='text' placeholder={`Nini mpya ${CurrentUserData[0].name} ?`} onClick={() => setModalOpened(true)} />
+                <input type='text' placeholder={`Nini mpya ${CurrentUserData[0].name} ?`} onClick={showAddPost} />
                 <button type='submit' className='btn btn-primary'>Posti</button>
             </div>
 

@@ -10,6 +10,8 @@ import DarkMoode from "../darkMood/DarkMoode";
 // FontAwesome Icon.....................
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faBell, faEnvelope, faHome, faSearch, faUser } from "@fortawesome/free-solid-svg-icons";
+import NavMenu from "./navMenu";
+import { showMenu } from "./showMenu";
 
 export default function Nav() {
     return (
@@ -23,10 +25,10 @@ export default function Nav() {
                         <h3 className="logo-dashboard">Yetubook</h3>
                     </Link>
                     <Link to='/'>
-                        <FontAwesomeIcon icon={faHome} />
+                        <FontAwesomeIcon icon={faHome} className="fahome"/>
                     </Link>
                     <Link to='/profile/id'>
-                        <FontAwesomeIcon icon={faUser} />
+                        <FontAwesomeIcon icon={faUser} className="fauser"/>
                     </Link>
                     <div className="Nav-Serchbar">
                         <FontAwesomeIcon icon={faSearch} />
@@ -52,6 +54,7 @@ export default function Nav() {
                     <Link to='/'>
                         <FontAwesomeIcon icon={faBars} />
                     </Link>
+                    
                     <Link to='/profile/id'>
                         <div className="user">
                             <img src={CurrentUser.map(user => (user.ProfieImage))} alt="" />

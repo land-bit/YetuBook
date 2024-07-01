@@ -29,7 +29,7 @@ export default function PersonYouMayKnow() {
                                         <h5>{person.name}</h5>
                                         <small>34 rafiki pamoja</small>
                                         <div className='person-action'>
-                                            <button className='btn-red'><FontAwesomeIcon icon={faUserPlus} />Ongeza</button>
+                                            <button className='btn-red-person'><FontAwesomeIcon icon={faUserPlus} />Ongeza</button>
                                         </div>
                                     </div>
                                 </div>
