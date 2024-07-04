@@ -52,7 +52,7 @@ export default function Message() {
                 </div>
                 <div className="message-body2">
                     <div className="message-body">
-                        <h5>AIChat</h5>
+                        <h5>YetuGPT</h5>
                         <p className="para">Jambo Gérard, nikusaidiye namna gani léo ?</p>
                     </div>
                     <div>

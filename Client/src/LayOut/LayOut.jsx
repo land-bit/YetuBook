@@ -1,4 +1,4 @@
-import React from "react";
+  import React from "react";
 import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 
 //Pages......................................
@@ -50,7 +50,7 @@ export default function LayOut() {
     }
     //Structure des Routers............
 
-    const router = createBrowserRouter([
+    const router = createBrowserRouter([  
         {
             path: '/',
             element: <Structure />,
@@ -105,40 +105,40 @@ export default function LayOut() {
                     path: '/dashboard',
                     element: <DashboardHome />
                 },
-                {
-                    path: '/dashboard/:historique',
+                { 
+                    path: '/dashboard/historique',
                     element: <Historique/>
                 },
                 {
-                    path: '/dashboard/:maintenant',
+                    path: '/dashboard/maintenant',
                     element: <Mantenant />
                 },
                 {
-                    path: '/dashboard/:previsions',
+                    path: '/dashboard/previsions',
                     element: <Previsions/>
                 },
                 {
-                    path: '/dashboard/:statistiques',
+                    path: '/dashboard/statistiques',
                     element: <Statistiques />
                 },
                 {
-                    path: '/dashboard/:cartes',
+                    path: '/dashboard/cartes',
                     element: <Cartes/>
                 },
                 {
-                    path: '/dashboard/:alertes',
+                    path: '/dashboard/alertes',
                     element: <Alertes />
                 },
                 {
-                    path: '/dashboard/:creatadmins',
+                    path: '/dashboard/creatadmins',
                     element: <CreatAdmins/>
                 },
                 {
-                    path: '/dashboard/:calendrier',
+                    path: '/dashboard/calendrier',
                     element: <Calendrier />
                 },
                 {
-                    path: '/dashboard/:faqpage',
+                    path: '/dashboard/faqpage',
                     element: <FAQPage/>
                 }
             ]

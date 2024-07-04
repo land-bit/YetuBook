@@ -1,4 +1,4 @@
-import { Link, Outlet } from 'react-router-dom'
+import { Link, Outlet, useLocation } from 'react-router-dom'
 import CurrentUser from "../../FackApis/CurrentUserData";
 
 import './dashboard.css'
@@ -6,6 +6,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faBell, faBullhorn, faCalendar, faChartArea, faCircleQuestion, faDashboard, faDownload, faEnvelope, faEye, faFileArrowDown, faFileExport, faFileLines, faHistory, faHome, faMap, faSearch, faUserTie } from '@fortawesome/free-solid-svg-icons';
 import DarkMoode from '../../components/darkMood/DarkMoode';
 export default function Dashboard() {
+    const location = useLocation();
+
+    const isActive = (path) => {
+        // Handle exact path matching for active link styling
+        return location.pathname.startsWith(path);
+    };
+
     return (
         <>
             <div className="dashoard-container">
@@ -26,29 +33,30 @@ export default function Dashboard() {
 
                     <div className="dash-data">
                         <Link to='/dashboard/' >
-                            <div className="dash-side-link dash-active">
+                            <div className={`dash-side-link ${isActive("/dashboard/") && "dash-active"}`}>
                                 <FontAwesomeIcon icon={faHome} />
                                 <h4>Dashboard</h4>
                             </div>
                         </Link>
                         <br />
                         <p><strong>Data</strong></p>
-                        <Link to='/dashboard/historique' >
-                            <div className='dash-side-link'>
-                                <FontAwesomeIcon icon={faHistory} />
-                                <h4>Historique</h4>
-                            </div>
-                        </Link>
-                        <Link to='/dashboard/maintenant' >
-                            <div className="dash-side-link">
-                                <FontAwesomeIcon icon={faDashboard} />
-                                <h4>Maintenant</h4>
-                            </div>
-                        </Link>
+
                         <Link to='/dashboard/previsions' >
                             <div className="dash-side-link">
                                 <FontAwesomeIcon icon={faEye} />
                                 <h4>Prévisions</h4>
+                            </div>
+                        </Link>
+                        <Link to='/dashboard/maintenant' >
+                            <div className="dash-side-link">
+                                <FontAwesomeIcon icon={faFileLines} />
+                                <h4>Buletin Météo</h4>
+                            </div>
+                        </Link>
+                        <Link to='/dashboard/historique' >
+                            <div className='dash-side-link'>
+                                <FontAwesomeIcon icon={faHistory} />
+                                <h4>Historique</h4>
                             </div>
                         </Link>
                     </div>

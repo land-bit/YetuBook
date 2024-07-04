@@ -15,6 +15,7 @@
     "@google/generative-ai": "^0.14.0",
     "@syncfusion/ej2-react-lineargauge": "^26.1.35",
     "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-gauge-chart": "^0.5.1",

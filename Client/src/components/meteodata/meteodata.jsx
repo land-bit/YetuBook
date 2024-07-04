@@ -44,7 +44,7 @@ const Meteodata = () => {
             const airpollution = await getAirPollution(position.coords.longitude, position.coords.latitude)
             const previsionMeteo = await getPrevisionMeteo(position.coords.longitude, position.coords.latitude)
             console.log(response.data.main)
-            console.log(airpollution.data.list[0].components)
+            // console.log(airpollution.data.list[0].components)
             console.log(previsionMeteo.data.list)
 
             const newEntry = {
@@ -53,20 +53,23 @@ const Meteodata = () => {
               precipitation: response.data.rain?.['1h'] || 0
             };
 
-            const newEntryAirPollution = {
-              time: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }),
-              co: airpollution.data.list[0].components.co,
-              nh3: airpollution.data.list[0].components.nh3,
-              no: airpollution.data.list[0].components.no,
-              no2: airpollution.data.list[0].components.no2,
-              o3: airpollution.data.list[0].components.pm2_5,
-              pm10: airpollution.data.list[0].components.pm10,
-              so2: airpollution.data.list[0].components.so2
-            };
+            if (airpollution?.data.list[0].components !== undefined) {
+              const newEntryAirPollution = {
+                time: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }),
+                co: airpollution.data.list[0].components.co,
+                nh3: airpollution.data.list[0].components.nh3,
+                no: airpollution.data.list[0].components.no,
+                no2: airpollution.data.list[0].components.no2,
+                o3: airpollution.data.list[0].components.pm2_5,
+                pm10: airpollution.data.list[0].components.pm10,
+                so2: airpollution.data.list[0].components.so2
+              };
+              setAirPelluionData([newEntryAirPollution]);
+            }
 
             setClimateData(prevData => [...prevData, newEntry]);
 
-            setAirPelluionData([newEntryAirPollution]);
+
 
             setCurrentWeather(response.data);
             setTimestamp(new Date().toLocaleString('fr-FR'));
@@ -204,10 +207,13 @@ const Meteodata = () => {
 
         <br />
 
-        <div className='graph-air-pollution'>
-          <GraphAirPollution data={airpollutionData} />
-          <small>Les polluants de l'air</small>
-        </div>
+        {airpollutionData ?
+          (<div className='graph-air-pollution'>
+            <GraphAirPollution data={airpollutionData} />
+            <small>Les polluants de l'air</small>
+          </div>) : (<p>Les données sur la pollution n'es sont pas disponible pour le moment</p>)
+
+        }
 
 
       </div>
@@ -218,12 +224,13 @@ const Meteodata = () => {
       </div>
       <br />
 
-      {/* <div className="buletin-meteo">
-        <h3>PLEUVRA-T-IL AUJOURD'HUI À GOMA ?</h3>
+      <div className="buletin-meteo">
+        <h3>QUESTIONS FREQUEMMENT POSÉES SUR LA MÉTÉO</h3>
+        <h5>PLEUVRA-T-IL AUJOURD'HUI À GOMA ?</h5>
         <p>84% de chances de pluie ce matin <br />
           100% de chances de pluie cet après-midi<br />
           100% de chances de pluie ce soir<br />
-          89% de chances de pluie cette nuit<br /><a href='#'>voir plus</a></p>
+          89% de chances de pluie cette nuit<br /></p>
         <p>LE TEMPS CE MATIN À GOMA
           Ce matin à Goma, il pleuvra beaucoup. La température à Goma ce matin sera de 15°C . La force du vent oscillera aux alentours des 5 km/h (orientation du vent : Est-Sud-Est). L'humidité relative de l'air sera de 76%.
 
@@ -244,7 +251,7 @@ const Meteodata = () => {
           Le soir, l'humidité grimpe à 60%, ce qui confirme un risque de pluie persistant.
           La nuit, l'humidité atteint 65%, ce qui est encore plus élevé et explique le fort risque de pluie nocturne.
           Donc les données d'humidité viennent compléter les informations sur les probabilités de pluie et confirment qu'il y a de fortes chances de précipitations tout au long de la journée à Goma. L'humidité élevée, au-dessus de 50%, est un bon indicateur du risque de pluie.</p>
-      </div> */}
+      </div>
       <br />
       <br />
 

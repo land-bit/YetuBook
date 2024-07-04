@@ -148,6 +148,7 @@
         width: 100vw;
         right: 0;
         bottom: 0px;
+        transition: none;
     }
     .chald{
         background-color: aqua;
@@ -178,7 +179,7 @@
 #chat-box {
     position: relative;
     top: 75px;
-    padding: 18px 10px 6rem 10px;
+    padding: 10px 10px 150px 10px;
     font-size: 15px;
     height: 100%;
     overflow: auto;

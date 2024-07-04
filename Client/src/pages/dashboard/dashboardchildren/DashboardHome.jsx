@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar, faClock, faLocation } from "@fortawesome/free-solid-svg-icons";
 
 import dataPrevisons from "../previsiondataexemple.js"
-import Previsions, { PrevisionText } from "./Previsions.jsx";
+import WeatherForecast, { PrevisionsCard } from "./PrevisionsBruillons.jsx";
 export default function DashboardHome() {
     return (
         <>
@@ -73,6 +73,10 @@ export default function DashboardHome() {
                                 <br />
                             </div>
                         </div>
+
+                        <PrevisionsCard weatherData={dataPrevisons.list}/>
+
+                        <WeatherForecast weatherData={dataPrevisons.list}/>
 
 
                         <div className="visualisation-prevision-chance-rain">

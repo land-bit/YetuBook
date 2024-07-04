@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_KEY_OPENWEATHER } from "../../../dotenv";
+const API_KEY_OPENWEATHER = import.meta.env.VITE_API_KEY_OPENWEATHER
 axios
 export default async function getCurrentWeather(long, lat){
     const units = 'metric'
