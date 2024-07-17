@@ -119,7 +119,7 @@ small,p{
   color: white;
 }
 .btn-red:hover{
-  /*Effet de lumiere au survol du boton*/
+  /*Effet de luminessance au survol du bouton*/
   box-shadow: 0 10px 34px var(--color-red);
 }
 main{

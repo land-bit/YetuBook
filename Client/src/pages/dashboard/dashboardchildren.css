@@ -28,35 +28,7 @@
 
 
 
-.chance-rain{
-    display: flex;
-    background-color: var(--color-bg);
-    width: 250px;
-    height: 50px;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    font-weight: 600;
-    padding: .5rem 1rem;
-    margin-bottom: .5rem;
-    border-radius: .2rem;
-    box-shadow: 0 4px 25px rgba(14,36, 49,.15);
-}
 
-.chance-rain-date{
-    display: flex;
-    align-items: center;
-}
-.progresse-bar{
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    background-color: var(--color-primary);
-    height: .55rem;
-    border-radius: .5rem;
-    z-index: var(--z-back);
-    /* width: 70%; */
-}
 
 
 /*-----------------------------------------------*/

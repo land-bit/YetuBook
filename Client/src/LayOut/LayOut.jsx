@@ -29,6 +29,7 @@ import Alertes from "../pages/dashboard/dashboardchildren/Alertes";
 import CreatAdmins from "../pages/dashboard/dashboardchildren/CreatAdmins";
 import Calendrier from "../pages/dashboard/dashboardchildren/Calendrier";
 import FAQPage from "../pages/dashboard/dashboardchildren/FAQPage";
+import Weatherexemple from "../FackApis/weather/weatherexpemple";
 
 
 export default function LayOut() {
@@ -142,7 +143,12 @@ export default function LayOut() {
                     element: <FAQPage/>
                 }
             ]
-        }
+            
+        },
+        {
+            path: '/weatherexemple',
+            element: <Weatherexemple/>
+        },
     ])
     return (
         <>

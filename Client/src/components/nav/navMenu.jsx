@@ -42,7 +42,7 @@ const showNotification = () => {
 export function NavMenubottom() {
     return (
         <>
-            <div class="menu-bottom">
+            <div className="menu-bottom">
                 <div className="menu-bottom-child-left">
                     <div className="nemu-bottom-itms" onClick={showHome}>
                         <span className="topbar-active"></span>
