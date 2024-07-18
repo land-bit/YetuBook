@@ -22,9 +22,16 @@ export default function LeftBar() {
         <div className="leftBar">
             <div className="left-container">
 
+                {/* <div>
+                    <div>MétéoWatch</div>
+                    <div>VolcanoWatch</div>
+                    <div>StockMarket</div>
+                </div> */}
+
                 <MeteodataHome />
 
                 {/* <Meteodata /> */}
+                <br />
 
                 <h4 className="others">Njia zako za mkato</h4>
 

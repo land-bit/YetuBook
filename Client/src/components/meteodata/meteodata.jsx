@@ -1,89 +1,59 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './meteodata.css'
-import getCurrentWeather from './getCurrentWeather';
-import getPrevisionMeteo from './getPrevisionMeteo';
-import HumidityGauge from './HumidityGauge';
-import PressionAtmospherique from './PressionAtmospherique';
-import Speedometre from './Speedometre';
-import Temperature from './Temperature';
-import CartInteractive from './CarteInteractive';
-import Boussole from './Boussole';
-import Horloge from './Horloge';
-import HorlogeNumerique from './HorlogeNumerique';
-import getAirPollution from './getAirPollution';
-import GraphAirPollution from './GraphAirPollution';
-import AirPollutionGauge from './AirPollutionGauge';
+import getCurrentWeather from '../../utilities/weather/getCurrentWeather';
+import getPrevisionMeteo from '../../utilities/weather/getPrevisionMeteo';
+import getAirPollution from '../../utilities/weather/getAirPollution';
+import getGoodFormatWeatherData from '../../utilities/weather/getGoodFormatWeatherData'
+
+import HumidityGauge from '../../reusebleComponents/HumidityGauge';
+import PressionAtmospherique from '../../reusebleComponents/PressionAtmospherique';
+import Speedometre from '../../reusebleComponents/Speedometre';
+import Temperature from '../../reusebleComponents/Temperature';
+import CartInteractive from '../../reusebleComponents/CarteInteractive';
+import Boussole from '../../reusebleComponents/boussole/Boussole';
+import HorlogeNumerique from '../../reusebleComponents/HorlogeNumerique';
+import GraphAirPollution from '../../reusebleComponents/GraphAirPollution';
+import AirPollutionGauge from '../../reusebleComponents/AirPollutionGauge';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMessage, faPager, faPaperPlane, faSeedling } from '@fortawesome/free-solid-svg-icons';
-import MeteodataHome from './Meteodatahome';
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import showChat from '../popup/showChat';
 
 const Meteodata = () => {
   const [climateData, setClimateData] = useState([]);
-  const [airpollutionData, setAirPelluionData] = useState([])
   const [currentWeather, setCurrentWeather] = useState(null);
   const [lastTemperature, setLastTemperature] = useState(null);
   const [timestamp, setTimestamp] = useState(null);
   const intervalRef = useRef(null);
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
+
 
 
   useEffect(() => {
     const fetchClimateData = async () => {
 
-      // Obtenons les données météorologique actuelles sur base des coordonnées de l'utilisateur
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(async (position) => {
-          setLatitude(position.coords.latitude);
-          setLongitude(position.coords.longitude);
+      try {
+        const response = await getCurrentWeather();
+        const previsionMeteo = await getPrevisionMeteo();
+        const data = await getGoodFormatWeatherData();
 
+        console.log(response)
+        console.log(previsionMeteo)
+        console.log(data)
 
-          try {
-            const response = await getCurrentWeather(position.coords.longitude, position.coords.latitude);
-            const airpollution = await getAirPollution(position.coords.longitude, position.coords.latitude)
-            const previsionMeteo = await getPrevisionMeteo(position.coords.longitude, position.coords.latitude)
-            console.log(response.data.main)
-            // console.log(airpollution.data.list[0].components)
-            console.log(previsionMeteo.data.list)
+        const newEntry = {
+          time: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }),
+          temperature: response.main.temp,
+          precipitation: response.rain?.['1h'] || 0
+        };
 
-            const newEntry = {
-              time: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }),
-              temperature: response.data.main.temp,
-              precipitation: response.data.rain?.['1h'] || 0
-            };
-
-            if (airpollution?.data.list[0].components !== undefined) {
-              const newEntryAirPollution = {
-                time: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }),
-                co: airpollution.data.list[0].components.co,
-                nh3: airpollution.data.list[0].components.nh3,
-                no: airpollution.data.list[0].components.no,
-                no2: airpollution.data.list[0].components.no2,
-                o3: airpollution.data.list[0].components.pm2_5,
-                pm10: airpollution.data.list[0].components.pm10,
-                so2: airpollution.data.list[0].components.so2
-              };
-              setAirPelluionData([newEntryAirPollution]);
-            }
-
-            setClimateData(prevData => [...prevData, newEntry]);
-
-
-
-            setCurrentWeather(response.data);
-            setTimestamp(new Date().toLocaleString('fr-FR'));
-            if (climateData.length > 0) {
-              setLastTemperature(climateData[climateData.length - 1].temperature);
-            }
-          } catch (error) {
-            console.error(error);
-          }
-        }, (error) => {
-          console.error(error.message);
-        });
-      } else {
-        console.error('La géolocalisation n\'est pas disponible');
+        setClimateData(prevData => [...prevData, newEntry]);
+        setCurrentWeather(response);
+        setTimestamp(new Date().toLocaleString('fr-FR'));
+        if (climateData.length > 0) {
+          setLastTemperature(climateData[climateData.length - 1].temperature);
+        }
+      } catch (error) {
+        console.error(error);
       }
 
     };
@@ -220,7 +190,7 @@ const Meteodata = () => {
       <br />
 
       <div className='carte-interactive'>
-        <CartInteractive longitude={longitude} latitude={latitude} />
+        <CartInteractive />
       </div>
       <br />
 

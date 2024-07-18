@@ -81,7 +81,7 @@ const MeteodataHome = () => {
                     </div>
                 </div>
 
-                <button className='m-d-h-f-see-more' onClick={showMeteoDetails}>Ita nyesha kesho ? <strong>0% </strong> de chance</button>
+                <button className='m-d-h-f-see-more' onClick={showMeteoDetails}>Bahati ya nvuwa ku nyesha kesho : <strong>0%</strong></button>
 
             </div>
         </div>

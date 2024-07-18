@@ -1,6 +1,19 @@
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css"
-export default function CartInteractive({latitude, longitude}) {
+export default function CartInteractive() {
+
+    const [latitude, setLatitude] = useState(null);
+    const [longitude, setLongitude] = useState(null);
+
+    getUserLocation()
+        .then(position => {
+            setLatitude(position.coords.latitude);
+            setLongitude(position.coords.longitude);
+        })
+        .catch(error => {
+            console.error("Erreur lors de la récupération de la géolocalisation:", error);
+        });
+
     return (
         <div>
             {latitude && longitude && (

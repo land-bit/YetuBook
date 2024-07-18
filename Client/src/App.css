@@ -111,7 +111,7 @@ small,p{
 }
 .btn-primary:hover{
   /*Effet de lumiere au survol du boton*/
-  box-shadow: 0 10px 34px var(--color-primary);
+  box-shadow: 0 0px 34px var(--color-primary);
 }
 
 .btn-red{

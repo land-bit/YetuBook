@@ -1,5 +1,4 @@
 import React from 'react';
-import dataPrevisions from '../../../FackApis/weather/previsiondataexemple';
 
 export function PrevisionsCard({ weatherData }) {
 

@@ -1,4 +1,4 @@
-import './meteodata.css'
+import './boussole.css'
 
 export default function Boussole({ direction }) {
     return (

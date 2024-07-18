@@ -7,7 +7,7 @@ import closeChat from "./closeChat";
 import getGPT from "../../pages/chatGPT/getAiResponse";
 import Markdown from "react-markdown";
 import meteochat from "../../assets/icon/goutedeau.png"
-import getGemini from "../../FackApis/ai/getGemini";
+import getGemini from "../../utilities/ai/getGemini";
 
 
 export default function ChatBoxMessages() {

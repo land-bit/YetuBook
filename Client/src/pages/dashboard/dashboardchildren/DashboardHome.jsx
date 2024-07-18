@@ -7,7 +7,6 @@ import drizzle from "../../../assets/icon/meteodescription/drizzle.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar, faClock, faLocation } from "@fortawesome/free-solid-svg-icons";
 
-import dataPrevisions from "../../../FackApis/weather/previsiondataexemple.js";
 import WeatherForecast, { PrevisionsCard } from "./PrevisionsBruillons.jsx";
 import ProgressBar from "../../../reusebleComponents/ProgressBar/ProgressBar.jsx";
 export default function DashboardHome() {
@@ -33,10 +32,6 @@ export default function DashboardHome() {
                             <FontAwesomeIcon icon={faCalendar} />
                             <small> 19/06/2024</small>
                         </div>
-
-                        {/* <PrevisionsCard weatherData={dataPrevisions.list}/> */}
-
-                        {/* <WeatherForecast weatherData={dataPrevisions.list}/> */}
 
                         <ProgressBar tag={'samedi 5/7'} value={45} />                 
 
