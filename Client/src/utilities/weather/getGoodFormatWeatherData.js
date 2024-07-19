@@ -6,11 +6,11 @@ const formatUtils = new FormatUtils();
 const getGoodFormatWeatherData = async () => {
 
     const response = await getPrevisionMeteo();
-    console.log(response)
     let byHour = [], currDt = response.list[0].dt_txt.slice(8, 10), next5Days = [];
 
     for (let i = 0; i < 6; i++) {
         byHour.push({
+            'date': formatUtils.getShortDate(response.list[i].dt_txt),
             'time': formatUtils.getDisplayTime(response.list[i].dt_txt),
             'temp': Math.round(response.list[i].main.temp),
             'desc': formatUtils.capitalizeFirstLetters(response.list[i].weather[0].description),
@@ -23,6 +23,7 @@ const getGoodFormatWeatherData = async () => {
             'wind-speed': response.list[i].wind.speed,
             'wind-deg': response.list[i].wind.deg,
             'wind-dir': formatUtils.getWindDirection(response.list[i].wind.deg),
+            'wind-gust': response.list[i].wind.gust,
             'pop': response.list[i].pop,
             'rain': response.list[i].rain ? response.list[i].rain['3h'] : 0,
             'snow': response.list[i].snow ? response.list[i].snow['3h'] : 0,
@@ -59,6 +60,7 @@ const getGoodFormatWeatherData = async () => {
             'wind-speed': response.list[i].wind.speed,
             'wind-deg': response.list[i].wind.deg,
             'wind-dir': formatUtils.getWindDirection(response.list[i].wind.deg),
+            'wind-gust': response.list[i].wind.gust,
             'pop': response.list[i].pop,
             'rain': response.list[i].rain ? response.list[i].rain['3h'] : 0,
             'snow': response.list[i].snow ? response.list[i].snow['3h'] : 0,
@@ -80,6 +82,7 @@ const getGoodFormatWeatherData = async () => {
     return {
         'location': {
             'date': formatUtils.getformattedTodayDate(),
+            'time': formatUtils.getformattedTodayHour(),
             'cityName': response.city.name,
             'country': response.city.country,
             'population': response.city.population,
@@ -91,6 +94,7 @@ const getGoodFormatWeatherData = async () => {
             'temperature': Math.round(response.list[0].main.temp),
             'desciption': formatUtils.capitalizeFirstLetters(response.list[0].weather[0].description),
             'weatherType': response.list[0].weather[0].main,
+            'weatherIcon': response.list[0].weather[0].icon,
             'minTemp': Math.floor(response.list[0].main.temp_min),
             'maxTemp': Math.ceil(response.list[0].main.temp_max),
             'wind-speed': response.list[0].wind.speed,

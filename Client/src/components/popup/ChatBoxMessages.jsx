@@ -9,6 +9,9 @@ import Markdown from "react-markdown";
 import meteochat from "../../assets/icon/goutedeau.png"
 import getGemini from "../../utilities/ai/getGemini";
 
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+
 
 export default function ChatBoxMessages() {
 
@@ -94,7 +97,7 @@ export default function ChatBoxMessages() {
 
 
                             {messages.map((item, index) => (
-                                <ChatMessage key={index} message={item} i={index}/>
+                                <ChatMessage key={index} message={item} i={index} />
                             ))}
 
 
@@ -148,7 +151,10 @@ const ChatMessage = ({ message, i }) => {
 
     return (
         <div className={`${message.user === 'gpt' ? 'bulle2' : 'bulle'}`}>
-            <Markdown>{`${message.user === 'gpt' && message["i"] == message.length-1 ? displayedText : message.msg}`}</Markdown>
+            {/* <Markdown>{`${message.user === 'gpt' && message["i"] == message.length-1 ? displayedText : message.msg}`}</Markdown> */}
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {message.user === 'gpt' && message["i"] === message.length - 1 ? displayedText : message.msg}
+            </ReactMarkdown>
             {isTyping && message.user === 'gpt' && <span className="typing-indicator">•</span>}
         </div>
     )

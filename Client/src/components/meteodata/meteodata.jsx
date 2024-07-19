@@ -36,9 +36,9 @@ const Meteodata = () => {
         const previsionMeteo = await getPrevisionMeteo();
         const data = await getGoodFormatWeatherData();
 
-        console.log(response)
-        console.log(previsionMeteo)
-        console.log(data)
+        // console.log(response)
+        // console.log(previsionMeteo)
+        // console.log(data)
 
         const newEntry = {
           time: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }),
@@ -176,14 +176,6 @@ const Meteodata = () => {
         </div>
 
         <br />
-
-        {airpollutionData ?
-          (<div className='graph-air-pollution'>
-            <GraphAirPollution data={airpollutionData} />
-            <small>Les polluants de l'air</small>
-          </div>) : (<p>Les données sur la pollution n'es sont pas disponible pour le moment</p>)
-
-        }
 
 
       </div>

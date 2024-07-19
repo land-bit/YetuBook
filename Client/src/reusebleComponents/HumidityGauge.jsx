@@ -3,7 +3,7 @@ import LiquidFillGauge from 'react-liquid-gauge';
 import { color } from 'd3-color';
 import { interpolateRgb } from 'd3-interpolate';
 
-const HumidityGauge = ({ humidity }) => {
+const HumidityGauge = ({ humidity = 0 }) => {
     const startColor = '#AAD3DF'; // cornflowerblue
     const endColor = '#2B82CB'; // crimson
     const radius = 50;

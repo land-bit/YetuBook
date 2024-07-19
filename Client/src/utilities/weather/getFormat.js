@@ -10,6 +10,13 @@ export default class FormatUtils {
         return `${day} le ${date} ${month}`;
     };
 
+    getformattedTodayHour = () => {
+        const today = new Date();
+        const hours = today.getHours();
+        const minutes = today.getMinutes();
+        return (hours < 10? `0${hours}` : hours) + ':' + (minutes < 10? `0${minutes}` : minutes);
+    }
+
     getTimeFromTimeStamp = (timeStamp) => {
         const date = new Date(timeStamp * 1000);
         const hours = date.getHours();
@@ -26,7 +33,10 @@ export default class FormatUtils {
     getDisplayTime = (dateString) => {
         const date = new Date(dateString);
         var hours = date.getHours();
-        return (hours < 10 ? `0${hours}h` : `${hours}h`);
+        const minutes = date.getMinutes();
+        // return (hours < 10 ? `0${hours}h` : `${hours}h`);
+        return (hours < 10 ? `0${hours}` : hours) + ':' + (minutes < 10 ? `0${minutes}` : minutes);
+
     };
 
     getWindDirection = (deg) => {

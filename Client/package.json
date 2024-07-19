@@ -26,6 +26,7 @@
     "react-radar": "^2.0.0-beta.111",
     "react-router-dom": "^6.23.1",
     "recharts": "^2.12.7",
+    "remark-gfm": "^4.0.0",
     "swiper": "^11.1.4",
     "use-gauge": "^0.7.0"
   },
