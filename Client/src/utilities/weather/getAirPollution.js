@@ -1,6 +1,6 @@
 import axios from "axios";
 import getUserLocation from "./getUserLocation";
-const API_KEY_OPENWEATHER = import.meta.env.VITE_API_KEY_OPENAI
+const API_KEY_OPENWEATHER = import.meta.env.VITE_API_KEY_OPENWEATHER
 export default async function getAirPollution() {
 
     return getUserLocation()

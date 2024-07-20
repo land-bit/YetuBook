@@ -6,7 +6,6 @@ import { Tooltip } from 'react-leaflet';
 import showMeteoDetails from '../popup/showMeteoDetails/showMeteoDetails';
 import getGoodFormatWeatherData from '../../utilities/weather/getGoodFormatWeatherData';
 import FormatUtils from '../../utilities/weather/getFormat';
-import ProgressBar from '../../reusebleComponents/ProgressBar/ProgressBar';
 
 const MeteodataHome = () => {
 
@@ -32,47 +31,23 @@ const MeteodataHome = () => {
         // Simuler le chargement pendant 2 minutes  
         const timer = setTimeout(() => {
             setLoading(false); // Arrêter le chargement après 2 minutes  
-        }, 80000); // 120000 ms = 2 minutes  
-        console.log(timer)
-
+        }, 10000); // 120000 ms = 2 minutes  
         return () => clearTimeout(timer); // Nettoyer le timer au démontage du composant
     }, []);
 
-
-        let [valeur, setValeur] = useState(100); // Initialisation de la variable à 100
-
-
+    const [temp, setTemp] = useState(1);
 
     if (!weatherData && loading) {
-        const intervalle = 600; // Intervalle de temps en millisecondes (600 ms = 0,8 seconde)  
-        const decrementValue = 100 / (60 * 1000 / intervalle); // Calcul de la valeur à diminuer à chaque intervalle  
-
-        const timer2 = setInterval(() => {
-            valeur -= decrementValue; // Diminuer la valeur  
-            console.log(valeur.toFixed(2)); // Afficher la valeur avec 2 décimales  
-            setValeur(valeur)
-
-
-            // Vérifier si la valeur a atteint 0  
-            if (valeur <= 0) {
-                clearInterval(timer2); // Arrêter l'intervalle  
-                console.log('La valeur a atteint 0.');
-            }
-        }, intervalle);
         return (
             <div className='skelleton-meteo'>
                 <div className='chargement-message'>Chargement...</div>
                 <div className="loading-spinner"></div>
                 <div class="chance-rain-loading">
-                    <div className="text-loading">
-                        {/* <FontAwesomeIcon icon={faCalendar} /> */}
-                        <span >Loading...</span>
-                    </div>
                     <div>
-                        <span className="percentage" >{valeur}%</span>
+                        <span className="percentage" >{temp < 100 && temp >0 ? setTimeout(()=>{setTemp(temp+1)},1000): setTemp(temp=100)}%</span>
                     </div>
                     <div className="progresse-bar-loading" >
-                        <div className="progresse-bar-child-loading" style={{ width: `${valeur}%` }}></div>
+                        <div className="progresse-bar-child-loading" style={{ width: `${temp < 100 && temp >0 ? setTimeout(()=>{setTemp(temp+1)},1000): setTemp(temp=100)}%` }}></div>
                     </div>
                 </div>
             </div>
@@ -134,7 +109,7 @@ const MeteodataHome = () => {
             <div className='meteo-data-home-content'>
                 <div className='meteo-data-content-title'>
                     <h3 style={{ color: "white" }}>{weatherData.location.cityName} <small> {weatherData.location.date}</small></h3>
-                    <p>{heure}</p>
+                    <p><small>Dernière mise à jour :</small> <span style={{color: 'white'}}>{heure}</span></p>
                 </div>
                 <div>
                     <small style={{ color: 'white', fontStyle: 'Italic' }}> Aujourd'hui le soleil se lève à {weatherData.currentWeather.sunrise} et se couche à {weatherData.currentWeather.sunset}.</small>
@@ -146,7 +121,7 @@ const MeteodataHome = () => {
 
                 <div className='meteo-data-home-graph'>
                     <div style={{ height: "85px", paddingTop: "10px" }} className='meteo-data-home-graph-temp'>
-                        <small style={{ color: 'white', position: 'absolute', left: '0', top: '0', width: '100%', opacity: '.6' }}> __ Température</small>
+                        <small style={{ color: 'white', position: 'absolute', left: '0', top: '-15px', width: '100%', zIndex: '-5' }}>Température</small>
                         <LineChart width={320} height={100} data={graphData}>
                             {/* <XAxis dataKey="time" /> */}
                             {/* <YAxis yAxisId="left" unit="°C" /> */}
@@ -155,7 +130,7 @@ const MeteodataHome = () => {
                         </LineChart>
                     </div>
                     <div style={{ height: "85px", paddingTop: "10px" }} className='meteo-data-home-graph-chanceOfrain'>
-                        <small style={{ color: '#2F5AF4', position: 'absolute', left: '0', top: '20px', width: '100%', opacity: '.6' }}>__ Chance de pluie</small>
+                        <small style={{ color: '#2F5AF4', position: 'absolute', left: '0', top: '0px', width: '100%', zIndex: '-5' }}>Chance de pluie</small>
                         <LineChart width={320} height={50} data={graphData}>
                             {/* <XAxis dataKey="time" /> */}
                             {/* <YAxis yAxisId="left" unit="°C" /> */}
@@ -169,7 +144,6 @@ const MeteodataHome = () => {
                 <div className='meteo-data-home-forcast'>
                     {
                         weatherData.byHour.map((item, index) => {
-                            console.log(item);
                             // Assurez-vous que nous ne sommes pas à la dernière itération  
                             if (index < weatherData.byHour.length - 1) {
                                 // Vérifiez si le period-of-the-day de l'item courant est égal à celui du prochain item  
@@ -181,11 +155,19 @@ const MeteodataHome = () => {
                             // Si la condition n'est pas remplie, nous retournons l'élément habituel  
                             return (
                                 <div className='m-d-h-f-content' key={index}>
-                                    <h3>{item.time} <span className='lampe-temoine-pluie' style={{ backgroundColor: "#44a73b" }}>{item.pop * 100}%</span></h3>
+                                    <h3>{item.time}
+                                        <span className='lampe-temoine-pluie'
+                                            style={item.pop * 100 < 30
+                                                ? { backgroundColor: "#44a73b" }
+                                                : item.pop * 100 < 70 && item.pop * 100 >= 30
+                                                    ? { backgroundColor: 'var(--color-primary)' }
+                                                    : { backgroundColor: "red" }}
+                                        >{item.pop * 100}%</span>
+                                    </h3>
                                     <small style={{ color: 'white' }}>
-                                        {item['period-of-the-day'] === 'Journée' && item['period-of-the-day'] == 'Nuit' && parseInt(item['date'].split('/')[0], 10) === new Date().getDate()
+                                        {item['period-of-the-day'] === 'Journée' || item['period-of-the-day'] == 'Nuit' && parseInt(item['date'].split('/')[0], 10) === new Date().getDate()
                                             ? 'Cette' + ' ' + item['period-of-the-day']
-                                            : item['period-of-the-day'] == 'Matin' && item['period-of-the-day'] == 'Soir' && parseInt(item['date'].split('/')[0], 10) === new Date().getDate()
+                                            : item['period-of-the-day'] == 'Matin' || item['period-of-the-day'] == 'Soir' && parseInt(item['date'].split('/')[0], 10) === new Date().getDate()
                                                 ? 'Ce' + ' ' + item['period-of-the-day']
                                                 : parseInt(item['date'].split('/')[0], 10) > new Date().getDate()
                                                     ? 'Demain' + ' ' + item['period-of-the-day']
@@ -201,7 +183,16 @@ const MeteodataHome = () => {
                         })}
 
                 </div>
-                <button className='m-d-h-f-see-more' onClick={showMeteoDetails}>Bahati ya nvuwa ku nyesha kesho {weatherData.next5Days[0].day} {weatherData.next5Days[0].date} : <strong>{weatherData.next5Days[0].pop} %</strong></button>
+                <button 
+                className={
+                    weatherData.next5Days[0].pop < 30 
+                    ?'m-d-h-f-see-more'
+                    :weatherData.next5Days[0].pop < 70 && weatherData.next5Days[0].pop >= 30
+                    ?'m-d-h-f-see-more-jaune'
+                    :'m-d-h-f-see-more-rouge'
+                    } 
+                    onClick={showMeteoDetails}
+                    >La chance de pluie pour {weatherData.next5Days[0].day} {weatherData.next5Days[0].date} à {weatherData.next5Days[0].time} est de <strong>{weatherData.next5Days[0].pop * 100} %.</strong></button>
 
             </div>
         </div>

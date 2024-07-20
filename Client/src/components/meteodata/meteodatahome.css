@@ -16,7 +16,7 @@
 .meteo-data-home {
     gap: 1rem;
     width: 100%;
-    height: 39rem;
+    height: 40rem;
     margin-top: 10px;
     margin-bottom: 1rem;
     border-radius: 1.5rem;
@@ -106,9 +106,6 @@
     /* background-color: aliceblue; */
     padding: 5px;
 }
-.meteo-data-home-graph-temp{
-    /* background-color: #FFA500; */
-}
 .meteo-data-home-graph-chanceOfrain{
     /* background-color: #4b4437; */
     position: absolute;
@@ -117,8 +114,8 @@
 
 .m-d-h-f-content {
     gap: 5px;
-    width: 6rem;
-    height: 12.5rem;
+    width: 6.2rem;
+    height: 13rem;
     border-radius: 1.5rem;
     display: flex;
     flex-direction: column;
@@ -136,8 +133,8 @@
     position: absolute;
     filter: blur(1px);
     z-index: 5;
-    width: 6rem;
-    height: 12.5rem;
+    width: 6.2rem;
+    height: 13rem;
     border-radius: 1.5rem;
     border: 1px solid var(--color-card);
     filter: blur(4px);
@@ -191,6 +188,22 @@
     position: relative;
 }
 
+.lampe-temoine-pluie {
+    width: 35px;
+    height: 35px;
+    padding: 5px;
+    z-index: 200;
+    position: absolute;
+    font-size: 13px;
+    bottom: 20px;
+    left: 30px;
+    border-radius: 50px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+
 .m-d-h-f-see-more {
     margin-top: 1.9rem;
     padding: 15px;
@@ -204,7 +217,13 @@
     transition: .3s;
     animation: clignotementAlert 2s infinite linear;
 }
-
+.m-d-h-f-see-more:hover {
+    background: linear-gradient(180.63deg, #44a73b 0%, #44a73b 100%);
+    border: 3px solid #44a73b;
+    transform: scale(1.2);
+    box-shadow: 0 10px 34px #44a73b;
+    animation: inherit;
+}
 @keyframes clignotementAlert {
     30% {
         border: 3px solid #44a73b;
@@ -223,28 +242,81 @@
     }
 }
 
-.m-d-h-f-see-more:hover {
-    background: linear-gradient(180.63deg, #44a73b 0%, #44a73b 100%);
-    border: 3px solid #44a73b;
+.m-d-h-f-see-more-jaune {
+    margin-top: 1.9rem;
+    padding: 15px;
+    font-weight: 600;
+    color: white;
+    z-index: 100;
+    cursor: pointer;
+    border-radius: 50px;
+    background: #cc7402;
+    border: 3px solid #cc7402;
+    transition: .3s;
+    animation: clignotementAlertJaune 2s infinite linear;
+}
+.m-d-h-f-see-more-jaune:hover {
+    background: linear-gradient(180.63deg, #FAA12F 0%, #fdb250 100%);
+    border: 3px solid #FAA12F;
     transform: scale(1.2);
-    box-shadow: 0 10px 34px #44a73b;
+    box-shadow: 0 10px 34px #FAA12F;
     animation: inherit;
 }
+@keyframes clignotementAlertJaune {
+    30% {
+        border: 3px solid #FAA12F;
+        box-shadow: 0 10px 34px #FAA12F;
+        background: #FAA12F;
+    }
 
-.lampe-temoine-pluie {
-    width: 35px;
-    height: 35px;
-    padding: 5px;
-    background-color: #44a73b;
-    z-index: 200;
-    position: absolute;
-    font-size: 13px;
-    bottom: 20px;
-    left: 30px;
+    100% {
+        background: #cc7402;
+        border: 3px solid #cc7402;
+    }
+
+    30% {
+        border: 3px solid #FAA12F;
+        box-shadow: 0 10px 34px #FAA12F;
+    }
+}
+
+
+.m-d-h-f-see-more-rouge {
+    margin-top: 1.9rem;
+    padding: 15px;
+    font-weight: 600;
+    color: white;
+    z-index: 100;
+    cursor: pointer;
     border-radius: 50px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
+    background: #750101;
+    border: 3px solid #750101;
+    transition: .3s;
+    animation: clignotementAlertRouge 2s infinite linear;
+}
+.m-d-h-f-see-more-rouge:hover {
+    background: linear-gradient(180.63deg, red 0%, #f55858 100%);
+    border: 3px solid red;
+    transform: scale(1.2);
+    box-shadow: 0 10px 34px red;
+    animation: inherit;
+}
+@keyframes clignotementAlertRouge {
+    30% {
+        border: 3px solid red;
+        box-shadow: 0 10px 34px red;
+        background: red;
+    }
+
+    100% {
+        background: #750101;
+        border: 3px solid #750101;
+    }
+
+    30% {
+        border: 3px solid red;
+        box-shadow: 0 10px 34px red;
+    }
 }
 
 @media (max-width:1280px) {

@@ -21,7 +21,7 @@
 
 @media (min-width:868px) {
     .meteo-contenair {
-        border: 5px solid var(--color-red);
+        /* border: 5px solid var(--color-red); */
         margin: 0 15rem;
     }
 
@@ -147,7 +147,7 @@
     border: 1px solid var(--color-border2);
     border-radius: 1.5rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     box-shadow: 0 -10px 10px rgba(255, 255, 255, 0.1),
         inset 0 -0px 0px rgba(255, 255, 255, 0.09),
         0 15px 15px rgba(0, 0, 0, 0.03),
@@ -262,7 +262,7 @@
     overflow: hidden;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 
     border: 1px solid var(--color-border2);
     border-radius: 1.5rem;

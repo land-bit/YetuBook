@@ -9,7 +9,7 @@ export default function PressionAtmospherique({pression}){
 
     return (
         <GaugeComponent
-        value={percentage}
+        value={Math.round(percentage)}
         type="radial"
         labels={{
           tickLabels: {

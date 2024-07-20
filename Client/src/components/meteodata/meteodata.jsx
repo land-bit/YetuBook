@@ -18,10 +18,12 @@ import AirPollutionGauge from '../../reusebleComponents/AirPollutionGauge';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import showChat from '../popup/showChat';
+import aqidocimag from '../../assets/icon/aqidoc.jpg';
 
 const Meteodata = () => {
   const [climateData, setClimateData] = useState([]);
   const [currentWeather, setCurrentWeather] = useState(null);
+  const [airQualityIndice, setAirQualityIndice] = useState(null)
   const [lastTemperature, setLastTemperature] = useState(null);
   const [timestamp, setTimestamp] = useState(null);
   const intervalRef = useRef(null);
@@ -33,12 +35,14 @@ const Meteodata = () => {
 
       try {
         const response = await getCurrentWeather();
+        const airQualityIndice = await getAirPollution()
         const previsionMeteo = await getPrevisionMeteo();
         const data = await getGoodFormatWeatherData();
 
         // console.log(response)
         // console.log(previsionMeteo)
         // console.log(data)
+        console.log(airQualityIndice)
 
         const newEntry = {
           time: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }),
@@ -48,6 +52,7 @@ const Meteodata = () => {
 
         setClimateData(prevData => [...prevData, newEntry]);
         setCurrentWeather(response);
+        setAirQualityIndice(airQualityIndice);
         setTimestamp(new Date().toLocaleString('fr-FR'));
         if (climateData.length > 0) {
           setLastTemperature(climateData[climateData.length - 1].temperature);
@@ -98,7 +103,7 @@ const Meteodata = () => {
       <div className='meteo-info'>
         <div className='temperature-description'>
           <div>
-            <div className='temperature'>{Math.floor(currentWeather.main.temp)}°C <small className='fleche'>{temperatureTrend}</small></div>
+            <div className='temperature'>{Math.round(currentWeather.main.temp)}°C <small className='fleche'>{temperatureTrend}</small></div>
             <p>Précipitation: {currentWeather.rain?.['1h'] || 0} mm</p>
             <p>Pression atm: {currentWeather.main.pressure} hPa</p>
           </div>
@@ -147,21 +152,23 @@ const Meteodata = () => {
       </div>
       <br />
       <p><strong>Pression atmospherique :</strong></p>
+      <small>Ici la pression atmospherique est expriée en pourcentage. La valeur minimale: 870hPa et la valeur maximale: 1050hPa</small>
+      <br />
       <br />
 
       <div className='pression-atmospherique'>
-        <div className='pression-gauge'>
+        {/* <div className='pression-gauge'> */}
           <PressionAtmospherique pression={currentWeather.main.pressure} />
-        </div>
+        {/* </div> */}
 
-        <div className="speedo-boussole-pression-text">
+        {/* <div className="speedo-boussole-pression-text">
           <small>(%) : Ici la pression atmospherique est expriée en pourcentage. La valeur minimale: 870hPa et la valeur maximale: 1050hPa</small>
-        </div>
+        </div> */}
 
       </div>
 
       <br />
-      <p><strong>Qualité de l'air et concentration de <a href="#">polluants dans dans l'air: </a></strong></p>
+      <p><strong>Indice de Qualité de l'Air :</strong></p>
       <br />
 
       {/* <div>
@@ -170,23 +177,20 @@ const Meteodata = () => {
 
       <div className="air-quality">
 
-        <div className='air-pollution-gauge'>
-          <AirPollutionGauge airQualityIndice={55} />
-          <small>Indice de Qualité de l'Air</small>
-        </div>
-
-        <br />
-
-
+        {/* <div className='air-pollution-gauge'> */}
+          <AirPollutionGauge airQualityIndice={airQualityIndice.list[0].main.aqi} />
+          <small></small>
+        {/* </div> */}
       </div>
       <br />
-
+      <img src={aqidocimag} alt=''/>
+      <br />
       <div className='carte-interactive'>
         <CartInteractive />
       </div>
       <br />
 
-      <div className="buletin-meteo">
+      {/* <div className="buletin-meteo">
         <h3>QUESTIONS FREQUEMMENT POSÉES SUR LA MÉTÉO</h3>
         <h5>PLEUVRA-T-IL AUJOURD'HUI À GOMA ?</h5>
         <p>84% de chances de pluie ce matin <br />
@@ -213,7 +217,7 @@ const Meteodata = () => {
           Le soir, l'humidité grimpe à 60%, ce qui confirme un risque de pluie persistant.
           La nuit, l'humidité atteint 65%, ce qui est encore plus élevé et explique le fort risque de pluie nocturne.
           Donc les données d'humidité viennent compléter les informations sur les probabilités de pluie et confirment qu'il y a de fortes chances de précipitations tout au long de la journée à Goma. L'humidité élevée, au-dessus de 50%, est un bon indicateur du risque de pluie.</p>
-      </div>
+      </div> */}
       <br />
       <br />
 
