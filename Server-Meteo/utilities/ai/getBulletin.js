@@ -1,8 +1,9 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import getGoodFormatWeatherData from "../weather/getGoodFormatWeatherData";
 import autherdata from "./aboutAuther";
+dotenv.config();
 
-const API_KEY_GEMINI = import.meta.env.VITE_API_KEY_GEMINI
+const API_KEY_GEMINI = process.env.API_KEY_GEMINI;
 
 const genAI = new GoogleGenerativeAI(API_KEY_GEMINI);
 
@@ -17,8 +18,6 @@ export default async function getGemini(promptInput, conversationHistory) {
   const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
   const data = await getGoodFormatWeatherData();
-
-const userName = 'Gérard Cubaka';
 
   const promptWithJson = `
     **Role:** ${userName}'s friend named MétéoChat developped by Gérard Cubaka form Goma D.R.Congo (${autherdata})

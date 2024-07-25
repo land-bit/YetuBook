@@ -24,8 +24,6 @@ export default function Message() {
             </div>
 
 
-
-
             <div className="message" onClick={showChat}>
                 <div className="user">
                     <img src={meteochat} alt="" />
@@ -33,7 +31,7 @@ export default function Message() {
                 </div>
                 <div className="message-body2">
                     <div className="message-body">
-                        <h5>MeteoChat</h5>
+                        <h5>MétéoChat</h5>
                         <p className="para">Jambo Gérard, hii ni ripoti ya ma jira ya léo</p>
                     </div>
                     <div>
@@ -45,45 +43,52 @@ export default function Message() {
                 </div>
             </div>
 
-            <div className="message" onClick={showChat}>
-                <div className="user">
-                    <img src={ai} alt="" />
-                    <div className="green-active"></div>
-                </div>
-                <div className="message-body2">
-                    <div className="message-body">
-                        <h5>YetuGPT</h5>
-                        <p className="para">Jambo Gérard, nikusaidiye namna gani léo ?</p>
+            <Link to='/chatgpt'>
+                <div className="message">
+                    <div className="user">
+                        <img src={ai} alt="" />
+                        <div className="green-active"></div>
                     </div>
-                    <div>
-                        <div className="notification-message">
-                            <p>12:30</p>
-                            <div className="nombre"><span>2</span></div>
+                    <div className="message-body2">
+                        <div className="message-body">
+                            <h5>Lumumba-IA</h5>
+                            <p className="para">Jambo Gérard, nikusaidiye namna gani léo ?</p>
+                        </div>
+                        <div>
+                            <div className="notification-message">
+                                <p>12:30</p>
+                                <div className="nombre"><span>2</span></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </Link>
             {
                 MessageData.map(mess => (
 
-                    <div className="message" onClick={showChat} key={mess.id}>
-                        <div className="user">
-                            <img src={mess.img} alt="" />
-                            <div className="green-active"></div>
-                        </div>
-                        <div className="message-body2">
-                            <div className="message-body">
-                                <h5>{mess.name}</h5>
-                                <p className="para">{mess.mText}</p>
+                    <Link to='/chatbox' key={mess.id}>
+
+                        <div className="message" >
+                            <div className="user">
+                                <img src={mess.img} alt="" />
+                                <div className="green-active"></div>
                             </div>
-                            <div>
-                                <div className="notification-message">
-                                    <p>12:30</p>
-                                    <div className="nombre"><span>2</span></div>
+                            <div className="message-body2">
+                                <div className="message-body">
+                                    <h5>{mess.name}</h5>
+                                    <p className="para">{mess.mText}</p>
+                                </div>
+                                <div>
+                                    <div className="notification-message">
+                                        <p>12:30</p>
+                                        <div className="nombre"><span>2</span></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+
+                    </Link>
+
 
                 ))
             }

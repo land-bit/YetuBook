@@ -34,24 +34,22 @@ const Meteodata = () => {
     const fetchClimateData = async () => {
 
       try {
-        const response = await getCurrentWeather();
+        const currentWeatherdata = await getCurrentWeather();
         const airQualityIndice = await getAirPollution()
-        const previsionMeteo = await getPrevisionMeteo();
-        const data = await getGoodFormatWeatherData();
+        const previsiondata = await getGoodFormatWeatherData();
 
-        // console.log(response)
-        // console.log(previsionMeteo)
-        // console.log(data)
+        // console.log(currentWeatherdata)
+        // console.log(previsiondata)
         console.log(airQualityIndice)
 
         const newEntry = {
           time: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }),
-          temperature: response.main.temp,
-          precipitation: response.rain?.['1h'] || 0
+          temperature: currentWeatherdata.main.temp,
+          precipitation: currentWeatherdata.rain?.['1h'] || 0
         };
 
         setClimateData(prevData => [...prevData, newEntry]);
-        setCurrentWeather(response);
+        setCurrentWeather(currentWeatherdata);
         setAirQualityIndice(airQualityIndice);
         setTimestamp(new Date().toLocaleString('fr-FR'));
         if (climateData.length > 0) {
@@ -66,7 +64,6 @@ const Meteodata = () => {
     fetchClimateData();
 
     intervalRef.current = setInterval(fetchClimateData, 1000 * 60 * 15);//une réquête toutes les 15 minutes
-
     return () => clearInterval(intervalRef.current);
 
   }, []);
@@ -96,7 +93,7 @@ const Meteodata = () => {
           <HorlogeNumerique />
         </div>
         <div className='meteo-entete'>
-          <div className='meteo-titre'>Données Météorologiques en temps réel pour: <strong>{currentWeather.name}</strong></div>
+          <div className='meteo-titre'>Données Météorologiques pour: <strong>{currentWeather.name}</strong></div>
           <small>Dernière mise à jour: {timestamp}</small>
         </div>
       </div>
@@ -118,11 +115,14 @@ const Meteodata = () => {
         </div>
       </div>
       <br />
-      <p><strong>Pleuvra-t-il aujourd'hui à <strong>{currentWeather.name}</strong> ? <FontAwesomeIcon icon={faPaperPlane} /></strong></p>
-      <p><strong>Quel sera le temps à <strong>{currentWeather.name}</strong> demain ? <FontAwesomeIcon icon={faPaperPlane} /></strong></p>
+      <h3>FAQ sur la météo à {currentWeather.name}</h3>
+      <br />
+      <p><strong>Pleuvra-t-il aujourd'hui à <strong>{currentWeather.name}</strong> ? </strong></p>
+      <p><strong>Quel sera le temps à <strong>{currentWeather.name}</strong> demain ? </strong></p>
       <br />
       <div className='discuter-avec-meteo btn-red' onClick={showChat}>Discuter avec la météo...</div>
       <br />
+      <hr />
 
       <p><strong>Capteur de température et d'humidité :</strong></p>
       <br />
@@ -157,9 +157,9 @@ const Meteodata = () => {
       <br />
 
       <div className='pression-atmospherique'>
-        {/* <div className='pression-gauge'> */}
+        <div className='pression-gauge'>
           <PressionAtmospherique pression={currentWeather.main.pressure} />
-        {/* </div> */}
+        </div>
 
         {/* <div className="speedo-boussole-pression-text">
           <small>(%) : Ici la pression atmospherique est expriée en pourcentage. La valeur minimale: 870hPa et la valeur maximale: 1050hPa</small>

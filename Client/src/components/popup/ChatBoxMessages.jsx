@@ -77,7 +77,7 @@ export default function ChatBoxMessages() {
                                 <img src={meteochat} alt="avatar" id="avatar" />
                             </div>
                             <div className="userName">
-                                MeteoChat
+                                MétéoChat
                                 <p className="showOnline">online</p>
                                 {/*<span className="typing" style="color:white; font-weight: 100; font-style:italic;font-size: 10px;line-height: 8px; display: none;">typing . . .</span> */}
                             </div>

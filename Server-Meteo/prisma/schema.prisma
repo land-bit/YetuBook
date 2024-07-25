@@ -1,0 +1,164 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Localisation {
+  date       String @id
+  time       String
+  cityName   String
+  country    String
+  population Int
+  timezone   Int?
+  latitude   Int
+  longitude  Int
+
+  @@map("localisation")
+}
+
+model CurrentWeather {
+  date        String  @id
+  dt          Int     @unique
+  city        String
+  time        String
+  tempMin     Int
+  tempMax     Int
+  temperature Int
+  humidity    Int
+  rain        Float?
+  snow        Float?
+  pressure    Int
+  desc        String
+  base        String
+  clouds      String
+  visibility  Int
+  windSpeed   Int
+  windGust    Int
+  windDeg     Int
+  windDir     String
+  windChill   String
+  feelsLike   Int
+  dewPoint    Int
+  weatherType String?
+  weatherIcon String?
+
+  @@map("currentweather")
+}
+
+model CurrentHour {
+  date        String   @id
+  dt          Int      @unique
+  time        String
+  temperature Int
+  humidity    Int
+  description String?
+  weatherType String?
+  weatherIcon String?
+  clouds      Int
+  visibility  Int
+  tempMin     Int
+  tempMax     Int
+  windSpeed   Int
+  windGust    Int
+  windDeg     Int
+  windDir     String
+  rain        Float?
+  snow        Float?
+  pressure    Int
+  pop         Int?
+  sunrise     String
+  sunset      String
+  createdAt   DateTime @default(now())
+
+  @@map("currenthour")
+}
+
+model ByHour {
+  date           String   @id
+  dt             Int      @unique
+  day            String
+  time           String
+  temperature    Int
+  humidity       Int
+  description    String?
+  weatherType    String?
+  weatherIcon    String?
+  partOfTheDay   String
+  periodOfTheDay String
+  clouds         Int
+  visibility     Int
+  tempMin        Int
+  tempMax        Int
+  windSpeed      Int
+  windGust       Int
+  windDeg        Int
+  windDir        String
+  windChill      Int
+  rain           Float?
+  snow           Float?
+  pressure       Int
+  pop            Int?
+  dewPoint       Int
+  sunrise        String
+  sunset         String
+  uvi            Int
+  createdAt      DateTime @default(now())
+
+  @@map("byhour")
+}
+
+model Next5days {
+  date           String   @id @default(uuid())
+  dt             Int      @unique
+  time           String
+  temperature    Int
+  humidity       Int
+  description    String?
+  weatherType    String?
+  weatherIcon    String?
+  partOfTheDay   String
+  periodOfTheDay String
+  clouds         Int
+  visibility     Int
+  tempMin        Int
+  tempMax        Int
+  windSpeed      Int
+  windGust       Int
+  windDeg        Int
+  windDir        String
+  windChill      Int
+  rain           Float?
+  snow           Float?
+  pressure       Int
+  pop            Int?
+  sunrise        String
+  sunset         String
+  uvi            Int
+  createdAt      DateTime @default(now())
+
+  @@map("next5days")
+}
+
+model AirPollution {
+  date      String   @id
+  pm25      Float?
+  pm10      Float?
+  o3        Float?
+  no2       Float?
+  so2       Float?
+  co        Float?
+  aqi       Int?
+  createdAt DateTime @default(now())
+
+  @@map("airpollution")
+}

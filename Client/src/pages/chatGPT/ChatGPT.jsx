@@ -53,7 +53,7 @@ export default function ChatGPT() {
             <p>Comment rencontrer le président Tchisekedi ?</p>
           </div>
           <div className="inforchagpt">
-            <small>Cette application utilise l'API de chatGPT-3.5 de OpenAI. <br /> <br/>Gome, RDCongo ©2024</small>
+            <small>Cette application utilise l'API de chatGPT-3.5 de OpenAI. <br /> <br/>Et a été dévelopé à Gome, RDCongo ©2024</small>
           </div>
         </div>
         <div className="chat-container">
@@ -63,7 +63,7 @@ export default function ChatGPT() {
                 <div className="kiriku">
                   <img src={AI} alt="" />
                 </div>
-                <h4>YetuGPT</h4>
+                <h4>Lumumba-IA</h4>
               </div>
             </div>
           </div>

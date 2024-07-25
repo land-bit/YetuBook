@@ -3,7 +3,7 @@ import './progressbar.css'
 export default function ProgressBar({ tag, value }) {
     return (
         <>
-            <div class="chance-rain">
+            <div className="chance-rain">
                 <div className="chance-rain-date">
                     {/* <FontAwesomeIcon icon={faCalendar} /> */}
                     <span >{tag}</span>

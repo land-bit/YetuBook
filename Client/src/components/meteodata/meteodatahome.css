@@ -176,6 +176,7 @@
 .meteo-data-home-forcast {
     display: flex;
     gap: .5rem;
+    padding-top: 15px;
 }
 
 .m-d-h-f-content p,
@@ -205,7 +206,7 @@
 
 
 .m-d-h-f-see-more {
-    margin-top: 1.9rem;
+    margin-top: 1rem;
     padding: 15px;
     font-weight: 600;
     color: white;
@@ -243,7 +244,7 @@
 }
 
 .m-d-h-f-see-more-jaune {
-    margin-top: 1.9rem;
+    margin-top: 1rem;
     padding: 15px;
     font-weight: 600;
     color: white;
@@ -282,7 +283,7 @@
 
 
 .m-d-h-f-see-more-rouge {
-    margin-top: 1.9rem;
+    margin-top: 1rem;
     padding: 15px;
     font-weight: 600;
     color: white;
