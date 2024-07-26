@@ -1,3 +1,4 @@
+import getAlert from '../ai/getAlert.js';
 import getAirPollution from './getAirPollution.js';
 import getCurrentWeather from './getCurrentWeather.js';
 import FormatUtils from './getFormat.js';
@@ -10,7 +11,7 @@ const getGoodFormatWeatherData = async (longitude, latitude) => {
     const prevision = await getPrevisionMeteo(longitude, latitude);
     const currentWeather = await getCurrentWeather(longitude, latitude);
     const airPollution = await getAirPollution(longitude, latitude);
-    
+    const alert = await getAlert(prevision);
     let byHour = [], currDt = prevision.list[0].dt_txt.slice(8, 10), next5Days = [];
 
     for (let i = 0; i < 6; i++) {
@@ -19,11 +20,12 @@ const getGoodFormatWeatherData = async (longitude, latitude) => {
             'day': formatUtils.getDay(prevision.list[i].dt_txt).slice(0, 3),
             'time': formatUtils.getDisplayTime(prevision.list[i].dt_txt),
             'temperature': Math.round(prevision.list[i].main.temp),
+            'dt': prevision.list[i].dt,
             'description': formatUtils.capitalizeFirstLetters(prevision.list[i].weather[0].description),
             'weatherType': prevision.list[i].weather[0].main,
             'weatherIcon': prevision.list[i].weather[0].icon,
-            'minTemp': Math.floor(prevision.list[i].main.temp_min),
-            'maxTemp': Math.ceil(prevision.list[i].main.temp_max),
+            'tempMin': Math.floor(prevision.list[i].main.temp_min),
+            'tempMax': Math.ceil(prevision.list[i].main.temp_max),
             'Kalmanfilter': prevision.list[i].main.temp_kf,
             'humidity': prevision.list[i].main.humidity,
             'windSpeed': prevision.list[i].wind.speed,
@@ -41,6 +43,8 @@ const getGoodFormatWeatherData = async (longitude, latitude) => {
             'feelsLike': Math.round(prevision.list[i].main.feels_like),
             'grndLevel': prevision.list[i].main.grnd_level,
             'seaLevel': prevision.list[i].main.sea_level,
+            'sunrise': formatUtils.getTimeFromTimeStamp(prevision.city.sunrise),
+            'sunset': formatUtils.getTimeFromTimeStamp(prevision.city.sunset),
             'visibility': prevision.list[i].visibility,
             'windChill': formatUtils.calculateWindChill(prevision.list[i].main.temp, prevision.list[i].wind.speed),
             'dewPoint': formatUtils.calculateWindChill(prevision.list[i].main.temp, prevision.list[i].main.humidity),
@@ -59,8 +63,9 @@ const getGoodFormatWeatherData = async (longitude, latitude) => {
             'description': formatUtils.capitalizeFirstLetters(prevision.list[i].weather[0].description),
             'weatherType': prevision.list[i].weather[0].main,
             'weatherIcon': prevision.list[i].weather[0].icon,
-            'minTemp': Math.floor(prevision.list[i].main.temp_min),
-            'maxTemp': Math.ceil(prevision.list[i].main.temp_max),
+            'temperature': Math.round(prevision.list[i].main.temp),
+            'tempMin': Math.floor(prevision.list[i].main.temp_min),
+            'tempMax': Math.ceil(prevision.list[i].main.temp_max),
             'Kalmanfilter': prevision.list[i].main.temp_kf,
             'humidity': prevision.list[i].main.humidity,
             'windSpeed': prevision.list[i].wind.speed,
@@ -79,6 +84,8 @@ const getGoodFormatWeatherData = async (longitude, latitude) => {
             'grndLevel': prevision.list[i].main.grnd_level,
             'seaLevel': prevision.list[i].main.sea_level,
             'visibility': prevision.list[i].visibility,
+            'sunrise': formatUtils.getTimeFromTimeStamp(prevision.city.sunrise),
+            'sunset': formatUtils.getTimeFromTimeStamp(prevision.city.sunset),
             'windChill': formatUtils.calculateWindChill(prevision.list[i].main.temp, prevision.list[i].wind.speed),
             'dewPoint': formatUtils.calculateWindChill(prevision.list[i].main.temp, prevision.list[i].main.humidity),
             'uvi': formatUtils.calculateUVI(prevision.city.coord.lat, 1500, prevision.list[i].dt_txt.split(' ')[1].split(':')[0], prevision.list[i].clouds.all)
@@ -117,11 +124,12 @@ const getGoodFormatWeatherData = async (longitude, latitude) => {
             'temperature': Math.round(currentWeather.main.temp),
             'tempMin': Math.floor(currentWeather.main.temp_min),
             'tempMax': Math.ceil(currentWeather.main.temp_max),
-            'grndLevel': currentWeather.main.grnd_level,
-            'seaLevel': currentWeather.main.sea_level,
+            // 'grndLevel': currentWeather.main.grnd_level,
+            // 'seaLevel': currentWeather.main.sea_level,
             'windChill': formatUtils.calculateWindChill(currentWeather.main.temp, currentWeather.wind.speed),
             'dewPoint': formatUtils.calculateDewPoint(currentWeather.main.temp, currentWeather.main.humidity),
-            'uvi': formatUtils.calculateUVI(currentWeather.coord.lat, 1500, formatUtils.getFormattedTodayHour().split(':')[0], currentWeather.clouds.all)
+            'uvi': formatUtils.calculateUVI(currentWeather.coord.lat, 1500, formatUtils.getFormattedTodayHour().split(':')[0], currentWeather.clouds.all),
+            'alert': alert
         },
         'currentHour': {
             'date': formatUtils.getFormattedTodayDate(),
@@ -129,7 +137,7 @@ const getGoodFormatWeatherData = async (longitude, latitude) => {
             'time': formatUtils.getFormattedTodayHour(),
             'pop': prevision.list[0].pop * 100,
             'temperature': Math.round(prevision.list[0].main.temp),
-            'desciption': formatUtils.capitalizeFirstLetters(prevision.list[0].weather[0].description),
+            'description': formatUtils.capitalizeFirstLetters(prevision.list[0].weather[0].description),
             'weatherType': prevision.list[0].weather[0].main,
             'weatherIcon': prevision.list[0].weather[0].icon,
             'clouds': prevision.list[0].clouds.all,
@@ -146,6 +154,7 @@ const getGoodFormatWeatherData = async (longitude, latitude) => {
             'sunrise': formatUtils.getTimeFromTimeStamp(prevision.city.sunrise),
             'sunset': formatUtils.getTimeFromTimeStamp(prevision.city.sunset),
             'windChill': formatUtils.calculateWindChill(prevision.list[0].main.temp, prevision.list[0].wind.speed),
+            'uvi': formatUtils.calculateUVI(prevision.city.coord.lat, 1500, prevision.list[0].dt_txt.split(' ')[1].split(':')[0], prevision.list[0].clouds.all)
         },
         'byHour': byHour,
         'next5Days': next5Days,
@@ -154,7 +163,12 @@ const getGoodFormatWeatherData = async (longitude, latitude) => {
             'dt': airPollution.list[0].dt,
             'time': formatUtils.getFormattedTodayHour(),
             'aqi': airPollution.list[0].main.aqi,
-            'polluants': airPollution.list[0].components,
+            'pm25': airPollution.list[0].components.pm25,
+            'pm10': airPollution.list[0].components.pm10,
+            'o3': airPollution.list[0].components.o3,
+            'no2': airPollution.list[0].components.no2,
+            'so2': airPollution.list[0].components.so2,
+            'co': airPollution.list[0].components.co
         }
     };
 }

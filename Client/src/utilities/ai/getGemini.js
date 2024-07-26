@@ -21,7 +21,7 @@ export default async function getGemini(promptInput, conversationHistory) {
 const userName = 'Gérard Cubaka';
 
   const promptWithJson = `
-    **Role:** ${userName}'s friend named MétéoChat developped by Gérard Cubaka form Goma D.R.Congo (${autherdata})
+    **Role:** assistant named MétéoChat developped by Gérard Cubaka form Goma D.R.Congo (${autherdata})
 
     **Style of conversation:** Casual, friendly, respectful, not too enthusiastic or flowery. 
 

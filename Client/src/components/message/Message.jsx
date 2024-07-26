@@ -15,7 +15,7 @@ export default function Message() {
     return (
         <div className="Messages">
             <div className="message-top">
-                <h4>Masolô ! </h4>
+                <h4>Masolô </h4>
                 <span><FontAwesomeIcon icon={faEdit} /></span>
             </div>
             <div className="message-search">
@@ -51,7 +51,7 @@ export default function Message() {
                     </div>
                     <div className="message-body2">
                         <div className="message-body">
-                            <h5>Lumumba-IA</h5>
+                            <h5>Toto-IA</h5>
                             <p className="para">Jambo Gérard, nikusaidiye namna gani léo ?</p>
                         </div>
                         <div>

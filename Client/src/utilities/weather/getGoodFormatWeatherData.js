@@ -1,3 +1,4 @@
+import getAlert from '../ai/getAlert';
 import getAirPollution from './getAirPollution';
 import getCurrentWeather from './getCurrentWeather';
 import FormatUtils from './getFormat';
@@ -10,6 +11,7 @@ const getGoodFormatWeatherData = async () => {
     const prevision = await getPrevisionMeteo();
     const currentWeather = await getCurrentWeather();
     const airPollution = await getAirPollution();
+    const alert = await getAlert(prevision);
     
     let byHour = [], currDt = prevision.list[0].dt_txt.slice(8, 10), next5Days = [];
 
@@ -117,8 +119,8 @@ const getGoodFormatWeatherData = async () => {
             'grndLevel': currentWeather.main.grnd_level,
             'seaLevel': currentWeather.main.sea_level,
             'dewPoint': formatUtils.calculateDewPoint(currentWeather.main.temp, currentWeather.main.humidity),
-            'uvi': formatUtils.calculateUVI(currentWeather.coord.lat, 1500, formatUtils.getFormattedTodayHour().split(':')[0], currentWeather.clouds.all)
-            
+            'uvi': formatUtils.calculateUVI(currentWeather.coord.lat, 1500, formatUtils.getFormattedTodayHour().split(':')[0], currentWeather.clouds.all),
+            'alert': alert
         },
         'currentHour': {
             'date': formatUtils.getFormattedTodayDate(),
@@ -149,7 +151,8 @@ const getGoodFormatWeatherData = async () => {
             'time': formatUtils.getFormattedTodayHour(),
             'aqi': airPollution.list[0].main.aqi,
             'polluants': airPollution.list[0].components,
-        }
+        },
+        'alert': alert
     };
 }
 

@@ -14,7 +14,8 @@ datasource db {
 }
 
 model Localisation {
-  date       String @id
+  id         Int    @id @default(autoincrement())
+  date       String
   time       String
   cityName   String
   country    String
@@ -27,8 +28,9 @@ model Localisation {
 }
 
 model CurrentWeather {
-  date        String  @id
-  dt          Int     @unique
+  id          Int      @id @default(autoincrement())
+  date        String
+  dt          Int
   city        String
   time        String
   tempMin     Int
@@ -38,26 +40,30 @@ model CurrentWeather {
   rain        Float?
   snow        Float?
   pressure    Int
-  desc        String
+  description String
   base        String
-  clouds      String
+  clouds      Int
   visibility  Int
   windSpeed   Int
-  windGust    Int
+  windGust    Float?
   windDeg     Int
   windDir     String
-  windChill   String
+  windChill   Int
   feelsLike   Int
   dewPoint    Int
   weatherType String?
   weatherIcon String?
+  uvi         Int
+  alert       String
+  createdAt   DateTime @default(now())
 
   @@map("currentweather")
 }
 
 model CurrentHour {
-  date        String   @id
-  dt          Int      @unique
+  id          Int      @id @default(autoincrement())
+  date        String
+  dt          Int
   time        String
   temperature Int
   humidity    Int
@@ -69,23 +75,26 @@ model CurrentHour {
   tempMin     Int
   tempMax     Int
   windSpeed   Int
-  windGust    Int
+  windGust    Float?
   windDeg     Int
   windDir     String
+  windChill   Int
   rain        Float?
   snow        Float?
   pressure    Int
   pop         Int?
   sunrise     String
   sunset      String
+  uvi         Int
   createdAt   DateTime @default(now())
 
   @@map("currenthour")
 }
 
 model ByHour {
-  date           String   @id
-  dt             Int      @unique
+  id             Int      @id @default(autoincrement())
+  date           String
+  dt             Int
   day            String
   time           String
   temperature    Int
@@ -95,12 +104,16 @@ model ByHour {
   weatherIcon    String?
   partOfTheDay   String
   periodOfTheDay String
+  grndLevel Int
+  seaLevel Int
+  feelsLike Int
   clouds         Int
   visibility     Int
   tempMin        Int
   tempMax        Int
+  Kalmanfilter   Int
   windSpeed      Int
-  windGust       Int
+  windGust       Float?
   windDeg        Int
   windDir        String
   windChill      Int
@@ -118,8 +131,10 @@ model ByHour {
 }
 
 model Next5days {
-  date           String   @id @default(uuid())
-  dt             Int      @unique
+  id             Int     @id @default(autoincrement())
+  date           String
+  day            String
+  dt             Int
   time           String
   temperature    Int
   humidity       Int
@@ -128,36 +143,45 @@ model Next5days {
   weatherIcon    String?
   partOfTheDay   String
   periodOfTheDay String
+  grndLevel Int
+  seaLevel Int
+  feelsLike Int
   clouds         Int
   visibility     Int
   tempMin        Int
   tempMax        Int
-  windSpeed      Int
-  windGust       Int
-  windDeg        Int
-  windDir        String
-  windChill      Int
-  rain           Float?
-  snow           Float?
-  pressure       Int
-  pop            Int?
-  sunrise        String
-  sunset         String
-  uvi            Int
-  createdAt      DateTime @default(now())
+  Kalmanfilter   Int
+  windSpeed Int
+  windGust  Float?
+  windDeg   Int
+  windDir   String
+  windChill Int
+  rain      Float?
+  snow      Float?
+  pressure  Int
+  pop       Int?
+  sunrise   String
+  sunset    String
+  dewPoint Int
+  uvi       Int
+  createdAt DateTime @default(now())
 
   @@map("next5days")
 }
 
 model AirPollution {
-  date      String   @id
-  pm25      Float?
-  pm10      Float?
-  o3        Float?
-  no2       Float?
-  so2       Float?
-  co        Float?
-  aqi       Int?
+  id   Int    @id @default(autoincrement())
+  date String
+  dt   Int
+  time String
+  aqi  Int?
+  pm25 Float?
+  pm10 Float?
+  o3   Float?
+  no2  Float?
+  so2  Float?
+  co   Float?
+
   createdAt DateTime @default(now())
 
   @@map("airpollution")

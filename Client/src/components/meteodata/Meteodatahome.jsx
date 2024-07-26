@@ -14,7 +14,7 @@ const MeteodataHome = () => {
 
     const [previsionWeatherdata, setWeatherData] = useState(null);
     const [currentWeatherdata, setCurrentWeatherdata] = useState();
-    const [error, setError ] = useState(null)
+    const [error, setError] = useState(null)
     const [heure, setHeure] = useState(new Date().toLocaleTimeString());
     const [loading, setLoading] = useState(true);
 
@@ -28,7 +28,7 @@ const MeteodataHome = () => {
 
             } catch (error) {
                 console.error(error);
-                setError(error);                
+                setError(error);
             }
         }
         fetchClimateData();
@@ -122,16 +122,21 @@ const MeteodataHome = () => {
             <div className='meteo-data-home-content'>
                 <div className='meteo-data-content-title'>
                     <h3 style={{ color: "white" }}>{previsionWeatherdata.location.cityName} <small> {previsionWeatherdata.location.date}</small></h3>
-                    <p><small>Dernière mise à jour :</small> <span style={{color: 'white'}}>{heure}</span></p>
+                    <p><small>Dernière mise à jour :</small> <span style={{ color: 'white' }}>{heure}</span></p>
                 </div>
                 <div>
                     <small style={{ color: 'white', fontStyle: 'Italic' }}> Aujourd'hui le soleil se lève à {previsionWeatherdata.currentHour.sunrise} et se couche à {previsionWeatherdata.currentHour.sunset}.</small>
                 </div>
-                <small>Il y a {previsionWeatherdata.currentHour.pop * 100} % de chance qu'il pleuve maintenant.</small>
+                <small>Il y a {previsionWeatherdata.currentHour.pop * 100} % de chance qu'il pleuve à l'heure actuelle.</small>
 
                 <img src={`http://openweathermap.org/img/wn/${currentWeatherdata.weather[0].icon}@2x.png`} alt='' />
 
                 <p style={{ color: 'white' }}>{formatUtils.capitalizeFirstLetters(currentWeatherdata.weather[0].description)}</p>
+                <div className="chance-rain">
+                    <div className="progresse-bar" >
+                        <div className="progresse-bar-child" style={{ marginLeft: `${previsionWeatherdata.currentHour.pop * 100}%` }}></div>
+                    </div>
+                </div>
                 <h1 >{Math.round(currentWeatherdata.main.temp)}°</h1>
 
                 <div className='meteo-data-home-graph'>
@@ -199,16 +204,16 @@ const MeteodataHome = () => {
                         })}
 
                 </div>
-                <button 
-                className={
-                    previsionWeatherdata.next5Days[0].pop*100 < 30 
-                    ?'m-d-h-f-see-more'
-                    :previsionWeatherdata.next5Days[0].pop*100 < 70 && previsionWeatherdata.next5Days[0].pop*100 >= 30
-                    ?'m-d-h-f-see-more-jaune'
-                    :'m-d-h-f-see-more-rouge'
-                    } 
+                <button
+                    className={
+                        previsionWeatherdata.next5Days[0].pop * 100 < 30
+                            ? 'm-d-h-f-see-more'
+                            : previsionWeatherdata.next5Days[0].pop * 100 < 70 && previsionWeatherdata.next5Days[0].pop * 100 >= 30
+                                ? 'm-d-h-f-see-more-jaune'
+                                : 'm-d-h-f-see-more-rouge'
+                    }
                     onClick={showMeteoDetails}
-                    >La chance de pluie pour {previsionWeatherdata.next5Days[0].day} {previsionWeatherdata.next5Days[0].date} à {previsionWeatherdata.next5Days[0].time} est de <strong>{previsionWeatherdata.next5Days[0].pop * 100} %.</strong></button>
+                >La chance de pluie pour {previsionWeatherdata.next5Days[0].day} {previsionWeatherdata.next5Days[0].date} à {previsionWeatherdata.next5Days[0].time} est de <strong>{previsionWeatherdata.next5Days[0].pop * 100} %.</strong></button>
 
             </div>
         </div>

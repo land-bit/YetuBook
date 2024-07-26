@@ -20,6 +20,9 @@ import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import showChat from '../popup/showChat';
 import aqidocimag from '../../assets/icon/aqidoc.jpg';
 
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+
 const Meteodata = () => {
   const [climateData, setClimateData] = useState([]);
   const [currentWeather, setCurrentWeather] = useState(null);
@@ -27,7 +30,7 @@ const Meteodata = () => {
   const [lastTemperature, setLastTemperature] = useState(null);
   const [timestamp, setTimestamp] = useState(null);
   const intervalRef = useRef(null);
-
+  const [prevision, setPrevision] = useState({}); 
 
 
   useEffect(() => {
@@ -51,6 +54,7 @@ const Meteodata = () => {
         setClimateData(prevData => [...prevData, newEntry]);
         setCurrentWeather(currentWeatherdata);
         setAirQualityIndice(airQualityIndice);
+        setPrevision(previsiondata);
         setTimestamp(new Date().toLocaleString('fr-FR'));
         if (climateData.length > 0) {
           setLastTemperature(climateData[climateData.length - 1].temperature);
@@ -115,6 +119,15 @@ const Meteodata = () => {
         </div>
       </div>
       <br />
+      <h3>Alertes Météorologiques</h3>
+      <br />
+      <div style={{color: 'var(--text-color)'}}>
+      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+        {prevision.currentWeather.alert}
+      </ReactMarkdown>
+      </div>
+
+      <br />
       <h3>FAQ sur la météo à {currentWeather.name}</h3>
       <br />
       <p><strong>Pleuvra-t-il aujourd'hui à <strong>{currentWeather.name}</strong> ? </strong></p>
@@ -178,17 +191,20 @@ const Meteodata = () => {
       <div className="air-quality">
 
         {/* <div className='air-pollution-gauge'> */}
-          <AirPollutionGauge airQualityIndice={airQualityIndice.list[0].main.aqi} />
-          <small></small>
+        <AirPollutionGauge airQualityIndice={airQualityIndice.list[0].main.aqi} />
+        <small></small>
         {/* </div> */}
       </div>
       <br />
-      <img src={aqidocimag} alt=''/>
+      <img src={aqidocimag} alt='' />
       <br />
       <div className='carte-interactive'>
         <CartInteractive />
       </div>
       <br />
+
+      <br />
+
 
       {/* <div className="buletin-meteo">
         <h3>QUESTIONS FREQUEMMENT POSÉES SUR LA MÉTÉO</h3>

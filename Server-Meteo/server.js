@@ -48,39 +48,31 @@ app.use(express.json());
 
 const specs = swaggerJsDoc(options);
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(specs));
-app.use('/api/yetubook/meteochat', async (req, res) => {
+app.get('/api/yetubook/meteochat', async (req, res) => {
     const { longitude, latitude } = req.query;
-
     const weatherdata = await getGoodFormatWeatherData(longitude, latitude);
-    res.status(201).json(weatherdata)
-    const { localisation, currentWeather, currentHour, byHour, next5Days, airpollution } = weatherdata;
+    const { localisation, currentWeather, currentHour, byHour, next5Days, airPollution } = weatherdata;
     try {
-        const newLocation = await db.localisation.create({data: localisation})
-        const newAirPollution = await db.airPollution.create({data: airpollution});
+        const newLocation = await db.localisation.create({data: localisation});
+        const newAirPollution = await db.airPollution.create({data: airPollution});
         const newCurrentWeather = await db.currentWeather.create({data: currentWeather});
         const newCurrentHour = await db.currentHour.create({data:currentHour});
-        const newByHour = await db.byHour.create({data: byHour});
-        const newNext5Days = await db.next5days.create({data: next5Days});
-        res.status(201).json({
-            localisation: newLocation,
-            currentWeather: newCurrentWeather,
-            currentHour: newCurrentHour,
-            byHour: newByHour,
-            next5Days: newNext5Days,
-            airpollution: newAirPollution,
-        });    
+        const newByHour = await db.byHour.createMany({data: byHour});
+        const newNext5Days = await db.next5days.createMany({data: next5Days});
+        res.status(201).json(weatherdata);    
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: "Erreur serveur" });
-    }
-})
+    };
+});
 
-// app.use('/', localisationRoute)
+// app.use('/', localisationRoute);
 // app.use('/', currentWeatherRoute);
 // app.use('/', currentHourRoute);
 // app.use('/', byHourRoute);
 // app.use('/', next5daysRoute);
 // app.use('/', airPollutionRoute);
+
 app.listen(port, () => {
     console.log(`App listening on http://localhost:${port}`);
 });
