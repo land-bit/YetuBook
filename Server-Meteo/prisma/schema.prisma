@@ -94,6 +94,7 @@ model CurrentHour {
 model ByHour {
   id             Int      @id @default(autoincrement())
   date           String
+  shortdate      String
   dt             Int
   day            String
   time           String
@@ -104,9 +105,9 @@ model ByHour {
   weatherIcon    String?
   partOfTheDay   String
   periodOfTheDay String
-  grndLevel Int
-  seaLevel Int
-  feelsLike Int
+  grndLevel      Int
+  seaLevel       Int
+  feelsLike      Int
   clouds         Int
   visibility     Int
   tempMin        Int
@@ -131,8 +132,9 @@ model ByHour {
 }
 
 model Next5days {
-  id             Int     @id @default(autoincrement())
-  date           String
+  id        Int    @id @default(autoincrement())
+  date      String
+  shortdate String
   day            String
   dt             Int
   time           String
@@ -143,28 +145,28 @@ model Next5days {
   weatherIcon    String?
   partOfTheDay   String
   periodOfTheDay String
-  grndLevel Int
-  seaLevel Int
-  feelsLike Int
+  grndLevel      Int
+  seaLevel       Int
+  feelsLike      Int
   clouds         Int
   visibility     Int
   tempMin        Int
   tempMax        Int
   Kalmanfilter   Int
-  windSpeed Int
-  windGust  Float?
-  windDeg   Int
-  windDir   String
-  windChill Int
-  rain      Float?
-  snow      Float?
-  pressure  Int
-  pop       Int?
-  sunrise   String
-  sunset    String
-  dewPoint Int
-  uvi       Int
-  createdAt DateTime @default(now())
+  windSpeed      Int
+  windGust       Float?
+  windDeg        Int
+  windDir        String
+  windChill      Int
+  rain           Float?
+  snow           Float?
+  pressure       Int
+  pop            Int?
+  sunrise        String
+  sunset         String
+  dewPoint       Int
+  uvi            Int
+  createdAt      DateTime @default(now())
 
   @@map("next5days")
 }

@@ -16,7 +16,8 @@ const getGoodFormatWeatherData = async (longitude, latitude) => {
 
     for (let i = 0; i < 6; i++) {
         byHour.push({
-            'date': formatUtils.getShortDate(prevision.list[i].dt_txt),
+            'date': formatUtils.getFormattedTodayDate(),
+            'shortdate': formatUtils.getShortDate(prevision.list[i].dt_txt),
             'day': formatUtils.getDay(prevision.list[i].dt_txt).slice(0, 3),
             'time': formatUtils.getDisplayTime(prevision.list[i].dt_txt),
             'temperature': Math.round(prevision.list[i].main.temp),
@@ -56,9 +57,10 @@ const getGoodFormatWeatherData = async (longitude, latitude) => {
         if (currDt === prevision.list[i].dt_txt.slice(8, 10)) continue;
         // currDt = prevision.list[i].dt_txt.slice(8, 10);
         next5Days.push({
+            'date': formatUtils.getFormattedTodayDate(),
             'time': formatUtils.getDisplayTime(prevision.list[i].dt_txt),
             'day': formatUtils.getDay(prevision.list[i].dt_txt).slice(0, 3),
-            'date': formatUtils.getShortDate(prevision.list[i].dt_txt),
+            'shortdate': formatUtils.getShortDate(prevision.list[i].dt_txt),
             'dt': prevision.list[i].dt,
             'description': formatUtils.capitalizeFirstLetters(prevision.list[i].weather[0].description),
             'weatherType': prevision.list[i].weather[0].main,

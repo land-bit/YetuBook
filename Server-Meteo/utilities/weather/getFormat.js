@@ -9,7 +9,7 @@ export default class FormatUtils {
         const month = months[today.getMonth()];
         const year = today.getFullYear();
 
-        return `${day} le ${date} ${month} ${year}`;
+        return `${date} ${month} ${year}`;
     };
 
     getFormattedTodayHour = () => {
