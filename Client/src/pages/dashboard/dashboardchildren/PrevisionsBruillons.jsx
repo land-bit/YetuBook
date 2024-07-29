@@ -78,7 +78,7 @@ export function PrevisionsCard({ weatherData }) {
       <div className="card-header">
         <h2>{getPeriod(middleWeather.dt)}</h2>
         <img
-          src={`http://openweathermap.org/img/wn/${middleWeather.weather[0].icon}@2x.png`}
+          src={`https://openweathermap.org/img/wn/${middleWeather.weather[0].icon}@2x.png`}
           alt={getWeatherDescription(middleWeather.weather)}
           style={{width: "45px"}}
         />

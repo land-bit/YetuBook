@@ -113,7 +113,7 @@ const Meteodata = () => {
           </div>
 
           <div>
-            <img style={{ width: "5rem" }} src={`http://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`} alt="Conditions météo" />
+            <img style={{ width: "5rem" }} src={`https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`} alt="Conditions météo" />
             <p>{currentWeather.weather[0].description}</p>
           </div>
         </div>

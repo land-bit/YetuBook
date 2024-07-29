@@ -118,7 +118,7 @@ const MeteodataHome = () => {
                 </div>
                 <small>Il y a {previsionWeatherdata.currentHour.pop * 100} % de chance qu'il pleuve à l'heure actuelle.</small>
 
-                <img src={`http://openweathermap.org/img/wn/${currentWeatherdata.weather[0].icon}@2x.png`} alt='' />
+                <img src={`https://openweathermap.org/img/wn/${currentWeatherdata.weather[0].icon}@2x.png`} alt='' />
 
                 <p style={{ color: 'white' }}>{formatUtils.capitalizeFirstLetters(currentWeatherdata.weather[0].description)}</p>
             
@@ -179,7 +179,7 @@ const MeteodataHome = () => {
                                                     : ''}
                                     </small>
                                     <small>{item['day']} {item['date']}</small>
-                                    <img src={`http://openweathermap.org/img/wn/${item.weatherIcon}@2x.png`} alt="" />
+                                    <img src={`https://openweathermap.org/img/wn/${item.weatherIcon}@2x.png`} alt="" />
                                     <small style={{ color: 'var(--color-primary)' }}>{item.desc}</small>
                                     <h4>{item.temp}°</h4>
                                     <img style={{ width: '20px', rotate: `${item['wind-deg']}deg` }} src={navigation} alt="" />
