@@ -48,16 +48,9 @@ const MeteodataHome = () => {
     if (!previsionWeatherdata && loading) {
         return (
             <div className='skelleton-meteo'>
-                <div className='chargement-message'>Chargement...</div>
+                <h1 className='logo-dashboard'>MétéoWatch</h1>
+                <div className='chargement-message'>Chargement des données météorologiques...</div>
                 <div className="loading-spinner"></div>
-                {/* <div className="chance-rain-loading">
-                    <div>
-                        <span className="percentage" >{temp < 100 && temp >0 ? setTimeout(()=>{setTemp(temp+1)},1000): ''}%</span>
-                    </div>
-                    <div className="progresse-bar-loading" >
-                        <div className="progresse-bar-child-loading" style={{ width: `${temp < 100 && temp >0 ? setTimeout(()=>{setTemp(temp+1)},1000): ''}%` }}></div>
-                    </div>
-                </div> */}
             </div>
         );
     }
@@ -70,11 +63,7 @@ const MeteodataHome = () => {
                 <div className='skelleton-meteo'>
                     <small>{error}</small>
                     <h1 className='logo-dashboard'>MétéoWatch</h1>
-                    <small>Nous n'arrivons pas à accéder à vos coordonnées géographiques pour fournir les données météorologiques de votre zone. Si ce n'est pas un problème de connexion veuillez entrer le nom de votre ville.</small>
-                    <form action="" className='search-nom-de-ville'>
-                        <input type="text" name="" id="" placeholder='Entrez votre ville' />
-                        <button type="submit">Get data</button>
-                    </form>
+                    <small>Nous n'arrivons pas à accéder à vos coordonnées géographiques pour fournir les données météorologiques de votre zone. Veuillez autoriser l'application à accéder à votre localisation.</small>
                 </div>
             </>
         )
@@ -132,11 +121,7 @@ const MeteodataHome = () => {
                 <img src={`http://openweathermap.org/img/wn/${currentWeatherdata.weather[0].icon}@2x.png`} alt='' />
 
                 <p style={{ color: 'white' }}>{formatUtils.capitalizeFirstLetters(currentWeatherdata.weather[0].description)}</p>
-                <div className="chance-rain">
-                    <div className="progresse-bar" >
-                        <div className="progresse-bar-child" style={{ marginLeft: `${previsionWeatherdata.currentHour.pop * 100}%` }}></div>
-                    </div>
-                </div>
+            
                 <h1 >{Math.round(currentWeatherdata.main.temp)}°</h1>
 
                 <div className='meteo-data-home-graph'>
