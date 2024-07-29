@@ -1,4 +1,6 @@
-import { API_KEY_OPENAI } from "../../../dotenv";
+const API_KEY_OPENAI = import.meta.env.VITE_API_KEY_OPENAI
+
+
 async function getGPT(question) {
   const apiUrl = "https://api.openai.com/v1/chat/completions";
 
