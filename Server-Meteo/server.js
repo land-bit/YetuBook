@@ -49,7 +49,9 @@ app.use(express.json());
 
 const specs = swaggerJsDoc(options);
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(specs));
-
+app.use('/', (req, res)=>{
+    res.send('Welcome to Yetubook MétéoChat API');
+})
 app.use('/', allWeatherDataRouter);
 
 // app.use('/', localisationRoute);
