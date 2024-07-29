@@ -50,7 +50,7 @@ app.use(express.json());
 const specs = swaggerJsDoc(options);
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(specs));
 app.use('/', (req, res)=>{
-    res.send('Welcome to Yetubook MétéoChat API');
+    res.send('Welcome to Yetubook MétéoChat API. Allez ici https://capston-project-ger-cub.onrender.com/api-docs pour voir la documentation');
 })
 app.use('/', allWeatherDataRouter);
 

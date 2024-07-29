@@ -7,7 +7,7 @@ export default async function getAirPollution() {
         .then( async position => {
             const { latitude, longitude } = position.coords;
 
-            const url = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${API_KEY_OPENWEATHER}`;
+            const url = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${API_KEY_OPENWEATHER}`;
             
             return axios.get(url)
                 .then(response => {
