@@ -28,9 +28,9 @@ const boutiqueData = {
     "collections" : [
         {
             "id": "1",
-            "nom": "Men",
+            "nom": "women",
             "image": banerRight1,
-            "description":"Best Clothes For men",
+            "description":"Best Clothes For women",
             "details":"Details to details is what makes Hexashop different from the other themes.",
             "produits": [
                 {
@@ -86,9 +86,9 @@ const boutiqueData = {
         },
         {
             "id": "2",
-            "nom": "Women",
+            "nom": "Men",
             "image": banerRight2,
-            "description":"Best Clothes For women",
+            "description":"Best Clothes For Men",
             "details":"Details to details is what makes Hexashop different from the other themes.",
             "produits": [
                 {

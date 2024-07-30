@@ -9,9 +9,6 @@ import currentHourRoute from "./routes/currentHour.route.js";
 import byHourRoute from "./routes/byHour.route.js";
 import next5daysRoute from "./routes/next5days.route.js";
 import airPollutionRoute from "./routes/airPollution.route.js";
-import getGoodFormatWeatherData from "./utilities/weather/getGoodFormatWeatherData.js";
-import { db } from "./dbconnection/db.js";
-
 
 dotenv.config();
 const port = process.env.PORT || 5000;
@@ -53,8 +50,7 @@ app.use('/', (req, res)=>{
     res.send('Welcome to Yetubook MétéoChat API. Allez ici https://capston-project-ger-cub.onrender.com/api-docs pour voir la documentation');
 })
 app.use('/', allWeatherDataRouter);
-
-// app.use('/', localisationRoute);
+app.use('/', localisationRoute);
 app.use('/', currentWeatherRoute);
 app.use('/', currentHourRoute);
 app.use('/', byHourRoute);

@@ -83,7 +83,7 @@ export async function getAllHistoricalWeatherData (req, res){
 
         // Vérification si des données ont été trouvées  
         if (!airPollution[0] && !localisation[0] && !currentWeather[0] && !currentHour[0] && !byHour[0] && !next5Days[0]) {
-            return res.status(404).json({ error: "Données de pollution non trouvées pour cette date" });
+            return res.status(404).json({ error: "Données météorologiques non trouvées pour cette date" });
         }
 
         // Envoi de la réponse avec les données de pollution  

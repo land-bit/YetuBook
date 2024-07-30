@@ -63,7 +63,7 @@ export default function ChatGPT() {
                 <div className="kiriku">
                   <img src={AI} alt="" />
                 </div>
-                <h4>Lumumba-IA</h4>
+                <h4>Toto-IA</h4>
               </div>
             </div>
           </div>
@@ -87,10 +87,10 @@ export default function ChatGPT() {
               <span><FontAwesomeIcon icon={faPaperclip} /></span>
               <button type="submit" className="send"><FontAwesomeIcon icon={faPaperPlane} /></button>
             </form>
-            <small>YetuGPT peut afficher des informations inexactes, y compris sur des personnes. Vérifiez donc ses réponses.</small>
+            <small>Toto-AI peut afficher des informations inexactes, y compris sur des personnes. Vérifiez donc ses réponses.</small>
           </div>
 
-        </div>
+        </div>YetuGPT
       </div>
     </>
   )
