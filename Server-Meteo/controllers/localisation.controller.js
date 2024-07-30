@@ -24,7 +24,7 @@ export async function getLocalisationHistory(req, res) {
         // Formater le résultat
         formattedDate = `${day} ${month} ${year}`;
     } else {
-        console.log("Format de date non supporté voici un expemple du bon format 'Jeudi-le-10-Avril-2024' ");
+        console.log("Format de date non supporté voici un expemple du bon format '30-Juillet-2024' ");
     }
 
     
@@ -53,24 +53,8 @@ export async function getLocalisationHistory(req, res) {
 
 export async function updateLocalisationHistory(req, res) {
 
-    //Optenir les données
-    try {
-        const localisation = await db.localisation.update(req.body);
-        res.status(201).json(localisation);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: "Erreur serveur" });
-    }
 }
 
 export async function deleteLocalisationHistory(req, res) {
 
-    //Optenir les données
-    try {
-        const localisation = await db.localisation.delete(req.body);
-        res.status(201).json(localisation);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: "Erreur serveur" });
-    }
 }

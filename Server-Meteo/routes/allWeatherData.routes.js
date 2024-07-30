@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { getAllHistoricalWeatherData, postAllWeatherData } from "../controllers/allWeatherData.controllers.js";
+import { getAllHistoricalWeatherData, getAllWeatherData } from "../controllers/allWeatherData.controllers.js";
 
 const allWeatherDataRouter = Router();
 
-allWeatherDataRouter.post("/yetubook/meteodata", postAllWeatherData);
+allWeatherDataRouter.get("/yetubook/meteodata", getAllWeatherData);
 allWeatherDataRouter.get("/yetubook/meteodata/history", getAllHistoricalWeatherData);
 
 export default allWeatherDataRouter;
@@ -15,40 +15,22 @@ export default allWeatherDataRouter;
  *  description: Optenez tous les types données historiques. 
  */
 
-/**
- * @swagger
- * components:
- *  schemas:
- *    Apprenant:
- *      type: object
- *      required:
- *          - date
- *      properties:
- *          telephone:
- *              type: string
- *              description: date
- *          
- *      example:
- *          date: 26 Juillet 2024
- */
-
-
 
 /**
  * @swagger
- * /apprenants:
+ * /yetubook/meteodata/history?date=30-Juillet-2024:
  *    get:
- *      summary: Ce chemin rammène toutes les données historiques disponible pour une date précise
- *      tags: [AllWeatherData]
+ *      summary: Ce chemin rammène toutes les données historiques disponible pour une date précise au format ex 30-Juillet-2024
+ *      tags: [One call to get all different types of Weather data]
  *      responses:
  *        '200':
  *          description: Succès
  *          content:
- *              AllWeatherData/json:
+ *              yetubook/meteodata/history/json:
  *                  schema: 
  *                      type: array
  *                      items: 
- *                          $ref: '#/components/schemas/AllWeatherData' 
+ *                          $ref: '#/components/schemas/yetubook/meteodata/history' 
  *          '500':
  *              description: Error serveur
  * 
@@ -56,10 +38,10 @@ export default allWeatherDataRouter;
 
 /**
  * @swagger
- * /apprenants:
- *    post:
- *      summary: Ce chemin enregistre des nouvelles données météo dans la base de donnée et vous les renvoie
- *      tags: [AllWeatherData]
+ * /yetubook/meteodata?longitude=29.2205&latitude=-1.6585:
+ *    get:
+ *      summary: Ce chemin enregistre des nouvelles données météorologiques pour l'heure actuelle et la date d'aujourd'hui dans la base de donnée et vous les renvoies
+ *      tags: [One call to register all different types of Weather data in the DB]
  *      resquestBody:
  *          required: true
  *          content:

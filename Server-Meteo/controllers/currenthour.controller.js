@@ -24,7 +24,7 @@ export async function getCurrentHourHistory(req, res) {
         // Formater le résultat
         formattedDate = `${day} ${month} ${year}`;
     } else {
-        console.log("Format de date non supporté voici un expemple du bon format 'Jeudi-le-10-Avril-2024' ");
+        console.log("Format de date non supporté voici un expemple du bon format '30-Juillet-2024' ");
     }
 
     
@@ -53,24 +53,8 @@ export async function getCurrentHourHistory(req, res) {
 
 export async function updateCurrentHourHistory(req, res) {
 
-    //Optenir les données
-    try {
-        const currentHour = await db.currentHour.update(req.body);
-        res.status(201).json(currentHour);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: "Erreur serveur" });
-    }
 }
 
 export async function deleteCurrentHourHistory(req, res) {
 
-    //Optenir les données
-    try {
-        const currentHour = await db.currentHour.delete(req.body);
-        res.status(201).json(currentHour);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: "Erreur serveur" });
-    }
 }

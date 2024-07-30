@@ -1,7 +1,8 @@
 import { Op } from 'sequelize';
-import { db } from '../dbconnection/db.js'
+import { db } from '../dbconnection/db.js';
+import getGoodFormatWeatherData from '../utilities/weather/getGoodFormatWeatherData.js'
 
-export async function postAllWeatherData (req, res){
+export async function getAllWeatherData (req, res){
     const { longitude, latitude } = req.query;
     const weatherdata = await getGoodFormatWeatherData(longitude, latitude);
     const { localisation, currentWeather, currentHour, byHour, next5Days, airPollution } = weatherdata;
@@ -43,7 +44,7 @@ export async function getAllHistoricalWeatherData (req, res){
         // Formater le résultat
         formattedDate = `${day} ${month} ${year}`;
     } else {
-        console.log("Format de date non supporté voici un expemple du bon format '10-Avril-2024' ");
+        console.log("Format de date non supporté voici un expemple du bon format '30-Juillet-2024' ");
     }
 
     try {

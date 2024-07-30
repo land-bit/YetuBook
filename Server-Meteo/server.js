@@ -34,7 +34,7 @@ const options = {
         info: {
             title: "Yetubook MétéoChat",
             version: '1.0.0',
-            description: "Découvrez l'API intégrée à l'application Yetubook MétéoWatch, qui vous offre un accès complet aux données météorologiques historiques de l'OpenWeather API. Grâce à cette API, vous pouvez consulter les Données Actuelles, les Prévisions Heure par Heure et les Prévisions étendues pour les 5 prochains jours, le tout dans des formats clairs et adaptés. En outre, MétéoWatch enrichit votre expérience en fournissant des informations essentielles sur la qualité de l'air, le calcul de l'indice UV, ainsi que des indications sur le point de rosée et la direction du vent, déterminée selon les points cardinaux. Restez informé grâce à des alertes météorologiques et des bulletins détaillés, afin de prendre les meilleures décisions au quotidien. Utilisez notre andpoint en fournissant les coordonnées ex https://localhost:5000/yetubook/meteodata?longitude=29.2205&latitude=-1.6585 pour optenir les données actuelles, les prévisions et données de la pollution. Pour obtenir les données historique vous devez entre la date à cette endpoint comme par exmple : https://localhost:5000/yetubook/meteodata/history?date=26-Juillet-2024"
+            description: "Découvrez l'API intégrée à l'application Yetubook MétéoWatch, qui vous offre un accès complet aux données météorologiques historiques de l'OpenWeather API. Grâce à cette API, vous pouvez consulter les Données Actuelles, les Prévisions Heure par Heure et les Prévisions étendues pour les 5 prochains jours, le tout dans des formats clairs et adaptés. En outre, MétéoWatch enrichit votre expérience en fournissant des informations essentielles sur la qualité de l'air, le calcul de l'indice UV, ainsi que des indications sur le point de rosée et la direction du vent, déterminée selon les points cardinaux. Restez informé grâce à des alertes météorologiques et des bulletins détaillés, afin de prendre les meilleures décisions au quotidien. Utilisez notre andpoint en fournissant les coordonnées ex https://capston-project-ger-cub.onrender.com/yetubook/meteodata?longitude=29.2205&latitude=-1.6585 pour optenir les données actuelles, les prévisions et données de la pollution. Pour obtenir les données historique vous devez entre la date à cette endpoint comme par exmple : https://capston-project-ger-cub.onrender.com/yetubook/meteodata/history?date=26-Juillet-2024"
         }
     },
     apis: ['./routes/*.js']
@@ -46,9 +46,9 @@ app.use(express.json());
 
 const specs = swaggerJsDoc(options);
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(specs));
-app.use('/', (req, res)=>{
-    res.send('Welcome to Yetubook MétéoChat API. Allez ici https://capston-project-ger-cub.onrender.com/api-docs pour voir la documentation');
-})
+// app.use('/', (req, res)=>{
+//     res.send('Welcome to Yetubook MétéoChat API. Allez ici https://capston-project-ger-cub.onrender.com/api-docs pour voir la documentation');
+// })
 app.use('/', allWeatherDataRouter);
 app.use('/', localisationRoute);
 app.use('/', currentWeatherRoute);

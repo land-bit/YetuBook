@@ -24,14 +24,14 @@ export async function getNext5DaysHistory(req, res) {
         // Formater le résultat
         formattedDate = `${day} ${month} ${year}`;
     } else {
-        console.log("Format de date non supporté voici un expemple du bon format 'Jeudi-le-10-Avril-2024' ");
+        console.log("Format de date non supporté voici un expemple du bon format '30-Juillet-2024' ");
     }
 
     
 
     try {
         // Recherche dans la base de données pour une entrée correspondante à la date  
-        const next5Days = await db.next5Days.findMany({
+        const next5Days = await db.next5days.findMany({
             where: {
                 date: formattedDate
             }
@@ -53,24 +53,8 @@ export async function getNext5DaysHistory(req, res) {
 
 export async function updateNext5DaysHistory(req, res) {
 
-    //Optenir les données
-    try {
-        const next5Days = await db.next5Days.update(req.body);
-        res.status(201).json(next5Days);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: "Erreur serveur" });
-    }
 }
 
 export async function deleteNext5DaysHistory(req, res) {
 
-    //Optenir les données
-    try {
-        const next5Days = await db.next5Days.delete(req.body);
-        res.status(201).json(next5Days);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: "Erreur serveur" });
-    }
 }
