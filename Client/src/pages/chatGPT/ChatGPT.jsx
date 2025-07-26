@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable react/prop-types */
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AI from "../../assets/icon/brain.png";
 import "./chatGPT.css";
@@ -18,33 +19,41 @@ export default function ChatGPT() {
   const [userInput, setUserInput] = useState("");
   const [responseAI, setResponseAI] = useState([]);
 
-
-
   async function handleApiResponse(event) {
     event.preventDefault(); // Empêcher le rafraîchissement de la page
     setUserInput(""); // Lorsqu'on soumet le formulaire l'input revien à un string vide
-    setResponseAI([...responseAI, { user: "me", message: `${userInput}` }])
-    try{
-      
-    const data = await getGPT(userInput)
-      console.log(data)
-      setResponseAI([...responseAI, { user: "me", message: `${userInput}` }, { user: "gpt", message: `${data}` }])
-    }
-    catch (error) {
+    setResponseAI([...responseAI, { user: "me", message: `${userInput}` }]);
+    try {
+      const data = await getGPT(userInput);
+      console.log(data);
+      setResponseAI([
+        ...responseAI,
+        { user: "me", message: `${userInput}` },
+        { user: "gpt", message: `${data}` },
+      ]);
+    } catch (error) {
       console.error("Erreur lors de la requête à l'API OpenAI :", error);
     }
-
-  };
-
+  }
 
   return (
     <>
-
       <div className="box">
         <div className="sidebar">
           <div className="side-header">
-            <Link to="/"><div className="retour"><span><FontAwesomeIcon icon={faArrowLeft} /></span></div></Link>
-            <button><span><FontAwesomeIcon icon={faPlus} /></span> Nouvelle discussion</button>
+            <Link to="/">
+              <div className="retour">
+                <span>
+                  <FontAwesomeIcon icon={faArrowLeft} />
+                </span>
+              </div>
+            </Link>
+            <button>
+              <span>
+                <FontAwesomeIcon icon={faPlus} />
+              </span>{" "}
+              Nouvelle discussion
+            </button>
           </div>
 
           <div className="historique">
@@ -53,7 +62,11 @@ export default function ChatGPT() {
             <p>Comment rencontrer le président Tchisekedi ?</p>
           </div>
           <div className="inforchagpt">
-            <small>Cette application utilise l'API de chatGPT-3.5 de OpenAI. <br /> <br/>Et a été dévelopé à Gome, RDCongo ©2024</small>
+            <small>
+              {"Cette application utilise l'API de chatGPT-3.5 de OpenAI."}
+              <br />
+              Et a été dévelopé à Gome, RDCongo ©2024
+            </small>
           </div>
         </div>
         <div className="chat-container">
@@ -78,42 +91,55 @@ export default function ChatGPT() {
 
           <div className="input-container">
             <form onSubmit={handleApiResponse}>
-              <input type="text" rows="1" value={userInput} onChange={(e) => setUserInput(e.target.value)} placeholder="Pose moi n'importe quelle question" />
-              <span><FontAwesomeIcon icon={faMicrophone} /></span>
-              <label htmlFor='gptFiles'>
-                <span><FontAwesomeIcon icon={faImage} /></span>
-                <input type='file' id='gptFiles' />
+              <input
+                type="text"
+                rows="1"
+                value={userInput}
+                onChange={(e) => setUserInput(e.target.value)}
+                placeholder="Pose moi n'importe quelle question"
+              />
+              <span>
+                <FontAwesomeIcon icon={faMicrophone} />
+              </span>
+              <label htmlFor="gptFiles">
+                <span>
+                  <FontAwesomeIcon icon={faImage} />
+                </span>
+                <input type="file" id="gptFiles" />
               </label>
-              <span><FontAwesomeIcon icon={faPaperclip} /></span>
-              <button type="submit" className="send"><FontAwesomeIcon icon={faPaperPlane} /></button>
+              <span>
+                <FontAwesomeIcon icon={faPaperclip} />
+              </span>
+              <button type="submit" className="send">
+                <FontAwesomeIcon icon={faPaperPlane} />
+              </button>
             </form>
-            <small>Toto-AI peut afficher des informations inexactes, y compris sur des personnes. Vérifiez donc ses réponses.</small>
+            <small>
+              Toto-AI peut afficher des informations inexactes, y compris sur
+              des personnes. Vérifiez donc ses réponses.
+            </small>
           </div>
-
-        </div>YetuGPT
+        </div>
+        YetuGPT
       </div>
     </>
-  )
+  );
 }
 
-
 const ChatMessage = ({ message }) => {
-  const [displayedText, setDisplayedText] = useState('');
+  const [displayedText, setDisplayedText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
 
   useEffect(() => {
     const typingSpeed = 1; // Adjust the typing speed here (milliseconds per character)
     let index = 0;
     const msg = [];
-    const typeText = () => {    
-
+    const typeText = () => {
       if (index < message.message.length) {
-        
-        msg.push(message.message.charAt(index))
-        setDisplayedText(()=> msg.join(''));
+        msg.push(message.message.charAt(index));
+        setDisplayedText(() => msg.join(""));
         index++;
-      setTimeout(typeText, typingSpeed);
-
+        setTimeout(typeText, typingSpeed);
       } else {
         setIsTyping(false);
       }
@@ -122,26 +148,13 @@ const ChatMessage = ({ message }) => {
     typeText();
   }, [message]);
   return (
-      <div className={`${message.user === 'gpt' ? 'bulle2' : 'bulle'}`}>
-      <Markdown>{`${message.user === 'gpt' ? displayedText : message.message}`}</Markdown>
-      {isTyping && message.user === 'gpt' && <span className="typing-indicator">•</span>}
+    <div className={`${message.user === "gpt" ? "bulle2" : "bulle"}`}>
+      <Markdown>{`${
+        message.user === "gpt" ? displayedText : message.message
+      }`}</Markdown>
+      {isTyping && message.user === "gpt" && (
+        <span className="typing-indicator">•</span>
+      )}
     </div>
-  )
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  );
+};

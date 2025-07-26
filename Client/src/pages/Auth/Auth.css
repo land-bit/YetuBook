@@ -54,7 +54,7 @@
 
 
 .authForm{
-    background-color: var(--cardColor);
+    background-color: var(--color-card);
     border-radius: 1rem;
     padding: 1rem;
 }
