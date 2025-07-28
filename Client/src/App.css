@@ -44,6 +44,7 @@
   --radius-xl: calc(var(--radius) + 4px);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-gradient: var(--gradient);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
@@ -132,4 +133,12 @@
 .bg::before {
   background-color: red;
   background-image: var(--gradient);
+}
+
+.bg-left {
+  background-image: linear-gradient(90.63deg, #f95f35 0%, #faa12f 80%);
+}
+
+.bg-right {
+  background-image: linear-gradient(98.63deg, #faa12f 20%, #f95f35 100%);
 }

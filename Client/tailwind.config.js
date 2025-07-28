@@ -8,6 +8,7 @@ export const theme = {
       primary: "var(--color-primary)",
       text: "var(--color-text)",
       border: "var(--color-border)",
+      gradient: "var(--color-gradient)",
     },
   },
 };
