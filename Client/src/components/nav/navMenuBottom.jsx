@@ -6,7 +6,6 @@ import {
   faUmbrella,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./nav.css";
 
 export default function NavMenubottom() {
   const { user } = useAuth();

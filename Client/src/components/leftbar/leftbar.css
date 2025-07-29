@@ -1,71 +1,66 @@
-.leftBar{
-    position: sticky;
-    top: 3.6rem;
-    /* background: var(--color-card);s */
-    height: calc(100vh - 3.6rem);
-    overflow: auto;
+.leftBar {
+  position: sticky;
+  top: 3.6rem;
+  /* background: var(--color-card);s */
+  height: calc(100vh - 3.6rem);
+  overflow: auto;
 }
-.leftBar::-webkit-scrollbar{
-    display: none;
+.leftBar::-webkit-scrollbar {
+  display: none;
 }
-.menu{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3px;
+.left-container {
+  width: 100%;
+  padding-left: 2rem;
+  margin: 0 auto;
 }
-.left-container{
-    width: 100%;
-    padding-left: 2rem;
-    margin: 0 auto;
+.left-container .item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
 }
-.left-container .item{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 20px 0;
+.icon-menu {
+  border-radius: 25%;
+  padding: 5px;
+  background: var(--color-border);
+  transition: 0.2s;
 }
-.icon-menu{
-    border-radius: 25%;
-    padding: 5px;
-    background: var(--color-border);
-    transition: .2s;
-}
-.icon-menu:hover{
-    background-image: var(--buttonBg);
-    box-shadow: 0 10px 34px var(--color-primary);
-    transform: scale(1.2);
-    z-index: 10;
+.icon-menu:hover {
+  background-image: var(--buttonBg);
+  box-shadow: 0 10px 34px var(--color-primary);
+  transform: scale(1.2);
+  z-index: 10;
 }
 
-.left-container .item img{
-    width: 40px;
+.left-container .item img {
+  width: 40px;
 }
-hr{
-    background: var(--color-border);
-    border: none;
-    height: 1px;
-    margin-bottom: 20px;
+hr {
+  background: var(--color-border);
+  border: none;
+  height: 1px;
+  margin-bottom: 20px;
 }
-.others{
-    color: var(--color-soft);
-    font-size: .9rem;
+.others {
+  color: var(--color-soft);
+  font-size: 0.9rem;
 }
 
 /*............Start Media scrin..............*/
-@media (max-width:1150px) {
-    .left-container{
-        width: fit-content;
-    }
-    .left-container h4{
-        display: none;
-    }
-    .leftBar{
-        width: 3.6rem;
-    }
+@media (max-width: 1150px) {
+  .left-container {
+    width: fit-content;
+  }
+  .left-container h4 {
+    display: none;
+  }
+  .leftBar {
+    width: 3.6rem;
+  }
 }
 
-@media (max-width:991px) {
-    .leftBar{
-        display: none;
-    }
+@media (max-width: 991px) {
+  .leftBar {
+    display: none;
+  }
 }
