@@ -210,7 +210,7 @@ body {
 }
 .btn:hover {
   /* opacity: .7; */
-  transform: scale(1.2);
+  /* transform: scale(1.2); */
   z-index: 10;
 }
 .btn-primary {
@@ -229,6 +229,8 @@ body {
 .btn-red {
   background: var(--color-red);
   color: white;
+  font-size: large;
+  font-weight: 500;
 }
 .btn-red:hover {
   /*Effet de luminessance au survol du bouton*/
