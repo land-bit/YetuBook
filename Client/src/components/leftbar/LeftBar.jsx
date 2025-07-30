@@ -4,7 +4,6 @@ import "./leftbar.css";
 //Icon Image.........................
 import Ai from "../../assets/icon/brain.png";
 import Firend from "../../assets/icon/1.png";
-import Groups from "../../assets/icon/2.png";
 import Market from "../../assets/icon/3.png";
 import watch from "../../assets/icon/4.png";
 import Gallery from "../../assets/icon/5.png";
@@ -53,14 +52,6 @@ export default function LeftBar() {
               </div>
             </div>
           </Link>
-
-          {/* <Link to="/">
-            <div className="item">
-              <div className="icon-menu">
-                <img src={Groups} alt="" />
-              </div>
-            </div>
-          </Link> */}
 
           <Link to="/">
             <div className="item">

@@ -1,101 +1,106 @@
-import "./message.css"
-import { Link } from "react-router-dom"
-import ai from "../../assets/icon/brain.png"
-import meteochat from "../../assets/icon/goutedeau.png"
+import "./message.css";
+import { Link } from "react-router-dom";
+import ai from "../../assets/icon/brain.png";
+import meteochat from "../../assets/icon/goutedeau.png";
 
 //FackApis...............................
-import MessageData from "../../FackApis/MessageData"
+import MessageData from "../../FackApis/MessageData";
 
 //FontAwesome Icon.......................
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEdit, faSearch } from "@fortawesome/free-solid-svg-icons"
-import showChat from "../popup/showChat"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faSearch } from "@fortawesome/free-solid-svg-icons";
+import showChat from "../popup/showChat";
+import { useAuth } from "@/lib/contexts/AuthProvider";
 
 export default function Message() {
-    return (
-        <div className="Messages">
-            <div className="message-top">
-                <h4>Masolô </h4>
-                <span><FontAwesomeIcon icon={faEdit} /></span>
-            </div>
-            <div className="message-search">
-                <span><FontAwesomeIcon icon={faSearch} /></span>
-                <input type="search" placeholder="Tafuta lisolô" />
-            </div>
+  const { user } = useAuth();
+  return (
+    <div className="Messages">
+      <div className="message-top">
+        <h4>Conversations</h4>
+        <span>
+          <FontAwesomeIcon icon={faEdit} />
+        </span>
+      </div>
+      <div className="message-search">
+        <span>
+          <FontAwesomeIcon icon={faSearch} />
+        </span>
+        <input
+          className="outline-none"
+          type="search"
+          placeholder="Rechercher..."
+        />
+      </div>
 
-
-            <div className="message" onClick={showChat}>
-                <div className="user">
-                    <img src={meteochat} alt="" />
-                    <div className="green-active"></div>
-                </div>
-                <div className="message-body2">
-                    <div className="message-body">
-                        <h5>MétéoChat</h5>
-                        <p className="para">Jambo Gérard, hii ni ripoti ya ma jira ya léo</p>
-                    </div>
-                    <div>
-                        <div className="notification-message">
-                            <p>12:30</p>
-                            <div className="nombre"><span>2</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <Link to='/chatgpt'>
-                <div className="message">
-                    <div className="user">
-                        <img src={ai} alt="" />
-                        <div className="green-active"></div>
-                    </div>
-                    <div className="message-body2">
-                        <div className="message-body">
-                            <h5>Toto-IA</h5>
-                            <p className="para">Jambo Gérard, nikusaidiye namna gani léo ?</p>
-                        </div>
-                        <div>
-                            <div className="notification-message">
-                                <p>12:30</p>
-                                <div className="nombre"><span>2</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </Link>
-            {
-                MessageData.map(mess => (
-
-                    <Link to='/chatbox' key={mess.id}>
-
-                        <div className="message" >
-                            <div className="user">
-                                <img src={mess.img} alt="" />
-                                <div className="green-active"></div>
-                            </div>
-                            <div className="message-body2">
-                                <div className="message-body">
-                                    <h5>{mess.name}</h5>
-                                    <p className="para">{mess.mText}</p>
-                                </div>
-                                <div>
-                                    <div className="notification-message">
-                                        <p>12:30</p>
-                                        <div className="nombre"><span>2</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </Link>
-
-
-                ))
-            }
-            <br />
-            <div className='see-more'>Ona mengi</div>
-            <br />
-
+      <div className="message" onClick={showChat}>
+        <div className="user">
+          <img src={meteochat} alt="" />
+          <div className="green-active"></div>
         </div>
-    )
+        <div className="message-body w-2/3">
+          <h5 className="text-foreground">MétéoChat</h5>
+          <p className="para text-muted-foreground">
+            {`Bonjour ${user.user_metadata.name}, ceci est le reportage d'aujourd'hui de la météo.`}
+          </p>
+        </div>
+        <div>
+          <div className="notification-message">
+            <p>12:30</p>
+            <div className="nombre">
+              <span>2</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <Link to="/chatgpt">
+        <div className="message w-full">
+          <div className="user">
+            <img src={ai} alt="" />
+            <div className="green-active"></div>
+          </div>
+          <div className="message-body w-2/3">
+            <h5 className="text-foreground">Toto-IA</h5>
+            <p className="para text-muted-foreground">
+              {`Bonjour ${user.user_metadata.name}, comment puis-je vous aider aujourd'hui ?`}
+            </p>
+          </div>
+          <div>
+            <div className="notification-message">
+              <p>12:30</p>
+              <div className="nombre">
+                <span>2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Link>
+      {MessageData.map((mess) => (
+        <Link to="/chatbox" key={mess.id}>
+          <div className="message">
+            <div className="user">
+              <img src={mess.img} alt="" />
+              <div className="green-active"></div>
+            </div>
+            <div className="message-body w-2/3">
+              <h5 className="text-foreground">{mess.name}</h5>
+              <p className="para text-card-foreground">{mess.mText}</p>
+            </div>
+            <div>
+              <div className="notification-message">
+                <p>12:30</p>
+                <div className="nombre">
+                  <span>2</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Link>
+      ))}
+      <br />
+      <div className="see-more">Voir plus</div>
+      <br />
+    </div>
+  );
 }
