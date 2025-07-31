@@ -29,9 +29,9 @@ export default function ProtectedLayout() {
   return (
     <>
       <Nav />
-      <main className="grid grid-cols-1 lg:grid-cols-[25%_50%_25%] h-screen gap-[1%] w-screen">
+      <main className="grid grid-cols-1  lg:grid-cols-[30%_42.5%_27.5%] 2xl:grid-cols-[25%_55%_20%] h-screen gap-[1%] w-screen">
         <LeftBar />
-        <div className="container">
+        <div className="">
           <Outlet />
         </div>
         <RightBar />

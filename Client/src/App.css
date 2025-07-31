@@ -238,7 +238,7 @@ body {
 }
 main {
   display: grid;
-  grid-template-columns: 30% 42.5% 27.5%;
+  /* grid-template-columns: 30% 42.5% 27.5%; */
   gap: 1%;
   width: 100%;
 }

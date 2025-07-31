@@ -29,16 +29,16 @@ export default function PersonYouMayKnow() {
               className="md:basis-1/3 lg:basis-1/3 2xl:basis-1/4"
             >
               <div
-                className={`h-48 flex flex-col items-center justify-end pb-4 bg-cover bg-center rounded-2xl`}
+                className={`h-48 flex flex-col items-center justify-end bg-cover bg-center rounded-2xl story`}
                 style={{ backgroundImage: `url(${person.img})` }}
               >
-                <h5 className="text-lg text-center mx-4 text-white font-black">
-                  {person.name}
-                </h5>
-                <button className=" text-white flex gap-2 items-center justify-center bg-primary rounded-full p-2">
+                <button className=" text-white flex gap-2 items-center justify-center bg-primary rounded-full mb-4 p-2">
                   <FontAwesomeIcon icon={faUserPlus} color="white" />
                   <span>Ajouter</span>
                 </button>
+                <h5 className="text-lg text-center mx-4 text-white font-black z-10">
+                  {person.name}
+                </h5>
               </div>
             </CarouselItem>
           ))}

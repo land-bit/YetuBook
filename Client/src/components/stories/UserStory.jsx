@@ -1,27 +1,26 @@
-import './stories.css';
+import "./stories.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAdd } from "@fortawesome/free-solid-svg-icons";
+import { useAuth } from "@/lib/contexts/AuthProvider";
 
-//Facke Apis........................
-import CurrentUserData from '../../FackApis/CurrentUserData'
-
-// FontAwesome Icon......................
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAdd } from '@fortawesome/free-solid-svg-icons';
-
-export default function UserStory (){
-    return(
-        <div className="userStory">
-            {/* <div className="user">
-                <img src={CurrentUserData.map(user => (user.ProfieImage))} alt='' />
-            </div> */}
-            <img src={CurrentUserData.map(user => (user.ProfieImage))} alt='' />
-            
-            <div className='addStory'>
-                <label htmlFor='storyFiles'>
-                    <FontAwesomeIcon icon={faAdd}/>
-                    <input type='file' id='storyFiles' />
-                </label>
-                <h5>Ongeza Story</h5>
-            </div>
-        </div>
-    )
+export default function UserStory() {
+  const { user } = useAuth();
+  return (
+    <div className="userStory w-36 h-52">
+      <div className="w-full h-full flex items-center justify-center">
+        <img
+          src={user.user_metadata.avatar_url}
+          alt=""
+          className="rounded-full border-4 border-primary"
+        />
+      </div>
+      <div className="addStory py-5 px-2">
+        <label htmlFor="storyFiles">
+          <FontAwesomeIcon icon={faAdd} />
+          <input type="file" id="storyFiles" />
+        </label>
+        <h5>Add a Story</h5>
+      </div>
+    </div>
+  );
 }

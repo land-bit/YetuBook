@@ -4,13 +4,13 @@
   border-radius: 1.5rem;
 }
 
-.person {
+.cardItem {
   width: 100%;
   position: relative;
   user-select: none;
 }
 
-.person::after {
+.cardItem::after {
   content: "";
   position: absolute;
   width: 100%;
