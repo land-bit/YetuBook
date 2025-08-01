@@ -15,13 +15,13 @@ export default function Stories() {
         opts={{
           align: "start",
         }}
-        className="w-[calc(100%-9rem)]"
+        className="md:w-[calc(100%-9rem)] w-[calc(100%-6rem)]"
       >
         <CarouselContent className={"w-[calc(100%-2rem)] pl-4"}>
           {StoriesData.map((story, index) => (
             <CarouselItem
               key={index}
-              className="md:basis-1/3 lg:basis-1/4 2xl:basis-1/7 story w-30 h-52 p-0 mx-1 bg-cover bg-center"
+              className="basis-1/3 lg:basis-1/4 2xl:basis-1/7 story w-30 h-52 p-0 mx-1 bg-cover bg-center"
               style={{ backgroundImage: `url(${story.story})` }}
             >
               <div className="">

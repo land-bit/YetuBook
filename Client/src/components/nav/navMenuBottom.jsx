@@ -11,7 +11,7 @@ export default function NavMenubottom() {
   const { user } = useAuth();
   return (
     <>
-      <div className="flex sm:hidden justify-between items-center fixed bottom-0 rounded-tl-[15px] rounded-tr-[15px] w-full h-12 text-secondary">
+      <div className="flex sm:hidden justify-between z-10 items-center fixed bottom-0 rounded-tl-[15px] rounded-tr-[15px] w-full h-12 text-secondary">
         <div className="flex justify-center rounded-tl-[15px] rounded-tr-[15px] w-full h-full px-2.5 bg-left">
           <div className="flex justify-between h-full w-16 flex-col">
             <span className="w-full h-1.5 bg-secondary rounded-bl-2xl rounded-br-2xl"></span>

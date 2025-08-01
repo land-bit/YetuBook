@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import "./meteodatahome.css";
 import navigation from "../../assets/icon/meteodescfigma/navigation.png";
 import { Line, LineChart, XAxis } from "recharts";
-import { Tooltip } from "react-leaflet";
 import showMeteoDetails from "../popup/showMeteoDetails/showMeteoDetails";
 import getGoodFormatWeatherData from "../../utilities/weather/getGoodFormatWeatherData";
 import FormatUtils from "../../utilities/weather/getFormat";
@@ -22,6 +21,7 @@ const MeteodataHome = () => {
         const previsiondata = await getGoodFormatWeatherData();
         const currentWeather = await getCurrentWeather();
         setWeatherData(previsiondata);
+        setLoading(false);
         setCurrentWeatherdata(currentWeather);
       } catch (error) {
         console.error(error);
@@ -148,7 +148,6 @@ const MeteodataHome = () => {
             className="meteo-data-home-graph-temp"
           >
             <LineChart width={320} height={80} data={graphData}>
-              <Tooltip />
               <Line
                 yAxisId="left"
                 type="monotone"
@@ -163,7 +162,6 @@ const MeteodataHome = () => {
           >
             <LineChart width={320} height={80} data={graphData}>
               <XAxis dataKey="time" />
-              <Tooltip />
               <Line
                 yAxisId="right"
                 type="monotone"
