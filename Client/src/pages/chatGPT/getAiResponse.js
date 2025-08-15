@@ -1,5 +1,4 @@
-const API_KEY_OPENAI = import.meta.env.VITE_API_KEY_OPENAI
-
+const API_KEY_OPENAI = import.meta.env.VITE_API_KEY_OPENAI;
 
 async function getGPT(question) {
   const apiUrl = "https://api.openai.com/v1/chat/completions";
@@ -23,10 +22,13 @@ async function getGPT(question) {
       }),
     });
 
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     const data = await response.json();
-    console.log(data)
 
-    const message = await data.choices; //["0"].message.conten
+    const message = await data.choices;
+
     return message;
   } catch (error) {
     console.error("Erreur lors de la requête de l'API :", error);

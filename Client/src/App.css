@@ -199,7 +199,7 @@ body {
 }
 .btn {
   padding: 0.6rem 1.6rem;
-  display: inline-block;
+  /* display: inline-block; */
   width: fit-content;
   cursor: pointer;
   border-radius: 0.5rem;

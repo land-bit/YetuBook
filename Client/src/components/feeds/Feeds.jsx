@@ -1,19 +1,34 @@
+/* eslint-disable react/prop-types */
 import "./feeds.css";
+import Feed from "./Feed";
+import { LoaderPinwheelIcon } from "lucide-react";
 
-// Components.................
-import Feed from "./Feed"
-
-//Fack Apis..................
-import HomeFeedData from "../../FackApis/HomeFeedData"
-
-export default function Feeds (){
-    return (
-        <div className="feeds">
-            {
-                HomeFeedData.map((fed, index)=> (
-                    <Feed fed={fed} key={index} />
-                ))
-            }
-        </div>
-    )
+export default function Feeds({
+  handleDeletePost,
+  loadingPost,
+  LoadingComment,
+  onLike,
+  onAddComment,
+  posts,
+}) {
+  return (
+    <div className="feeds">
+      {loadingPost ? (
+        <LoaderPinwheelIcon size={"38px"} className="animate-spin mt-14" />
+      ) : (
+        <>
+          {posts.map((post, index) => (
+            <Feed
+              handleDeletePost={handleDeletePost}
+              post={post}
+              key={index}
+              onLike={onLike}
+              onAddComment={onAddComment}
+              LoadingComment={LoadingComment}
+            />
+          ))}
+        </>
+      )}
+    </div>
+  );
 }

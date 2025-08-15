@@ -138,32 +138,4 @@
     margin-top: 5px;
     margin-left: 5px;
   }
-
-  .user img {
-    width: 25px;
-  }
 }
-
-/* @media (max-width:1280px){
-    .story {
-        height: 190px;
-        width: 110px;
-    }
-
-    .userStory {
-        height: 190px;
-        width: 110px;
-    }
-
-    .story h5 {
-        font-size: smaller;
-        margin-left: 8px;
-        bottom: 35px;
-    }
-
-    .userStory h5 {
-        font-size: smaller;
-        text-align: center;
-        bottom: 30px;
-    }
-} */

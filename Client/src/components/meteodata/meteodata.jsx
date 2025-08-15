@@ -41,10 +41,6 @@ const Meteodata = () => {
         const airQualityIndice = await getAirPollution()
         const previsiondata = await getGoodFormatWeatherData();
 
-        // console.log(currentWeatherdata)
-        // console.log(previsiondata)
-        console.log(airQualityIndice)
-
         const newEntry = {
           time: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }),
           temperature: currentWeatherdata.main.temp,

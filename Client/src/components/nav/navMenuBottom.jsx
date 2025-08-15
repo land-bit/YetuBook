@@ -27,7 +27,7 @@ export default function NavMenubottom() {
         <div className="flex items-center gap-2.5 w-[35%] h-full">
           <div className="absolute w-screen left-0 flex items-center flex-col -bottom-2.5">
             <img
-              src={user.user_metadata.avatar_url || user.user_metadata.picture}
+              src={user.avatar_url || user.picture}
               alt=""
               className="relative img-contener cursor-pointer left-0 z-40 top-11 w-10 aspect-square rounded-full border-4 border-primary"
             />

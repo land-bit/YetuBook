@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBell,
@@ -6,13 +6,25 @@ import {
   faHome,
   faLightbulb,
   faSearch,
-  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "@/lib/contexts/AuthProvider";
 import NavMenubottom from "./navMenuBottom";
+import { IoIosLogOut } from "react-icons/io";
+import { supabase } from "@/supabaseClient";
 
 export default function Nav() {
   const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      console.error("Erreur de déconnexion :", error.message);
+    } else {
+      // Redirection après déconnexion
+      navigate("/login");
+    }
+  };
 
   return (
     <>
@@ -25,13 +37,6 @@ export default function Nav() {
             <FontAwesomeIcon
               icon={faHome}
               className="text-primary cursor-pointer"
-              size="xl"
-            />
-          </Link>
-          <Link to="/profile" className="hidden lg:block">
-            <FontAwesomeIcon
-              icon={faUser}
-              className="cursor-pointer"
               size="xl"
             />
           </Link>
@@ -61,12 +66,14 @@ export default function Nav() {
             className="cursor-pointer"
             size="xl"
           />
-          {/* <Link to="/" className="block lg:hidden">
-          <FontAwesomeIcon icon={faBars} className="cursor-pointer" size="xl" />
-        </Link> */}
+          <IoIosLogOut
+            onClick={handleLogout}
+            className="cursor-pointer"
+            size="30"
+          />
 
-          <Link to="/profile">
-            <div className="items-center justify-center gap-2 hidden lg:flex">
+          <Link to={`/profile/${user.id}`}>
+            <div className="items-center justify-center gap-2 flex">
               <img
                 src={
                   user.user_metadata.avatar_url || user.user_metadata.picture
@@ -74,7 +81,7 @@ export default function Nav() {
                 alt=""
                 className="w-10 rounded-full object-cover"
               />
-              <h4 className="">
+              <h4 className="hidden lg:block text-sm font-semibold">
                 {user.user_metadata.name || user.user_metadata.slug}
               </h4>
             </div>

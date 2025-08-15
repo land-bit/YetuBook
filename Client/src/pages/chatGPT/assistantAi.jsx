@@ -38,7 +38,6 @@ export default function ChatGPT() {
       );
 
       const data = await response.json();
-      console.log(data);
       setResponseAI([
         ...responseAI,
         { user: "me", message: `${userInput}` },

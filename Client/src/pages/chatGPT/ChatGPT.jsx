@@ -19,13 +19,12 @@ export default function ChatGPT() {
   const [userInput, setUserInput] = useState("");
   const [responseAI, setResponseAI] = useState([]);
 
-  async function handleApiResponse(event) {
-    event.preventDefault(); // Empêcher le rafraîchissement de la page
+  async function handleApiResponse(e) {
+    e.preventDefault(); // Empêcher le rafraîchissement de la page
     setUserInput(""); // Lorsqu'on soumet le formulaire l'input revien à un string vide
     setResponseAI([...responseAI, { user: "me", message: `${userInput}` }]);
     try {
       const data = await getGPT(userInput);
-      console.log(data);
       setResponseAI([
         ...responseAI,
         { user: "me", message: `${userInput}` },
@@ -65,7 +64,7 @@ export default function ChatGPT() {
             <small>
               {"Cette application utilise l'API de chatGPT-3.5 de OpenAI."}
               <br />
-              Et a été dévelopé à Gome, RDCongo ©2024
+              Et a été dévelopé à Goma, RDCongo ©2025
             </small>
           </div>
         </div>
@@ -92,6 +91,7 @@ export default function ChatGPT() {
           <div className="input-container">
             <form onSubmit={handleApiResponse}>
               <input
+                className="outiline-none px-4 py-2"
                 type="text"
                 rows="1"
                 value={userInput}
@@ -120,7 +120,6 @@ export default function ChatGPT() {
             </small>
           </div>
         </div>
-        YetuGPT
       </div>
     </>
   );

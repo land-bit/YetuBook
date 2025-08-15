@@ -16,7 +16,7 @@ export default function UserStory() {
       </div>
       <div className="addStory py-2 px-1">
         <label htmlFor="storyFiles" className="p-1 md:p-2">
-          <FontAwesomeIcon icon={faAdd}/>
+          <FontAwesomeIcon icon={faAdd} />
           <input type="file" id="storyFiles" />
         </label>
         <h5 className="text-md">Add a Story</h5>

@@ -11,7 +11,6 @@ export default async function getPrevisionMeteo() {
       return axios
         .get(url)
         .then((response) => {
-          console.log(response.data);
           return response.data;
         })
         .catch((error) => {
