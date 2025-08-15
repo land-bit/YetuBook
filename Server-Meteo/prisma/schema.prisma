@@ -132,9 +132,9 @@ model ByHour {
 }
 
 model Next5days {
-  id        Int    @id @default(autoincrement())
-  date      String
-  shortdate String
+  id             Int      @id @default(autoincrement())
+  date           String
+  shortdate      String
   day            String
   dt             Int
   time           String
@@ -187,4 +187,108 @@ model AirPollution {
   createdAt DateTime @default(now())
 
   @@map("airpollution")
+}
+
+model Post {
+  id        String   @id @default(cuid())
+  content   String
+  imageUrl  String?
+  authorId  String   @db.Uuid
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  comments Comment[]
+  likes    Like[]
+  shares   Share[]
+  author   Profile   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  content   String
+  authorId  String   @db.Uuid
+  post      Post     @relation(fields: [postId], references: [id])
+  postId    String
+  createdAt DateTime @default(now())
+
+  replies   Reply[]
+  author    Profile @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  profileId String?
+}
+
+model Reply {
+  id        String   @id @default(cuid())
+  content   String
+  authorId  String   @db.Uuid
+  comment   Comment  @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  commentId String
+  createdAt DateTime @default(now())
+}
+
+model Like {
+  id        String   @id @default(cuid())
+  authorId  String   @db.Uuid
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId    String
+  createdAt DateTime @default(now())
+
+  @@unique([authorId, postId]) // un utilisateur ne peut liker qu’une fois
+}
+
+model Share {
+  id        String   @id @default(cuid())
+  authorId  String   @db.Uuid
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId    String
+  createdAt DateTime @default(now())
+}
+
+model Profile {
+  id            String   @id @db.Uuid
+  email         String?  @unique
+  fullName      String?
+  avatarUrl     String?
+  createdAt     DateTime @default(now())
+  canMessageIds String[] @default([]) @db.Uuid
+
+  posts            Post[]
+  comments         Comment[]
+  sentMessages     Message[]       @relation("SentMessages")
+  receivedMessages Message[]       @relation("ReceivedMessages")
+  sentRequests     FriendRequest[] @relation("SentRequests")
+  receivedRequests FriendRequest[] @relation("ReceivedRequests")
+}
+
+model Message {
+  id         String   @id @default(uuid())
+  senderId   String   @db.Uuid
+  receiverId String   @db.Uuid
+  content    String
+  createdAt  DateTime @default(now())
+
+  sender   Profile @relation("SentMessages", fields: [senderId], references: [id])
+  receiver Profile @relation("ReceivedMessages", fields: [receiverId], references: [id])
+}
+
+// enum pour l'état d'une demande
+enum FriendRequestStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  BLOCKED
+}
+
+model FriendRequest {
+  id          String              @id @default(cuid())
+  requesterId String              @db.Uuid
+  receiverId  String              @db.Uuid
+  status      FriendRequestStatus @default(PENDING)
+  message     String? // optionnel : message d'accompagnement
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+
+  requester Profile @relation("SentRequests", fields: [requesterId], references: [id])
+  receiver  Profile @relation("ReceivedRequests", fields: [receiverId], references: [id])
+
+  @@unique([requesterId, receiverId]) // empêche demandes dupliquées same direction
 }
