@@ -15,10 +15,10 @@ export default function UserProfile() {
         <img src={CurrentUserData.map((user) => user.CoverPhoto)} alt="" />
       </div>
       <div className="profile-info">
-        <img src={user.picture} alt="" />
+        <img src={user.user_metadata.picture} alt="" />
         <div className="profile-name">
-          <h3>{user.name}</h3>
-          <h5>{`@${user.name.replaceAll(" ", "").toLowerCase()}`}</h5>
+          <h3>{user.user_metadata.name}</h3>
+          <h5>{`@${user.email}`}</h5>
         </div>
         <div className="profile-button">
           <Link to={`/chatbox/${user.id}`}>
