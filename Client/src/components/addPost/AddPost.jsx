@@ -55,7 +55,7 @@ export default function AddPost({ loadingPost, onPostSubmit, isProfile }) {
 
   return (
     <form
-      className={`postForm ${isProfile ? "hidden" : "flex"} md:flex`}
+      className={`postForm ${isProfile ? "flex" : "hidden"} md:flex`}
       onSubmit={handleSubmit}
     >
       <div className="user form-top relative">

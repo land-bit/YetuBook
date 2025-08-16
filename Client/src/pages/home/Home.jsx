@@ -126,6 +126,7 @@ export default function Home() {
         loadingPost={loadingPost}
         setLoadingPost={setLoadingPost}
         onPostSubmit={handleAddPost}
+        isProfile={false}
       />
       <Feeds
         handleDeletePost={handleDeletePost}
