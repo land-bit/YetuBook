@@ -6,7 +6,7 @@ export default function Profile() {
   return (
     <>
       <UserProfile />
-      <AddPost />
+      <AddPost isProfile={true} />
       {/* <Feeds /> */}
     </>
   );

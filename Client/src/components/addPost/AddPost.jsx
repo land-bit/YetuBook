@@ -16,7 +16,7 @@ import { FaXmark } from "react-icons/fa6";
 import { Button } from "../ui/button";
 import { Loader2Icon } from "lucide-react";
 
-export default function AddPost({ loadingPost, onPostSubmit }) {
+export default function AddPost({ loadingPost, onPostSubmit, isProfile }) {
   const { user } = useAuth();
   const [content, setContent] = useState("");
   const [imageFile, setImageFile] = useState(null);
@@ -54,7 +54,10 @@ export default function AddPost({ loadingPost, onPostSubmit }) {
   };
 
   return (
-    <form className="postForm hidden md:flex" onSubmit={handleSubmit}>
+    <form
+      className={`postForm ${isProfile ? "hidden" : "flex"} md:flex`}
+      onSubmit={handleSubmit}
+    >
       <div className="user form-top relative">
         <Link to="/profile/id">
           <img src={user.user_metadata.avatar_url} alt="" />
